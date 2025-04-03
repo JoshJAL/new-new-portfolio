@@ -22,7 +22,7 @@ export default function Home() {
           className='mx-auto h-auto w-80 rounded-lg shadow-[3px_3px_0px_rgba(255,255,255,1)]'
         />
         <p>
-          Hello! I am Joshua Levine, I am a web and software delveloper based out of the United States. I am proficient
+          Hello! I am Joshua Levine, I am a web and software developer based out of the United States. I am proficient
           with C#, CSS, HTML, Java, Javascript, Lua, SQL, SQLite, TailwindCSS, and TypeScript. On the side I love my
           friends, my family, my car, and my camera and am happy to talk about any of them. Poke around and get to know
           me a little bit, you can think of this first page as my resume because it basically is.
@@ -42,15 +42,15 @@ export default function Home() {
           <InfoCard colorSwap heading={'Monster Transmission & Performance'}>
             <div className='flex w-full flex-col gap-3'>
               <p>
-                I am the lead developer for Monster Transmission & Performance. I have built all of our internal
-                toolding and helped develop our front-end using Shopify from the ground up. I also aid our sister
-                companies with their development needs.
+                I am the lead developer for Monster Transmission & Performance. I have built all of our internal tooling
+                and helped develop our front-end using Shopify from the ground up. I also aid our sister companies with
+                their development needs.
               </p>
               <ul className='list-inside list-disc'>
                 <li>Full Stack e-commerce platform for tranmissions, engine, and torque converters.</li>
                 <li>Organized and optimized over 6,000 products. Narrowed down to top selling 200.</li>
                 <li>
-                  Year, make, and model look up to hellp customers find their applicable transmissions and engines
+                  Year, make, and model look up to help customers find their applicable transmissions and engines
                   spanning over 6,000 different vehicle makes.
                 </li>
                 <li>Built tech stack from the ground up.</li>
@@ -97,12 +97,12 @@ export default function Home() {
               </p>
               <ul className='list-inside list-disc'>
                 <li>
-                  Full Stack e-commerce platform for bakery. Created front-end for placing orders as well as contacing
+                  Full Stack e-commerce platform for bakery. Created front-end for placing orders as well as contacting
                   customers for confirmations.
                 </li>
                 <li>Connected Stripe for payments for orders and subscriptions.</li>
                 <li>
-                  Created backend system for managing orders and updating customers about the staus of their order.
+                  Created backend system for managing orders and updating customers about the status of their order.
                 </li>
                 <li>Created image uploading system for custom and editable images of products.</li>
                 <li>Allow users to sign in to manage their own subscription status.</li>
@@ -148,8 +148,8 @@ export default function Home() {
             <div className='flex w-full flex-col gap-3'>
               <p>
                 This one is no longer available on the app store, but it was a really cool iOS app that would allow you
-                to be able to check the transmission and engine of over 6,000 vehiclesl, you could save previous
-                searches and it would suggest you products that were related to your current search.
+                to be able to check the transmission and engine of over 6,000 vehicles, you could save previous searches
+                and it would suggest you products that were related to your current search.
               </p>
               <ul className='list-inside list-disc'>
                 <li>
@@ -182,6 +182,121 @@ export default function Home() {
           </InfoCard>
         </section>
       </InfoCard>
+      <section className='flex w-full flex-col gap-5'>
+        <InfoCard heading='Experience'>
+          <div className='flex w-full flex-col gap-3'>
+            <p>
+              I have been a web and software developer for about four years, before that I was in law school and
+              interned for a family law attorney by the name of Joryn Jenkins, and before that I held a number of odd
+              jobs like most people do. I will list out my relevant developer experience, but if you would like to know
+              about any of the others please visit my &quot;
+              <StyledLink colorSwap prefetch href='/about'>
+                About Me
+              </StyledLink>
+              &quot; page or feel free to reach out via my &quot;
+              <StyledLink colorSwap prefetch href='/contact'>
+                Contact Me
+              </StyledLink>
+              &quot; page!
+            </p>
+
+            <InfoCard
+              colorSwap
+              heading={'Lead Web & Software Developer | Monster Transmission & Performance | 06/2023 - Present'}
+            >
+              <div className='flex w-full flex-col gap-3'>
+                <ul className='list-inside list-disc'>
+                  <li>
+                    Created multiple full stack web applications including e-commerce platforms that bring in
+                    ~$2,000,000 in monthly revenue.
+                  </li>
+                  <li>
+                    Created and maintain internal tooling and softwares leading to an increase in efficiency and
+                    accountability company wide.
+                  </li>
+                  <li>Created mobile applications using React Native.</li>
+                  <li>Created Shopify extensions.</li>
+                  <li>Assisted in building of Shopify Theme.</li>
+                  <li>Created internal documentation for developers and usage of tooling for users.</li>
+                  <li>Handle website design and performance.</li>
+                  <li>Oversaw media department including marketing assignments, YouTube channels, and content.</li>
+                  <li>Created single sign-on system for all companies portfolio wide.</li>
+                  <li>Created inventory management system for internal inventory.</li>
+                  <li>
+                    Created automations that assist in contacting customers and ensuring that they are informed of the
+                    status of their order or warranty claim.
+                  </li>
+                </ul>
+              </div>
+            </InfoCard>
+            <InfoCard colorSwap heading={'Full Stack Web Developer | Coastal Crumb LLC | 03/2025 - Present'}>
+              <div className='flex w-full flex-col gap-3'>
+                <ul className='list-inside list-disc'>
+                  <li>Fully built out client&apos;s front-end application.</li>
+                  <li>Created secure back-end system to manage orders and subscriptions.</li>
+                  <li>Connected Stripe so that client could accept payments for orders and subscriptions.</li>
+                  <li>Handled website design and performance.</li>
+                  <li>Created full copy and custom components.</li>
+                </ul>
+              </div>
+            </InfoCard>
+            <InfoCard colorSwap heading={'Full Stack Web Developer | Coastal Crumb LLC | 12/2024 - 02/2025'}>
+              <div className='flex w-full flex-col gap-3'>
+                <ul className='list-inside list-disc'>
+                  <li>Fully built out client&apos;s business website.</li>
+                  <li>Created full copy and custom components.</li>
+                  <li>Custom scheduling management system.</li>
+                  <li>Handled website design and performance.</li>
+                </ul>
+              </div>
+            </InfoCard>
+            <InfoCard colorSwap heading={'Full Stack Web Developer | Shoelacetip Ink | 03/2023 - 06/2023'}>
+              <div className='flex w-full flex-col gap-3'>
+                <ul className='list-inside list-disc'>
+                  <li>Fully built out client&apos;s business website.</li>
+                  <li>Created full copy and custom components.</li>
+                  <li>Completely editable content through backend pages.</li>
+                  <li>Connected to backend database.</li>
+                  <li>Handled website design and performance.</li>
+                </ul>
+              </div>
+            </InfoCard>
+            <InfoCard colorSwap heading={'Web Developer | Almanzar-Paramio Law, LLC | 04/2023 - 06/2023'}>
+              <div className='flex w-full flex-col gap-3'>
+                <ul className='list-inside list-disc'>
+                  <li>Full website redesign.</li>
+                  <li>Multi-language site (internationalization).</li>
+                  <li>Improved website performance.</li>
+                  <li>Created custom components.</li>
+                  <li>Hooked up static website files to hosting service.</li>
+                  <li>Used microservices by utilizing Astro and React.</li>
+                </ul>
+              </div>
+            </InfoCard>
+            <InfoCard colorSwap heading={'Javascript Developer | Rob Graham Enterprises | 05/2022 - 11/2022'}>
+              <div className='flex w-full flex-col gap-3'>
+                <ul className='list-inside list-disc'>
+                  <li>Maintained frontend and backend code for various enterprises.</li>
+                  <li>Implemented digital marketing campaigns.</li>
+                  <li>Hooked up microservices (Qwik, Next.js).</li>
+                  <li>Created in-house tools for multiple teams.</li>
+                  <li>Implemented development cycle for accurate and efficient coding amongst team members.</li>
+                  <li>Wrote policy and procedure documentation for code and technology.</li>
+                  <li>
+                    Created hundreds of front-end landing pages to direct clients to more engaging portions of site.
+                  </li>
+                  <li>Aided in improving site performance with the use of Google Tag Manager.</li>
+                  <li>Improved click through rate for landing pages and quiz pages.</li>
+                  <li>Designed and implemented single-sign-on system using SAML.</li>
+                  <li>Helped build shift-management system for contractors.</li>
+                  <li>Utilized AWS Cognito services to maintain users and their permissions.</li>
+                  <li>Built automatic email messaging system utilizing AWS API Gateway and SES.</li>
+                </ul>
+              </div>
+            </InfoCard>
+          </div>
+        </InfoCard>
+      </section>
     </article>
   );
 }
