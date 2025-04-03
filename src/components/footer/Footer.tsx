@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { EMAIL } from '@/consts';
 
-import { FaCamera, FaCode, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaCamera, FaCode, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { IoMdContact } from 'react-icons/io';
 import { TiDocumentText, TiMail } from 'react-icons/ti';
 
@@ -26,6 +26,13 @@ export default function Footer() {
       href: `mailto:${EMAIL}`,
       icon: <TiMail className='h-5 w-5' />,
       label: 'Email',
+      prefetch: false,
+      target: '_blank' as const
+    },
+    {
+      href: `https://github.com/JoshJAL`,
+      icon: <FaGithub className='h-5 w-5' />,
+      label: 'GitHub',
       prefetch: false,
       target: '_blank' as const
     },
@@ -56,13 +63,6 @@ export default function Footer() {
       label: 'Projects',
       prefetch: true,
       target: '_self' as const
-    },
-    {
-      href: 'https://x.com/MyGovtName',
-      icon: <FaTwitter className='h-5 w-5' />,
-      label: 'Twitter',
-      prefetch: false,
-      target: '_blank' as const
     }
   ];
 

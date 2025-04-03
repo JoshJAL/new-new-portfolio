@@ -1,7 +1,7 @@
 import DropdownMenuItem from './DropdownMenuItem';
 
-import { FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa';
 import { Menu, MenuButton, MenuItems } from '@headlessui/react';
+import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { IoMenu } from 'react-icons/io5';
 
 export default function DropdownMenu() {
@@ -24,6 +24,12 @@ export default function DropdownMenu() {
           <DropdownMenuItem href='/'>Home</DropdownMenuItem>
           <DropdownMenuItem href='/about'>About Me</DropdownMenuItem>
           <DropdownMenuItem href='/contact'>Contact Me</DropdownMenuItem>
+          <DropdownMenuItem prefetch={false} target='_blank' href='https://github.com/JoshJAL'>
+            <div className='flex w-full items-center gap-1'>
+              <FaGithub className='h-4 w-4' />
+              <p>Github</p>
+            </div>
+          </DropdownMenuItem>
           <DropdownMenuItem prefetch={false} target='_blank' href='https://www.instagram.com/mygovtnamej/'>
             <div className='flex w-full items-center gap-1'>
               <FaInstagram className='h-4 w-4' />
@@ -38,12 +44,6 @@ export default function DropdownMenu() {
           </DropdownMenuItem>
           <DropdownMenuItem href='/photography'>Photography</DropdownMenuItem>
           <DropdownMenuItem href='/projects'>Projects</DropdownMenuItem>
-          <DropdownMenuItem prefetch={false} target='_blank' href='/'>
-            <div className='flex w-full items-center gap-1'>
-              <FaTwitter className='h-4 w-4' />
-              <p>Twitter</p>
-            </div>
-          </DropdownMenuItem>
         </div>
       </MenuItems>
     </Menu>

@@ -12,7 +12,7 @@ interface Props {
   red?: boolean;
 }
 
-export default function Button({
+export default function ButtonLink({
   children,
   colorSwap,
   colorSwap2,
