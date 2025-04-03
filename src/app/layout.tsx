@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${lexend.className} flex min-h-screen flex-col antialiased`}>
         <Header />
-        <main className='mx-auto w-full max-w-7xl p-5 pt-20'>{children}</main>
+        <main className='mx-auto w-full max-w-7xl p-5 pt-24'>{children}</main>
         <div className='flex-1' />
         <Footer />
       </body>

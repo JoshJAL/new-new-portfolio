@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import DropdownMenu from './dropdownMenu/DropdownMenu';
 
 export default function Header() {
   return (
@@ -8,6 +9,7 @@ export default function Header() {
           Joshua Levine
         </Link>
         <div className='flex-1' />
+        <DropdownMenu />
       </nav>
     </header>
   );

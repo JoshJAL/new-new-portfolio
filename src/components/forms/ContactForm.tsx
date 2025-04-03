@@ -30,6 +30,9 @@ export default function ContactForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!confirm('Are you sure you want to send this message?')) return;
+
+    setFormState({ ...formState, submitting: true });
 
     const success = await createMessage(
       formState.email.trim().toLowerCase(),

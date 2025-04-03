@@ -29,7 +29,7 @@ export default async function Page(props: { searchParams: Promise<{ id: string }
           </strong>
         </p>
         <Info label='Message'>{message.message}</Info>
-        <ButtonLink href='/'>Back to home</ButtonLink>
+        <ButtonLink href='/'>Back Home!</ButtonLink>
       </div>
     </InfoCard>
   );

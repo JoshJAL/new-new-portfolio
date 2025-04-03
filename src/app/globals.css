@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme inline {
   --color-dark-purple: #160f29;
@@ -11,4 +11,9 @@
 body {
   background: var(--color-dark-purple);
   color: white;
+}
+
+::selection {
+  background-color: var(--color-champagne);
+  color: var(--color-dark-purple);
 }
