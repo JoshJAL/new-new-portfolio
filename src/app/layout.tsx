@@ -3,8 +3,8 @@ import './globals.css';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 
-import { Lexend } from 'next/font/google';
 import { ViewTransitions } from 'next-view-transitions';
+import { Lexend } from 'next/font/google';
 
 import type { Metadata } from 'next';
 
