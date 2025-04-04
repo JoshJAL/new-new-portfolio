@@ -8,7 +8,7 @@ import { Lexend } from 'next/font/google';
 
 import type { Metadata } from 'next';
 
-const lexend = Lexend({ weight: 'variable' });
+const lexend = Lexend({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Joshua Levine',
