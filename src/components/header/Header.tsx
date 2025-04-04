@@ -1,5 +1,6 @@
-import Link from 'next/link';
 import DropdownMenu from './dropdownMenu/DropdownMenu';
+
+import { Link } from 'next-view-transitions';
 
 export default function Header() {
   return (

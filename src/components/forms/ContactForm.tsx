@@ -6,11 +6,11 @@ import FormWrapper from './FormWrapper';
 
 import { sendThankYouEmail } from '@/server/actions/email';
 import { createMessage } from '@/server/actions/messages';
-import { useRouter } from 'next/navigation';
+import { useTransitionRouter } from 'next-view-transitions';
 import { useState } from 'react';
 
 export default function ContactForm() {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const [formState, setFormState] = useState({
     email: '',
     firstName: '',

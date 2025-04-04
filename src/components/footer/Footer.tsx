@@ -1,7 +1,6 @@
-import Link from 'next/link';
-
 import { EMAIL } from '@/consts';
 
+import { Link } from 'next-view-transitions';
 import { FaCamera, FaCode, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { IoMdContact } from 'react-icons/io';
 import { TiDocumentText, TiMail } from 'react-icons/ti';
