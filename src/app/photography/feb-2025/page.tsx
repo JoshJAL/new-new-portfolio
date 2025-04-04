@@ -1,3 +1,4 @@
+import LoadingSpinner from '@/components/loading/LoadingSpinner';
 import ButtonLink from '@/components/ui/ButtonLink';
 import ImageSlider from '@/components/ui/ImageSlider';
 import InfoCard from '@/components/ui/InfoCard';
@@ -34,6 +35,8 @@ import {
   IMG_0186,
   IMG_0188
 } from '@/photography/feb-2025';
+
+import { Suspense } from 'react';
 
 import type { StaticImageData } from 'next/image';
 
@@ -74,7 +77,9 @@ export default function Page() {
   return (
     <InfoCard heading={'February 2025'}>
       <article className='flex w-full flex-col gap-5'>
-        <ImageSlider autoScroll images={images} />
+        <Suspense fallback={<LoadingSpinner />}>
+          <ImageSlider autoScroll images={images} />
+        </Suspense>
         <section className='flex w-full flex-col gap-3'>
           <p>
             I got some new lenses this month and really wanted to try them out. Also, apparently when you get a camera

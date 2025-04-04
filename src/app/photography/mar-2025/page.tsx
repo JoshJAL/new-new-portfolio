@@ -1,3 +1,4 @@
+import LoadingSpinner from '@/components/loading/LoadingSpinner';
 import ButtonLink from '@/components/ui/ButtonLink';
 import ImageSlider from '@/components/ui/ImageSlider';
 import InfoCard from '@/components/ui/InfoCard';
@@ -35,6 +36,8 @@ import {
   IMG_0434,
   IMG_2249
 } from '@/photography/mar-2025';
+
+import { Suspense } from 'react';
 
 import type { StaticImageData } from 'next/image';
 
@@ -76,7 +79,9 @@ export default function Page() {
   return (
     <InfoCard heading={'March 2025'}>
       <article className='flex w-full flex-col gap-5'>
-        <ImageSlider autoScroll images={images} />
+        <Suspense fallback={<LoadingSpinner />}>
+          <ImageSlider autoScroll images={images} />
+        </Suspense>
         <section className='flex w-full flex-col gap-3'>
           <p>
             My little nephew is already getting so big, he is smiling and happy and VERY well fed. My other nephew is

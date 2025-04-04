@@ -1,3 +1,4 @@
+import LoadingSpinner from '@/components/loading/LoadingSpinner';
 import ButtonLink from '@/components/ui/ButtonLink';
 import ImageSlider from '@/components/ui/ImageSlider';
 import InfoCard from '@/components/ui/InfoCard';
@@ -23,6 +24,8 @@ import {
   IMG_0087,
   IMG_0094
 } from '@/photography/jan-2025';
+
+import { Suspense } from 'react';
 
 import type { StaticImageData } from 'next/image';
 
@@ -52,7 +55,9 @@ export default function Page() {
   return (
     <InfoCard heading={'January 2025'}>
       <article className='flex w-full flex-col gap-5'>
-        <ImageSlider autoScroll images={images} />
+        <Suspense fallback={<LoadingSpinner />}>
+          <ImageSlider autoScroll images={images} />
+        </Suspense>
         <section className='flex w-full flex-col gap-3'>
           <p>
             In the past I worked as a video editor, helped direct and film music videos and concerts and much more. I
