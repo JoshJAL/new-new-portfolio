@@ -48,7 +48,7 @@ export default function Home() {
                 their development needs.
               </p>
               <ul className='list-inside list-disc'>
-                <li>Full Stack e-commerce platform for tranmissions, engine, and torque converters.</li>
+                <li>Full Stack e-commerce platform for transmissions, engines, and torque converters.</li>
                 <li>Organized and optimized over 6,000 products. Narrowed down to top selling 200.</li>
                 <li>
                   Year, make, and model look up to help customers find their applicable transmissions and engines
@@ -302,7 +302,7 @@ export default function Home() {
         <InfoCard heading='Education'>
           <div className='flex w-full flex-col gap-3'>
             <p>
-              I went to college from 2015 - 2019 and got me degree in legal studies, then after that I attended Stetson
+              I went to college from 2015 - 2019 and got my degree in legal studies, then after that I attended Stetson
               College of Law for one year from 2021-2022. While in law school I realized that I was not happy and I was
               never going to be happy doing law. I wish I had realized that sooner of course, but to be fair I was just
               in school because I had always been told that that was what you had to do to get ahead, so I did it. After

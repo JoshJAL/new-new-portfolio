@@ -62,7 +62,7 @@ export default function Page() {
             myself?
           </p>
           <p>
-            January was a packed month, I spent a lot fo time with my grandmother and my nephew was born. Noise was
+            January was a packed month, I spent a lot of time with my grandmother and my nephew was born. Noise was
             high, family was stressed and there was a lot of fun to be had. I got to know my new camera while doing a
             lot of floating.
           </p>

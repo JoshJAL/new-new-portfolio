@@ -88,7 +88,7 @@ export default function Page() {
           <p>
             I also went out to Boston, no reason other than to just go which some people found strange. I guess we
             don&apos;t vacation as much as we are supposed to because I used to up and leave all the time. The skyline
-            of this city is beautiful, my friends that I was with are beaitiful people and the city itself is wonderful.
+            of this city is beautiful, my friends that I was with are beautiful people and the city itself is wonderful.
             Of all the cities I have been to and spent time in Boston is my favorite.
           </p>
         </section>
