@@ -8,10 +8,10 @@ export default function Page() {
   const posts: Post[] = [
     {
       description:
-        'I got a camera this month, my grandma came to town, and my nephew was born. It was a busy month, but a really rewarding one.',
-      heading: 'January 2025',
-      href: '/photography/jan-2025',
-      image: Jan2025
+        'Traveling again was great, taking the time to look at more art, make some good food, and spend time with the ones I love was the reset I needed.',
+      heading: 'March 2025',
+      href: '/photography/mar-2025',
+      image: Mar2025
     },
     {
       description:
@@ -22,10 +22,10 @@ export default function Page() {
     },
     {
       description:
-        'Traveling again was great, taking the time to look at more art, make some good food, and spend time with the ones I love was the reset I needed.',
-      heading: 'March 2025',
-      href: '/photography/mar-2025',
-      image: Mar2025
+        'I got a camera this month, my grandma came to town, and my nephew was born. It was a busy month, but a really rewarding one.',
+      heading: 'January 2025',
+      href: '/photography/jan-2025',
+      image: Jan2025
     }
   ];
 

@@ -1,6 +1,7 @@
 import ButtonLink from '@/components/ui/ButtonLink';
 import InfoCard from '@/components/ui/InfoCard';
 import StyledLink from '@/components/ui/StyledLink';
+import Technology from '@/components/ui/Technology';
 
 import { BiLogoJavascript, BiLogoTypescript } from 'react-icons/bi';
 import { BsFiletypeCss } from 'react-icons/bs';
@@ -8,7 +9,113 @@ import { FaReact } from 'react-icons/fa';
 import { RiNextjsLine, RiTailwindCssFill } from 'react-icons/ri';
 import { SiClerk, SiResend, SiShopify, SiSqlite, SiStripe } from 'react-icons/si';
 
+import type { Tech } from '@/types/tech';
+
 export default function RecentProjects() {
+  const monster: Tech[] = [
+    {
+      color: 'bg-purple-800',
+      icon: <BsFiletypeCss className='h-5 w-5' />,
+      label: 'CSS'
+    },
+    {
+      color: 'bg-yellow-300',
+      icon: <BiLogoJavascript className='h-5 w-5' />,
+      label: 'Javascript',
+      textColor: 'text-black'
+    },
+    {
+      color: 'bg-black',
+      icon: <RiNextjsLine className='h-5 w-5' />,
+      label: 'Next.js'
+    },
+    {
+      color: 'bg-lime-400',
+      icon: <SiShopify className='h-5 w-5' />,
+      label: 'Shopify',
+      textColor: 'text-black'
+    },
+    {
+      color: 'bg-blue-400',
+      icon: <SiSqlite className='h-5 w-5' />,
+      label: 'SQLite'
+    },
+    {
+      color: 'bg-cyan-400',
+      icon: <RiTailwindCssFill className='h-5 w-5' />,
+      label: 'Tailwind',
+      textColor: 'text-black'
+    },
+    {
+      color: 'bg-blue-500',
+      icon: <BiLogoTypescript className='h-5 w-5' />,
+      label: 'TypeScript'
+    }
+  ];
+
+  const coastal: Tech[] = [
+    {
+      color: 'bg-gradient-to-r from-purple-600 to-blue-500',
+      icon: <SiClerk className='h-5 w-5' />,
+      label: 'Clerk'
+    },
+    {
+      color: 'bg-black',
+      icon: <RiNextjsLine className='h-5 w-5' />,
+      label: 'Next.js'
+    },
+    {
+      color: 'bg-black',
+      icon: <SiResend className='h-5 w-5' />,
+      label: 'Resend'
+    },
+    {
+      color: 'bg-indigo-600',
+      icon: <SiStripe className='h-5 w-5' />,
+      label: 'Stripe'
+    },
+    {
+      color: 'bg-blue-400',
+      icon: <SiSqlite className='h-5 w-5' />,
+      label: 'SQLite'
+    },
+    {
+      color: 'bg-cyan-400',
+      icon: <RiTailwindCssFill className='h-5 w-5' />,
+      label: 'Tailwind',
+      textColor: 'text-black'
+    },
+    {
+      color: 'bg-blue-500',
+      icon: <BiLogoTypescript className='h-5 w-5' />,
+      label: 'TypeScript'
+    }
+  ];
+
+  const decoder: Tech[] = [
+    {
+      color: 'bg-purple-800',
+      icon: <BsFiletypeCss className='h-5 w-5' />,
+      label: 'CSS'
+    },
+    {
+      color: 'bg-yellow-300',
+      icon: <BiLogoJavascript className='h-5 w-5' />,
+      label: 'Javascript',
+      textColor: 'text-black'
+    },
+    {
+      color: 'bg-blue-400',
+      icon: <FaReact className='h-5 w-5' />,
+      label: 'React Native'
+    },
+    {
+      color: 'bg-blue-400',
+      icon: <SiSqlite className='h-5 w-5' />,
+      label: 'SQLite'
+    }
+  ];
+
   return (
     <InfoCard heading={'Recent Projects'}>
       <section className='flex w-full flex-col gap-3'>
@@ -39,30 +146,9 @@ export default function RecentProjects() {
             </ul>
             <InfoCard heading={'Technologies'}>
               <div className='flex w-full flex-wrap gap-3'>
-                <p className='flex items-center gap-2 rounded-lg bg-purple-800 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <BsFiletypeCss className='h-5 w-5' />
-                  CSS
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-black px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <RiNextjsLine className='h-5 w-5' />
-                  Next.js
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-lime-400 px-3 py-2 text-black shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <SiShopify className='h-5 w-5' />
-                  Shopify
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-blue-400 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <SiSqlite className='h-5 w-5' />
-                  SQLite
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-cyan-400 px-3 py-2 text-black shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <RiTailwindCssFill className='h-5 w-5' />
-                  Tailwind
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-blue-500 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <BiLogoTypescript className='h-5 w-5' />
-                  TypeScript
-                </p>
+                {monster.map((t) => (
+                  <Technology tech={t} key={t.label} />
+                ))}
               </div>
             </InfoCard>
             <ButtonLink prefetch={false} href='https://monstertransmission.com/' target='_blank'>
@@ -91,34 +177,9 @@ export default function RecentProjects() {
             </ul>
             <InfoCard heading={'Technologies'}>
               <div className='flex w-full flex-wrap gap-3'>
-                <p className='flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-blue-500 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <SiClerk className='h-5 w-5' />
-                  Clerk
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-black px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <RiNextjsLine className='h-5 w-5' />
-                  Next.js
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-black px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <SiResend className='h-5 w-5' />
-                  Resend
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-indigo-600 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <SiStripe className='h-5 w-5' />
-                  Stripe
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-blue-400 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <SiSqlite className='h-5 w-5' />
-                  SQLite
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-cyan-400 px-3 py-2 text-black shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <RiTailwindCssFill className='h-5 w-5' />
-                  Tailwind
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-blue-500 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <BiLogoTypescript className='h-5 w-5' />
-                  TypeScript
-                </p>
+                {coastal.map((t) => (
+                  <Technology tech={t} key={t.label} />
+                ))}
               </div>
             </InfoCard>
             <ButtonLink prefetch={false} href='https://coastalcrumbllc.com/' target='_blank'>
@@ -142,22 +203,9 @@ export default function RecentProjects() {
             </ul>
             <InfoCard heading={'Technologies'}>
               <div className='flex w-full flex-wrap gap-3'>
-                <p className='flex items-center gap-2 rounded-lg bg-purple-800 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <BsFiletypeCss className='h-5 w-5' />
-                  CSS
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-yellow-300 px-3 py-2 text-black shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <BiLogoJavascript className='h-5 w-5' />
-                  Javascript
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-blue-400 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <FaReact className='h-5 w-5' />
-                  React Native
-                </p>
-                <p className='flex items-center gap-2 rounded-lg bg-blue-400 px-3 py-2 text-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'>
-                  <SiSqlite className='h-5 w-5' />
-                  SQLite
-                </p>
+                {decoder.map((t) => (
+                  <Technology tech={t} key={t.label} />
+                ))}
               </div>
             </InfoCard>
           </div>
