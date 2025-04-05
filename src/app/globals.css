@@ -10,6 +10,10 @@
   --comic-shadow: 3px 3px 0px rgba(255, 255, 255, 1);
 }
 
+* {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--color-dark-purple);
   color: white;

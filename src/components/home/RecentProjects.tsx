@@ -117,7 +117,7 @@ export default function RecentProjects() {
   ];
 
   return (
-    <InfoCard heading={'Recent Projects'}>
+    <InfoCard id='projects' heading={'Recent Projects'}>
       <section className='flex w-full flex-col gap-3'>
         <p>
           I&apos;ve been doing this a number of years now, so as you can imagine I have tons of projects that I have

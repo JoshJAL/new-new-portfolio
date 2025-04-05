@@ -1,5 +1,5 @@
+import PageLinks from '@/components/about/PageLinks';
 import InfoCard from '@/components/ui/InfoCard';
-
 import StyledLink from '@/components/ui/StyledLink';
 
 export default function Page() {
@@ -17,7 +17,8 @@ export default function Page() {
           </StyledLink>
           &quot; page and reach out!
         </p>
-        <InfoCard colorSwap heading='Education'>
+        <PageLinks />
+        <InfoCard id='education' colorSwap heading='Education'>
           <article className='flex w-full flex-col gap-3'>
             <p>
               Initially, I thought I wanted to be a lawyer. I even received my bachelors in legal studies from the
@@ -47,7 +48,43 @@ export default function Page() {
             </p>
           </article>
         </InfoCard>
-        <InfoCard colorSwap heading='Work'>
+        <InfoCard id='hobbies' colorSwap heading='Hobbies'>
+          <article className='flex w-full flex-col gap-3'>
+            <p>
+              I have always been very passionate about cars. I love working on them, making them go fast, and then
+              terrifying my loved ones with them. I am fortunate enough to have driven over 250 different vehicles in my
+              life ranging including economy vehicles, drag cars, and even some exotics. Currently I don&apos;t have a
+              project car, but I would love to get one soon. Hopefully, the economy allows me to do that again some day!
+            </p>
+            <p>
+              Even though I don&apos;t play video games much anymore they will always hold a special place in my heart.
+              Some of my closest friends have been made over the internet and I have had the pleasure of getting to know
+              them through our shared interests and now I am attending their weddings and taking them on adventures.
+              When I do get to play these days I either jump on Valorant with my friends, play binding of Isaac until my
+              eyes bleed or foster a hidden gambling addiction with Balatro.
+            </p>
+            <p>
+              My ultimate way to relax is to sit back and watch a movie. I have a deep love for horror and those bizarre
+              experimental films Robert Pattinson and Daniel Radcliffe always seem to star in. I want to watch something
+              that captivates me from beginning to end, or I want to turn my brain off and watch some slop just like
+              everybody else, but there is something to enjoy in every movie and I take the time to learn absolutely
+              everything I can about them. I have seen and have a deep knowledge about so many movies that it can
+              genuinely be classified as a problem.
+            </p>
+            <p>
+              Currently I am doing some light photography and having a blast with it. I don&apos;t think that I am any
+              good, but it is something that gets me out of the house and forces me to touch grass and for that I am
+              eternally grateful. If you want to see some of the pictures that I&apos;ve been taking visit my &quot;
+              <StyledLink href={'/photography'}>Photography</StyledLink>
+              &quot; page or follow me on{' '}
+              <StyledLink href={'https://www.instagram.com/mygovtnamej/'} target='_blank' prefetch={false}>
+                Instagram
+              </StyledLink>
+              !
+            </p>
+          </article>
+        </InfoCard>
+        <InfoCard id='work' colorSwap heading='Work'>
           <article className='flex w-full flex-col gap-3'>
             <p>
               I have held a number of jobs and I will try to give most of them the justice that they deserve here very
@@ -93,42 +130,6 @@ export default function Page() {
               clashing of worlds since I have a passion for cars and a passion for tech and here I have been able to
               mesh those two while building for several companies that build custom car parts, engines, and
               transmissions.
-            </p>
-          </article>
-        </InfoCard>
-        <InfoCard colorSwap heading='Hobbies'>
-          <article className='flex w-full flex-col gap-3'>
-            <p>
-              I have always been very passionate about cars. I love working on them, making them go fast, and then
-              terrifying my loved ones with them. I am fortunate enough to have driven over 250 different vehicles in my
-              life ranging including economy vehicles, drag cars, and even some exotics. Currently I don&apos;t have a
-              project car, but I would love to get one soon. Hopefully, the economy allows me to do that again some day!
-            </p>
-            <p>
-              Even though I don&apos;t play video games much anymore they will always hold a special place in my heart.
-              Some of my closest friends have been made over the internet and I have had the pleasure of getting to know
-              them through our shared interests and now I am attending their weddings and taking them on adventures.
-              When I do get to play these days I either jump on Valorant with my friends, play binding of Isaac until my
-              eyes bleed or foster a hidden gambling addiction with Balatro.
-            </p>
-            <p>
-              My ultimate way to relax is to sit back and watch a movie. I have a deep love for horror and those bizarre
-              experimental films Robert Pattinson and Daniel Radcliffe always seem to star in. I want to watch something
-              that captivates me from beginning to end, or I want to turn my brain off and watch some slop just like
-              everybody else, but there is something to enjoy in every movie and I take the time to learn absolutely
-              everything I can about them. I have seen and have a deep knowledge about so many movies that it can
-              genuinely be classified as a problem.
-            </p>
-            <p>
-              Currently I am doing some light photography and having a blast with it. I don&apos;t think that I am any
-              good, but it is something that gets me out of the house and forces me to touch grass and for that I am
-              eternally grateful. If you want to see some of the pictures that I&apos;ve been taking visit my &quot;
-              <StyledLink href={'/photography'}>Photography</StyledLink>
-              &quot; page or follow me on{' '}
-              <StyledLink href={'https://www.instagram.com/mygovtnamej/'} target='_blank' prefetch={false}>
-                Instagram
-              </StyledLink>
-              !
             </p>
           </article>
         </InfoCard>
