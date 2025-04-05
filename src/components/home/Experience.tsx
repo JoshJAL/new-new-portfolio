@@ -60,7 +60,7 @@ export default function Experience() {
             </ul>
           </div>
         </InfoCard>
-        <InfoCard colorSwap heading={'Full Stack Web Developer | Coastal Crumb LLC | 12/2024 - 02/2025'}>
+        <InfoCard colorSwap heading={'Full Stack Web Developer | MSK Structural Therapy | 12/2024 - 02/2025'}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
               <li>Fully built out client&apos;s business website.</li>
