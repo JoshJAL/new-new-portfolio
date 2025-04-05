@@ -70,6 +70,16 @@ export default function Experience() {
             </ul>
           </div>
         </InfoCard>
+        <InfoCard colorSwap heading={"Full Stack Web Developer | Anissa's Soaps | 06/2024 - 08/2024"}>
+          <div className='flex w-full flex-col gap-3'>
+            <ul className='list-inside list-disc'>
+              <li>Fully built out client&apos;s business website.</li>
+              <li>Created full copy and custom components.</li>
+              <li>Custom ordering system.</li>
+              <li>Handled website design and performance.</li>
+            </ul>
+          </div>
+        </InfoCard>
         <InfoCard colorSwap heading={'Full Stack Web Developer | Shoelacetip Ink | 03/2023 - 06/2023'}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
