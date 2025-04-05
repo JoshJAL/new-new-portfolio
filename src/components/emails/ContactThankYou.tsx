@@ -12,6 +12,7 @@ export default function ContactThankYou({ firstName, lastName }: Props) {
         as soon as possible.
       </p>
       <p className='text-lg'>If you have any further questions, comments, or concerns, feel free to reach out again!</p>
+      <b>THIS EMAIL IS NOT MONITORED! PLEASE DO NOT RESPOND! IT WILL NOT BE SEEN!</b>
     </div>
   );
 }
