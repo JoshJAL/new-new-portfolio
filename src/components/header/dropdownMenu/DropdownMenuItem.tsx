@@ -1,5 +1,3 @@
-'use client';
-
 import { MenuItem } from '@headlessui/react';
 import { Link } from 'next-view-transitions';
 
