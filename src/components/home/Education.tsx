@@ -18,7 +18,7 @@ export default function Education() {
           you love you will never work a day in your life.&quot; Within a month I had my first job as a developer and I
           never looked back. This is what I was meant to do and I was not going to let it get away from me.
         </p>
-        <InfoCard colorSwap heading={'University of Central Florida | Orlando, FL | 08/2019 - 12/2019'}>
+        <InfoCard colorSwap heading={'University of Central Florida | Orlando, FL | 08/2015 - 12/2019'}>
           <Info label={'Degree'}>Bachelors of Arts in Legal Studies</Info>
         </InfoCard>
         <InfoCard colorSwap heading={'Thinkful | Full Stack Web Development Bootcamp | 10/2022 - 03/2023'}>

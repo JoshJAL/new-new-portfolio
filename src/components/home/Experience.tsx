@@ -84,8 +84,7 @@ export default function Experience() {
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
               <li>Fully built out client&apos;s business website.</li>
-              <li>Created full copy and custom components.</li>
-              <li>Completely editable content through backend pages.</li>
+              <li>Created full copy, custom components, and completely editable content through backend pages.</li>
               <li>Connected to backend database.</li>
               <li>Handled website design and performance.</li>
             </ul>
