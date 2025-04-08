@@ -1,8 +1,8 @@
 'use client';
 
+import FormWrapper from '@/components/forms/FormWrapper';
 import Input from '@/components/ui/Input';
-import TextArea from '../ui/TextArea';
-import FormWrapper from './FormWrapper';
+import TextArea from '@/components/ui/TextArea';
 
 import { sendThankYouEmail } from '@/server/actions/email';
 import { createMessage } from '@/server/actions/messages';

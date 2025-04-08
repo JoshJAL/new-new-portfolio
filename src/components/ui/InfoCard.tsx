@@ -25,9 +25,9 @@ export default function InfoCard({ children, colorSwap, heading, id }: Props) {
   return (
     <div
       id={id}
-      className={`divide-carribean-current bg-desert-sand divide-y overflow-hidden rounded-lg text-black shadow-[3px_3px_0px_rgba(255,255,255,1)] ${roboto.className}`}
+      className={`divide-carribean-current bg-desert-sand divide-y overflow-hidden rounded-lg text-black shadow-[3px_3px_0px_rgba(255,255,255,1)]`}
     >
-      <div className='px-4 py-5 text-2xl font-bold sm:px-6'>{heading}</div>
+      <div className={`px-4 py-5 text-2xl font-bold sm:px-6 ${roboto.className}`}>{heading}</div>
       <div className='px-4 py-5 sm:p-6'>{children}</div>
     </div>
   );
