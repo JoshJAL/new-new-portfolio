@@ -1,3 +1,7 @@
+import { Roboto } from 'next/font/google';
+
+const roboto = Roboto({ subsets: ['latin'] });
+
 interface Props {
   autoFocus?: boolean;
   label: string;
@@ -21,7 +25,7 @@ export default function TextArea({
 }: Props) {
   return (
     <div className='w-full'>
-      <label htmlFor={name} className={`${noLabel ? 'sr-only' : ''} block leading-6 font-medium`}>
+      <label htmlFor={name} className={`${noLabel ? 'sr-only' : ''} block leading-6 font-medium ${roboto.className}`}>
         {label}
       </label>
       <div className={`${noLabel ? '' : 'mt-2'}`}>

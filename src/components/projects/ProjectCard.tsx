@@ -1,7 +1,11 @@
 import ButtonLink from '@/components/ui/ButtonLink';
 import Image from 'next/image';
 
+import { Roboto } from 'next/font/google';
+
 import type { Project } from '@/types/project';
+
+const roboto = Roboto({ subsets: ['latin'] });
 
 interface Props {
   project: Project;
@@ -19,7 +23,7 @@ export default function ProjectCard({ project }: Props) {
         width={300}
         quality={60}
       />
-      <h3 className='text-xl font-semibold'>{project.title}</h3>
+      <h3 className={`text-xl font-semibold ${roboto.className}`}>{project.title}</h3>
       <p className='text-sm text-gray-700'>{project.description}</p>
       <ButtonLink prefetch href={project.href}>
         Learn More

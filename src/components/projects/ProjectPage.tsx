@@ -3,8 +3,12 @@ import InfoCard from '@/components/ui/InfoCard';
 import Technology from '@/components/ui/Technology';
 import Image from 'next/image';
 
+import { Roboto } from 'next/font/google';
+
 import type { Tech } from '@/types/tech';
 import type { StaticImageData } from 'next/image';
+
+const roboto = Roboto({ subsets: ['latin'] });
 
 interface Props {
   children: React.ReactNode;
@@ -19,7 +23,7 @@ interface Props {
 export default function ProjectPage({ children, codeHref, href, image, imagePadding, tech, title }: Props) {
   return (
     <article className='flex w-full flex-col gap-5'>
-      <h1 className='text-3xl font-semibold'>{title}</h1>
+      <h1 className={`text-3xl font-semibold ${roboto.className}`}>{title}</h1>
       <Image
         className={`mx-auto rounded-lg shadow-[3px_3px_0px_rgba(255,255,255,1)] ${imagePadding}`}
         alt={title}
