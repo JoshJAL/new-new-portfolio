@@ -1,4 +1,4 @@
-import DropdownMenuItem from './DropdownMenuItem';
+import DropdownMenuItem from '@/components/header/dropdownMenu/DropdownMenuItem';
 
 import { Menu, MenuButton, MenuItems } from '@headlessui/react';
 import { FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';

@@ -1,7 +1,4 @@
-import LoadingSpinner from '@/components/loading/LoadingSpinner';
-import ButtonLink from '@/components/ui/ButtonLink';
-import ImageSlider from '@/components/ui/ImageSlider';
-import InfoCard from '@/components/ui/InfoCard';
+import PhotographyPage from '@/components/photography/PhotographyPage';
 
 import {
   IMG_0192,
@@ -36,8 +33,6 @@ import {
   IMG_0434,
   IMG_2249
 } from '@/photography/mar-2025';
-
-import { Suspense } from 'react';
 
 import type { StaticImageData } from 'next/image';
 
@@ -77,30 +72,24 @@ export default function Page() {
   ];
 
   return (
-    <InfoCard heading={'March 2025'}>
-      <article className='flex w-full flex-col gap-5'>
-        <Suspense fallback={<LoadingSpinner />}>
-          <ImageSlider autoScroll images={images} />
-        </Suspense>
-        <section className='flex w-full flex-col gap-3'>
-          <p>
-            My little nephew is already getting so big, he is smiling and happy and VERY well fed. My other nephew is
-            starting to speak in full sentences and I am loving every second of it. My brother-in-law and I took him to
-            a paintball tournament this month and he was loving playing with all the spent paint on the ground, it was a
-            blast. I got some good shots at the tournament felt like taking more pictures of things and seeing how they
-            would come out and overall I am pretty proud of the results.
-          </p>
-          <p>
-            I also went out to Boston, no reason other than to just go which some people found strange. I guess we
-            don&apos;t vacation as much as we are supposed to because I used to up and leave all the time. The skyline
-            of this city is beautiful, my friends that I was with are beautiful people and the city itself is wonderful.
-            Of all the cities I have been to and spent time in Boston is my favorite.
-          </p>
-        </section>
-        <ButtonLink href='https://www.instagram.com/p/DH42sHLRhov/?img_index=1' target='_blank' prefetch={false}>
-          Instagram Post
-        </ButtonLink>
-      </article>
-    </InfoCard>
+    <PhotographyPage
+      title='March 2025'
+      images={images}
+      instagramLink='https://www.instagram.com/p/DH42sHLRhov/?img_index=1'
+    >
+      <p>
+        My little nephew is already getting so big, he is smiling and happy and VERY well fed. My other nephew is
+        starting to speak in full sentences and I am loving every second of it. My brother-in-law and I took him to a
+        paintball tournament this month and he was loving playing with all the spent paint on the ground, it was a
+        blast. I got some good shots at the tournament felt like taking more pictures of things and seeing how they
+        would come out and overall I am pretty proud of the results.
+      </p>
+      <p>
+        I also went out to Boston, no reason other than to just go which some people found strange. I guess we
+        don&apos;t vacation as much as we are supposed to because I used to up and leave all the time. The skyline of
+        this city is beautiful, my friends that I was with are beautiful people and the city itself is wonderful. Of all
+        the cities I have been to and spent time in Boston is my favorite.
+      </p>
+    </PhotographyPage>
   );
 }

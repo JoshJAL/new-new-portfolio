@@ -1,4 +1,4 @@
-import DropdownMenu from './dropdownMenu/DropdownMenu';
+import DropdownMenu from '@/components/header/dropdownMenu/DropdownMenu';
 
 import { Link } from 'next-view-transitions';
 import { Roboto } from 'next/font/google';

@@ -1,7 +1,4 @@
-import LoadingSpinner from '@/components/loading/LoadingSpinner';
-import ButtonLink from '@/components/ui/ButtonLink';
-import ImageSlider from '@/components/ui/ImageSlider';
-import InfoCard from '@/components/ui/InfoCard';
+import PhotographyPage from '@/components/photography/PhotographyPage';
 
 import {
   IMG_0100,
@@ -35,8 +32,6 @@ import {
   IMG_0186,
   IMG_0188
 } from '@/photography/feb-2025';
-
-import { Suspense } from 'react';
 
 import type { StaticImageData } from 'next/image';
 
@@ -75,30 +70,24 @@ export default function Page() {
   ];
 
   return (
-    <InfoCard heading={'February 2025'}>
-      <article className='flex w-full flex-col gap-5'>
-        <Suspense fallback={<LoadingSpinner />}>
-          <ImageSlider autoScroll images={images} />
-        </Suspense>
-        <section className='flex w-full flex-col gap-3'>
-          <p>
-            I got some new lenses this month and really wanted to try them out. Also, apparently when you get a camera
-            it means that your family never has to pay for a photographer ever again so guess who was in charge of
-            taking the new born photos for his new nephew? Me. 10/10 experience would absolutely do it again. His big
-            brother loves him so very much. It was nice to get some pictures that my family really liked. It made me
-            feel like I was doing something right.
-          </p>
-          <p>
-            I really love my friends and I really love bowling. So of course I went to a different city to bowl with
-            some of the best ones I&apos;ve got. I know that I am lucky to be able to spend so much time with my loved
-            ones no matter how separated we are so I don&apos;t take it for granted. I would and have and do travel
-            across the world for my friends and I will do it over and over again until I die.
-          </p>
-        </section>
-        <ButtonLink prefetch={false} target='_blank' href='https://www.instagram.com/p/DGo-PAqRCa0/?img_index=1'>
-          Instagram Post
-        </ButtonLink>
-      </article>
-    </InfoCard>
+    <PhotographyPage
+      title='February 2025'
+      images={images}
+      instagramLink='https://www.instagram.com/p/DGo-PAqRCa0/?img_index=1'
+    >
+      <p>
+        I got some new lenses this month and really wanted to try them out. Also, apparently when you get a camera it
+        means that your family never has to pay for a photographer ever again so guess who was in charge of taking the
+        new born photos for his new nephew? Me. 10/10 experience would absolutely do it again. His big brother loves him
+        so very much. It was nice to get some pictures that my family really liked. It made me feel like I was doing
+        something right.
+      </p>
+      <p>
+        I really love my friends and I really love bowling. So of course I went to a different city to bowl with some of
+        the best ones I&apos;ve got. I know that I am lucky to be able to spend so much time with my loved ones no
+        matter how separated we are so I don&apos;t take it for granted. I would and have and do travel across the world
+        for my friends and I will do it over and over again until I die.
+      </p>
+    </PhotographyPage>
   );
 }

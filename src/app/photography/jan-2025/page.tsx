@@ -1,7 +1,4 @@
-import LoadingSpinner from '@/components/loading/LoadingSpinner';
-import ButtonLink from '@/components/ui/ButtonLink';
-import ImageSlider from '@/components/ui/ImageSlider';
-import InfoCard from '@/components/ui/InfoCard';
+import PhotographyPage from '@/components/photography/PhotographyPage';
 
 import {
   IMG_0003,
@@ -24,8 +21,6 @@ import {
   IMG_0087,
   IMG_0094
 } from '@/photography/jan-2025';
-
-import { Suspense } from 'react';
 
 import type { StaticImageData } from 'next/image';
 
@@ -53,29 +48,22 @@ export default function Page() {
   ];
 
   return (
-    <InfoCard heading={'January 2025'}>
-      <article className='flex w-full flex-col gap-5'>
-        <Suspense fallback={<LoadingSpinner />}>
-          <ImageSlider autoScroll images={images} />
-        </Suspense>
-        <section className='flex w-full flex-col gap-3'>
-          <p>
-            In the past I worked as a video editor, helped direct and film music videos and concerts and much more. I
-            take thousands of pictures on my phone, but have shockingly never owned a camera myself. After talking to
-            some friends they convinced me to get a camera and get back to doing something with it. I am just making
-            memories and my life is somewhat exciting so why not share that with everyone instead of just keeping it to
-            myself?
-          </p>
-          <p>
-            January was a packed month, I spent a lot of time with my grandmother and my nephew was born. Noise was
-            high, family was stressed and there was a lot of fun to be had. I got to know my new camera while doing a
-            lot of floating.
-          </p>
-        </section>
-        <ButtonLink prefetch={false} target='_blank' href='https://www.instagram.com/p/DFhB1TmRarU/?img_index=1'>
-          Instagram Post
-        </ButtonLink>
-      </article>
-    </InfoCard>
+    <PhotographyPage
+      title='January 2025'
+      images={images}
+      instagramLink='https://www.instagram.com/p/DFhB1TmRarU/?img_index=1'
+    >
+      <p>
+        In the past I worked as a video editor, helped direct and film music videos and concerts and much more. I take
+        thousands of pictures on my phone, but have shockingly never owned a camera myself. After talking to some
+        friends they convinced me to get a camera and get back to doing something with it. I am just making memories and
+        my life is somewhat exciting so why not share that with everyone instead of just keeping it to myself?
+      </p>
+      <p>
+        January was a packed month, I spent a lot of time with my grandmother and my nephew was born. Noise was high,
+        family was stressed and there was a lot of fun to be had. I got to know my new camera while doing a lot of
+        floating.
+      </p>
+    </PhotographyPage>
   );
 }

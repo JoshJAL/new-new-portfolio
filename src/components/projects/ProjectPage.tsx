@@ -1,3 +1,4 @@
+import BreadCrumb from '@/components/ui/BreadCrumb';
 import ButtonLink from '@/components/ui/ButtonLink';
 import InfoCard from '@/components/ui/InfoCard';
 import Technology from '@/components/ui/Technology';
@@ -21,8 +22,14 @@ interface Props {
 }
 
 export default function ProjectPage({ children, codeHref, href, image, imagePadding, tech, title }: Props) {
+  const link = {
+    label: 'Projects',
+    href: '/projects'
+  };
+
   return (
     <article className='flex w-full flex-col gap-5'>
+      <BreadCrumb current={title} link={link} />
       <h1 className={`text-3xl font-semibold ${roboto.className}`}>{title}</h1>
       <Image
         className={`mx-auto rounded-lg shadow-[3px_3px_0px_rgba(255,255,255,1)] ${imagePadding}`}
