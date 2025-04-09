@@ -49,13 +49,14 @@ export default function Page() {
         <p>
           I decided to rebuild my portfolio again because my coding style has changed drastically as well as the design
           style that I am leaning towards right now. I made something a little more my own with the technologies that I
-          enjoy using. If you&apos;re looking at the tech stack above that I used and thinking that this thing is a
-          little over-engineered for what it is, well then, you would be correct! However, that is kind of the point.
+          enjoy using. If you&apos;re looking at the tech stack above and thinking to yourself &quot;This thing is a
+          little over-engineered for what it is,&quot; well then, you would be correct! However, that is kind of the
+          point.
         </p>
         <p>
           For the past couple of years I have become overwhelmingly comfortable using React and specifically Next.js to
           build new projects. It allows me to keep the stack uniform, and does not stray to far from the beaten path
-          that I know during the hiring process we woudl be able to easily and quickly find confident developers who
+          that I know during the hiring process we would be able to easily and quickly find confident developers who
           were able to jump in and feel comfortable on day one. That and I figured I would build something that is my
           own in the stack that I enjoy the most. I have a little database set up for when people contact me just to
           showcase that I am capable of creating and using needed api routes, I used tailwind because it has become the
