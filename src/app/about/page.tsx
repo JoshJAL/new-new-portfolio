@@ -1,10 +1,11 @@
 import PageLinks from '@/components/about/PageLinks';
+import BackToTopButton from '@/components/ui/BackToTopButton';
 import InfoCard from '@/components/ui/InfoCard';
 import StyledLink from '@/components/ui/StyledLink';
 
 export default function Page() {
   return (
-    <InfoCard heading='About Me'>
+    <InfoCard heading='About Me' id='top'>
       <section className='flex w-full flex-col gap-5'>
         <p>
           Hello! My name is Joshua Levine, I am a web and software developer based out of the United States. I
@@ -134,6 +135,7 @@ export default function Page() {
           </article>
         </InfoCard>
       </section>
+      <BackToTopButton />
     </InfoCard>
   );
 }
