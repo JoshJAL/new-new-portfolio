@@ -2,10 +2,10 @@
 
 import FormWrapper from '@/components/forms/ui/FormWrapper';
 
-import { contactSchema } from '@/zod-schemas/contact';
 import { useAppForm } from '@/components/forms/ui';
 import { sendThankYouEmail } from '@/server/actions/email';
 import { createMessage } from '@/server/actions/messages';
+import { contactSchema } from '@/zod-schemas/contact';
 import { useTransitionRouter } from 'next-view-transitions';
 
 export default function ContactForm() {
