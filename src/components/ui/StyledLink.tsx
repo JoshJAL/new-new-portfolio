@@ -11,24 +11,14 @@ interface Props {
 export default function StyledLink({ children, colorSwap, href, prefetch = true, target = '_self' }: Props) {
   if (colorSwap) {
     return (
-      <Link
-        prefetch={prefetch}
-        target={target}
-        href={href}
-        className='text-caribbean-current w-fit underline-offset-4 hover:underline'
-      >
+      <Link prefetch={prefetch} target={target} href={href} className='text-caribbean-current gradient_underline w-fit'>
         {children}
       </Link>
     );
   }
 
   return (
-    <Link
-      prefetch={prefetch}
-      target={target}
-      href={href}
-      className='text-dark-cyan w-fit underline-offset-4 hover:underline'
-    >
+    <Link prefetch={prefetch} target={target} href={href} className='text-dark-cyan gradient_underline w-fit'>
       {children}
     </Link>
   );

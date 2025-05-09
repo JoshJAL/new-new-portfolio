@@ -1,5 +1,6 @@
 import ProjectPage from '@/components/projects/ProjectPage';
 import Monster from '@/public/projects/monster_logo_white.webp';
+import StyledLink from '@/components/ui/StyledLink';
 
 import { BiLogoJavascript, BiLogoTypescript } from 'react-icons/bi';
 import { BsFiletypeCss } from 'react-icons/bs';
@@ -80,6 +81,16 @@ export default function Page() {
           One of the major projects that I worked on and is linked below is the migration from Shift 4 Shop to Shopify.
           We moved 6,000 products and narrowed them down to the top 200, completely overhauled the front-end experience
           for the user, and rolled out order tracking systems in the backend with nearly no hiccups or downtime.
+        </p>
+        <p>
+          While here I also created an npm package to reduce boiler plate across all of our projects. It functions with
+          React and React server components. It contains a plethora of styled components (both server and client
+          components) as well as a handful of utility functions that are used across all the projects. The package can
+          be viewed{' '}
+          <StyledLink href='https://www.npmjs.com/package/burnout-components' target='_blank'>
+            here
+          </StyledLink>
+          .
         </p>
       </>
     </ProjectPage>

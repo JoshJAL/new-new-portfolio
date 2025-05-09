@@ -143,6 +143,10 @@ export default function RecentProjects() {
                 over 6,000 different vehicle makes.
               </li>
               <li>Built tech stack from the ground up.</li>
+              <li>
+                Created npm package to reduce boilerplate for internal and external tools. Functions with React and
+                React Server Components. Can be used in Next.js as well.
+              </li>
             </ul>
             <InfoCard heading={'Technologies'}>
               <div className='flex w-full flex-wrap gap-3'>

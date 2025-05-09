@@ -31,6 +31,10 @@ export default function Experience() {
                 monthly revenue.
               </li>
               <li>
+                Created npm package to reduce boilerplate for internal and external tools. Functions with React and
+                React Server Components. Can be used in Next.js as well.
+              </li>
+              <li>
                 Created and maintain internal tooling and softwares leading to an increase in efficiency and
                 accountability company wide.
               </li>
