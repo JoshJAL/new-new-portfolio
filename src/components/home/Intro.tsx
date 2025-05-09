@@ -3,13 +3,13 @@ import Image from 'next/image';
 
 export default function Intro() {
   return (
-    <section className='bg-desert-sand grid w-full grid-cols-1 items-center gap-5 rounded-tr-lg rounded-bl-lg p-3 text-black shadow-[3px_3px_0px_rgba(255,255,255,1)] md:grid-cols-2'>
+    <section className='bg-cerulean shadow-[3px_3px_0px_rgba(0,0,0,1)] grid w-full grid-cols-1 items-center gap-5 rounded-tr-lg rounded-bl-lg border-2 border-white p-3 text-white md:grid-cols-2'>
       <Image
         quality={60}
         src={Me}
         placeholder='blur'
         alt='Joshua Levine'
-        className='mx-auto h-auto w-80 rounded-lg shadow-[3px_3px_0px_rgba(255,255,255,1)]'
+        className='shadow-[3px_3px_0px_rgba(0,0,0,1)] mx-auto h-auto w-80 rounded-lg border-2 border-white'
       />
       <p>
         Hello! I am Joshua Levine, I am a web and software developer based out of the United States. I am proficient

@@ -7,7 +7,11 @@
   --color-champagne: #f3dfc1;
   --color-desert-sand: #ddbea8;
 
-  --comic-shadow: 3px 3px 0px rgba(255, 255, 255, 1);
+  --color-davys-gray: #50514f;
+  --color-bittersweet: #f25f5c;
+  --color-naples-yellow: #ffe066;
+  --color-cerulean: #247ba0;
+  --color-verdigris: #70c1b3;
 }
 
 * {
@@ -15,13 +19,17 @@
 }
 
 body {
-  background: var(--color-dark-purple);
+  background: var(--color-davys-gray);
   color: white;
 }
 
 ::selection {
-  background-color: var(--color-champagne);
-  color: var(--color-dark-purple);
+  background-color: var(--color-bittersweet);
+  color: var(--color-davys-gray);
+}
+
+.comic-shadow {
+  @apply shadow-[3px_3px_0px_rgba(0,0,0,1)];
 }
 
 .tileText {
@@ -122,7 +130,7 @@ body {
 }
 
 .img-slider-btn > * {
-  stroke: var(--color-caribbean-current);
+  stroke: var(--color-bittersweet);
   width: 2rem;
   height: 2rem;
 }
@@ -148,8 +156,8 @@ body {
 }
 
 .img-slider-dot-btn > * {
-  stroke: var(--color-dark-cyan);
-  fill: var(--color-carribean-current);
+  stroke: var(--color-bittersweet);
+  fill: var(--color-davys-gray);
   height: 100%;
   width: 100%;
 }
@@ -203,7 +211,7 @@ body {
 }
 
 .gradient_underline {
-  background-image: linear-gradient(90deg, var(--color-dark-cyan), var(--color-caribbean-current));
+  background-image: linear-gradient(90deg, var(--color-naples-yellow), var(--color-bittersweet));
   background-size: 0% 2px;
   background-repeat: no-repeat;
   background-position: left bottom;
@@ -213,4 +221,8 @@ body {
 .gradient_underline:hover {
   background-size: 100% 2px;
   cursor: pointer;
+}
+
+.nice-hover {
+  @apply hover:shadow-[3px_3px_0px_rgba(0,0,0,1),inset_-3px_-3px_5px_rgba(255,255,255,0.15),inset_4px_4px_10px_rgba(0,0,0,0.3)];
 }

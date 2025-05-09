@@ -13,10 +13,10 @@ export default function PageLink({ post }: Props) {
     <Link
       prefetch
       href={post.href}
-      className='bg-desert-sand grid w-full grid-cols-1 gap-5 rounded-lg p-3 text-black transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[3px_3px_0px_rgba(255,255,255,1)] md:grid-cols-2'
+      className='bg-cerulean grid w-full grid-cols-1 gap-5 rounded-lg border-2 border-white p-3 text-white transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[3px_3px_0px_rgba(0,0,0,1)] md:grid-cols-2'
     >
       <Image
-        className='rounded-lg border-2 border-white shadow-[3px_3px_0px_rgba(255,255,255,1)]'
+        className='rounded-lg border-2 border-white shadow-[3px_3px_0px_rgba(0,0,0,1)]'
         placeholder='blur'
         src={post.image}
         alt={post.heading}

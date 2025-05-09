@@ -143,7 +143,7 @@ export default function ImageSlider({ images, autoScroll, scrollInterval = 10000
             >
               <LuArrowBigLeft
                 aria-hidden
-                className='group-hover:stroke-caribbean-current transition-all duration-300 ease-in-out'
+                className='group-hover:stroke-bittersweet transition-all duration-300 ease-in-out'
               />
             </button>
             <button
@@ -154,7 +154,7 @@ export default function ImageSlider({ images, autoScroll, scrollInterval = 10000
             >
               <LuArrowBigRight
                 aria-hidden
-                className='group-hover:stroke-caribbean-current transition-all duration-300 ease-in-out'
+                className='group-hover:stroke-bittersweet transition-all duration-300 ease-in-out'
               />
             </button>
           </>
@@ -173,7 +173,7 @@ export default function ImageSlider({ images, autoScroll, scrollInterval = 10000
               <TbCircleDot
                 aria-hidden
                 className={`${index == imageIndex ? 'scale-150' : ''} transition-all duration-200 ease-in-out`}
-                style={{ stroke: index === imageIndex ? '#246a73' : '' }}
+                style={{ stroke: index === imageIndex ? '#ffe066' : '' }}
               />
             </button>
           ))}

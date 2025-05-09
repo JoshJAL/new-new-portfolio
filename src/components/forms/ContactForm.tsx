@@ -1,107 +1,59 @@
 'use client';
 
-import FormWrapper from '@/components/forms/FormWrapper';
-import Input from '@/components/ui/Input';
-import TextArea from '@/components/ui/TextArea';
+import FormWrapper from '@/components/forms/ui/FormWrapper';
 
+import { contactSchema } from '@/zod-schemas/contact';
+import { useAppForm } from '@/components/forms/ui';
 import { sendThankYouEmail } from '@/server/actions/email';
 import { createMessage } from '@/server/actions/messages';
 import { useTransitionRouter } from 'next-view-transitions';
-import { useState } from 'react';
 
 export default function ContactForm() {
   const router = useTransitionRouter();
-  const [formState, setFormState] = useState({
-    email: '',
-    firstName: '',
-    lastName: '',
-    message: '',
-    phoneNumber: '',
-    submitting: false
+
+  const form = useAppForm({
+    defaultValues: {
+      email: '',
+      firstName: '',
+      lastName: '',
+      message: '',
+      phoneNumber: ''
+    },
+    onSubmit: async ({ value }) => {
+      if (!confirm('Are you sure you want to send this message?')) return;
+
+      const success = await createMessage(
+        value.email.trim().toLowerCase(),
+        value.firstName.trim(),
+        value.lastName.trim(),
+        value.message.trim(),
+        value.phoneNumber.trim()
+      );
+
+      if (success) {
+        await sendThankYouEmail(value.email.trim().toLowerCase(), value.firstName.trim(), value.lastName.trim());
+        router.push('/thank-you?id=' + success);
+      } else {
+        alert('Something went wrong sending your message, please try again.');
+      }
+    },
+    validators: {
+      onChange: contactSchema
+    }
   });
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    const { name, value } = e.target;
-    setFormState((prev) => ({
-      ...prev,
-      [name]: value
-    }));
-  }
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    if (!confirm('Are you sure you want to send this message?')) return;
-
-    setFormState({ ...formState, submitting: true });
-
-    const success = await createMessage(
-      formState.email.trim().toLowerCase(),
-      formState.firstName.trim(),
-      formState.lastName.trim(),
-      formState.message.trim(),
-      formState.phoneNumber.trim()
-    );
-
-    if (success) {
-      await sendThankYouEmail(
-        formState.email.trim().toLowerCase(),
-        formState.firstName.trim(),
-        formState.lastName.trim()
-      );
-      router.push('/thank-you?id=' + success);
-      setFormState({ ...formState, submitting: false });
-    } else {
-      alert('Something went wrong sending your message, please try again.');
-      setFormState({ ...formState, submitting: false });
-    }
-  }
-
   return (
-    <FormWrapper
-      handleSubmit={(e) => handleSubmit(e)}
-      submitting={formState.submitting}
-      submitText='Contact Me!'
-      submittingText='Contacting...'
-    >
-      <Input
-        name='firstName'
-        onChange={(e) => handleChange(e)}
-        value={formState.firstName}
-        label='Your First Name'
-        autoFocus
-        required
-      />
-      <Input
-        name='lastName'
-        onChange={(e) => handleChange(e)}
-        value={formState.lastName}
-        label='Your Last Name'
-        required
-      />
-      <Input
-        name='email'
-        type='email'
-        onChange={(e) => handleChange(e)}
-        value={formState.email}
-        label='Your Email'
-        required
-      />
-      <Input
-        name='phoneNumber'
-        onChange={(e) => handleChange(e)}
-        value={formState.phoneNumber}
-        label='Your Phone Number'
-        type='tel'
-        required={false}
-        placeholder='(Optional)'
-      />
-      <TextArea
-        name='message'
-        onChange={(e) => handleChange(e)}
-        value={formState.message}
-        label='Your Message'
-        required
-      />
+    <FormWrapper handleSubmit={form.handleSubmit}>
+      <form.AppField name='firstName'>{(field) => <field.TextField label='Your First Name' autoFocus />}</form.AppField>
+      <form.AppField name='lastName'>{(field) => <field.TextField label='Your Last Name' />}</form.AppField>
+      <form.AppField name='email'>{(field) => <field.TextField label='Your Email' type='email' />}</form.AppField>
+      <form.AppField name='phoneNumber'>
+        {(field) => <field.TextField label='Your Phone Number' required={false} placeholder='(Optional)' type='tel' />}
+      </form.AppField>
+      <form.AppField name='message'>{(field) => <field.TextAreaField label='Your Message' />}</form.AppField>
+      <form.AppForm>
+        <form.SubmitButton text='Contact Me!' submittingText='Contacting...' />
+      </form.AppForm>
     </FormWrapper>
   );
 }

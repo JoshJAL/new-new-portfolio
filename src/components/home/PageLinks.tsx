@@ -2,7 +2,7 @@ import ButtonLink from '@/components/ui/ButtonLink';
 
 export default function PageLinks() {
   return (
-    <section className='bg-desert-sand flex w-full flex-col flex-wrap items-center justify-center gap-3 rounded-lg p-3 text-black shadow-[3px_3px_0px_rgba(255,255,255,1)] md:flex-row'>
+    <section className='bg-cerulean shadow-[3px_3px_0px_rgba(0,0,0,1)] flex w-full flex-col flex-wrap items-center justify-center gap-3 rounded-lg border-2 border-white p-3 text-black md:flex-row'>
       <ButtonLink additionalClasses='w-full md:w-fit' href='#projects' prefetch={false}>
         Projects
       </ButtonLink>

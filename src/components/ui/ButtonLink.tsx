@@ -72,7 +72,7 @@ export default function ButtonLink({
         href={href}
         prefetch={prefetch}
         onClick={onClick}
-        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-champagne hover:bg-desert-sand cursor-pointer rounded-lg border-2 border-white px-3 py-2 text-center font-semibold text-black transition-all duration-200 ease-in-out hover:text-white hover:shadow-[3px_3px_0px_rgba(255,255,255,1)] ${roboto.className}`}
+        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-cerulean nice-hover hover:bg-verdigris hover:shadow-[3px_3px_0px_rgba(0,0,0,1)] cursor-pointer rounded-lg border-2 border-white px-3 py-2 text-center font-semibold text-white transition-all duration-200 ease-in-out hover:text-white ${roboto.className}`}
       >
         {children}
       </Link>
@@ -87,7 +87,7 @@ export default function ButtonLink({
         href={href}
         prefetch={prefetch}
         onClick={onClick}
-        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-dark-purple hover:bg-caribbean-current cursor-pointer rounded-lg border-2 border-white px-3 py-2 text-center font-semibold text-white transition-all duration-200 ease-in-out hover:shadow-[3px_3px_0px_rgba(255,255,255,1)] ${roboto.className}`}
+        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-davys-gray hover:bg-naples-yellow hover:shadow-[3px_3px_0px_rgba(0,0,0,1)] cursor-pointer rounded-lg border-2 border-white px-3 py-2 text-center font-semibold text-white transition-all duration-200 ease-in-out hover:text-black ${roboto.className} nice-hover`}
       >
         {children}
       </Link>
@@ -102,7 +102,7 @@ export default function ButtonLink({
         href={href}
         prefetch={prefetch}
         onClick={onClick}
-        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-champagne hover:bg-dark-purple cursor-pointer rounded-lg border-2 border-white px-3 py-2 text-center font-semibold text-black transition-all duration-200 ease-in-out hover:text-white hover:shadow-[3px_3px_0px_rgba(255,255,255,1)] ${roboto.className}`}
+        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-bittersweet hover:bg-cerulean hover:shadow-[3px_3px_0px_rgba(0,0,0,1)] nice-hover cursor-pointer rounded-lg border-2 border-white px-3 py-2 text-center font-semibold text-black transition-all duration-200 ease-in-out hover:text-white ${roboto.className}`}
       >
         {children}
       </Link>
@@ -116,7 +116,7 @@ export default function ButtonLink({
       href={href}
       prefetch={prefetch}
       onClick={onClick}
-      className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-dark-cyan hover:bg-caribbean-current cursor-pointer rounded-lg border-2 border-white px-3 py-2 text-center font-semibold text-white transition-all duration-200 ease-in-out hover:shadow-[3px_3px_0px_rgba(255,255,255,1)] ${roboto.className}`}
+      className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-verdigris hover:bg-naples-yellow hover:shadow-[3px_3px_0px_rgba(0,0,0,1)] cursor-pointer rounded-lg border-2 border-white px-3 py-2 text-center font-semibold text-white transition-all duration-200 ease-in-out hover:text-black ${roboto.className} nice-hover`}
     >
       {children}
     </Link>

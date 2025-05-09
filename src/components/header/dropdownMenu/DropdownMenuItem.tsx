@@ -15,7 +15,7 @@ export default function DropdownMenuItem({ children, href, prefetch = true, targ
         prefetch={prefetch}
         target={target}
         href={href}
-        className='hover:bg-dark-cyan block px-4 py-2 text-sm text-white transition-all duration-200 ease-in-out hover:no-underline'
+        className='hover:bg-verdigris block px-4 py-2 text-sm text-white transition-all duration-200 ease-in-out hover:no-underline'
       >
         {children}
       </Link>
