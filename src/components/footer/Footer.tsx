@@ -66,7 +66,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='bg-desert-sand text-dark-purple flex w-full flex-col gap-5 border-t-2 border-white p-5'>
+    <footer className='bg-bittersweet flex w-full flex-col gap-5 border-t-2 border-t-white p-5 text-black'>
       <p className='text-center text-sm'>&copy; {new Date().getFullYear()} Joshua Levine</p>
       <nav className='mx-auto grid w-full max-w-7xl grid-cols-2 gap-5'>
         {links.map((link) => (
