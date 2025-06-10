@@ -20,6 +20,7 @@
     "babel-plugin-react-compiler": "^19.0.0-beta-e993439-20250328",
     "dotenv": "^16.4.7",
     "drizzle-orm": "^0.41.0",
+    "ez-funcs": "^2.0.2",
     "next": "^15.3.1",
     "next-view-transitions": "^0.3.4",
     "prettier-plugin-tailwindcss": "^0.6.11",

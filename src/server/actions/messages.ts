@@ -2,7 +2,7 @@
 
 import { db } from '@/db';
 import { messages } from '@/db/schema/messages';
-import { tryCatch } from '@/utils/tryCatch';
+import { tryCatch } from 'ez-funcs';
 
 export async function createMessage(
   email: string,

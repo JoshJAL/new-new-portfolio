@@ -1,7 +1,7 @@
 import { db } from '@/db';
 import { messages } from '@/db/schema/messages';
 import { eq } from 'drizzle-orm';
-import { tryCatch } from '@/utils/tryCatch';
+import { tryCatch } from 'ez-funcs';
 
 import type { Message } from '@/types/message';
 
