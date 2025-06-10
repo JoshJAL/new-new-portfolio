@@ -61,6 +61,7 @@ export default function Page() {
       href='https://www.monstertransmission.com'
       image={Monster}
       imagePadding='p-3'
+      imageBackgroundColor='bg-black'
       tech={tech}
       title='Monster Transmission & Performance'
     >
