@@ -41,14 +41,12 @@ export default function Page() {
       image={ThingsIUse}
       tech={tech}
     >
-      <>
-        <p>
-          To further explore Astro I took a little time a built a site for myself of the things that I commonly use
-          either on a daily basis or while I code. It has not been updated in some time even though the things I use
-          definitely have been. This was a fun little side project for me and really helped me learn some more of
-          Astro&apos;s nuances.
-        </p>
-      </>
+      <p>
+        To further explore Astro I took a little time a built a site for myself of the things that I commonly use either
+        on a daily basis or while I code. It has not been updated in some time even though the things I use definitely
+        have been. This was a fun little side project for me and really helped me learn some more of Astro&apos;s
+        nuances.
+      </p>
     </ProjectPage>
   );
 }

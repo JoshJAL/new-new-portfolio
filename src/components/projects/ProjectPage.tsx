@@ -32,7 +32,7 @@ export default function ProjectPage({ children, codeHref, href, image, imagePadd
       <BreadCrumb current={title} link={link} />
       <h1 className={`text-3xl font-semibold ${roboto.className}`}>{title}</h1>
       <Image
-        className={`mx-auto rounded-lg border-2 border-white shadow-[3px_3px_0px_rgba(0,0,0,1)] ${imagePadding}`}
+        className={`mx-auto rounded-lg border-2 border-white bg-white shadow-[3px_3px_0px_rgba(0,0,0,1)] ${imagePadding}`}
         alt={title}
         src={image}
         placeholder='blur'

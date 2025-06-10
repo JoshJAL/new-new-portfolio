@@ -9,6 +9,7 @@ import Joshua from '@/public/projects/happyHeadshot.jpg';
 import Michael from '@/public/projects/Michael-Levine.jpg';
 import Monster from '@/public/projects/monster_logo_white.webp';
 import Msk from '@/public/projects/msk.png';
+import NPMIcon from '@/public/projects/npm-icon.png';
 import Omar from '@/public/projects/o-almanzar.webp';
 import Scribble from '@/public/projects/scribble.jpg';
 import Snake from '@/public/projects/snake.jpg';
@@ -18,6 +19,15 @@ import type { Project } from '@/types/project';
 
 export default function Page() {
   const projects: Project[] = [
+    {
+      codeHref: 'https://github.com/JoshJAL/ez-funcs',
+      description:
+        'A list of easy utility functions that I use in a variety of projects both pewrsonally and professionally. I created an npm package for it so I can easily install them rather than copying and pasting over and over again.',
+      href: '/projects/ez-funcs',
+      image: NPMIcon,
+      projectHref: 'https://www.npmjs.com/package/ez-funcs',
+      title: 'ez-funcs'
+    },
     {
       codeHref: 'https://github.com/JoshJAL/new-new-portfolio',
       description: 'This portfolio website, this is the third or fourth iteration of my portfolio.',
