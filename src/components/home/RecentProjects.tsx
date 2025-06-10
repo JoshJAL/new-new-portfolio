@@ -12,6 +12,14 @@ import { SiClerk, SiResend, SiShopify, SiSqlite, SiStripe } from 'react-icons/si
 import type { Tech } from '@/types/tech';
 
 export default function RecentProjects() {
+  const ez_funcs: Tech[] = [
+    {
+      color: 'bg-blue-500',
+      icon: <BiLogoTypescript className='h-5 w-5' />,
+      label: 'TypeScript'
+    }
+  ];
+
   const monster: Tech[] = [
     {
       color: 'bg-purple-800',
@@ -128,6 +136,31 @@ export default function RecentProjects() {
           </StyledLink>
           &quot; page!
         </p>
+        <InfoCard colorSwap heading={'ez-funcs'}>
+          <div className='flex w-full flex-col gap-3'>
+            <p>
+              A simple npm package that contains a list of utility functions that I use over a variety of projects both
+              personally and professionally.
+            </p>
+            <ul className='list-inside list-disc'>
+              <li>Keep package size small with no dependencies.</li>
+              <li>
+                Source code provided if user does not want to install entire project they can simply copy and paste.
+              </li>
+              <li>Well documented with examples and explanations of code.</li>
+            </ul>
+            <InfoCard heading={'Technologies'}>
+              <div className='flex w-full flex-wrap gap-3'>
+                {ez_funcs.map((t) => (
+                  <Technology tech={t} key={t.label} />
+                ))}
+              </div>
+            </InfoCard>
+            <ButtonLink prefetch={false} href='https://www.npmjs.com/package/ez-funcs' target='_blank'>
+              Project Link
+            </ButtonLink>
+          </div>
+        </InfoCard>
         <InfoCard colorSwap heading={'Monster Transmission & Performance'}>
           <div className='flex w-full flex-col gap-3'>
             <p>
