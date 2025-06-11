@@ -7,7 +7,7 @@ import { useState, useCallback } from 'react';
 
 export default function WebcamBackground() {
   const [isWebcamActive, setIsWebcamActive] = useState(false);
-  const [facingMode, setFacingMode] = useState('user');
+  const [facingMode, setFacingMode] = useState('environment');
 
   const videoConstraints = {
     width: 1920,
