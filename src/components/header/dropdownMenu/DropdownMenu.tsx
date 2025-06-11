@@ -19,7 +19,7 @@ export default function DropdownMenu() {
       <MenuItems
         as='div'
         transition
-        className='divide-naples-yellow bg-cerulean md:bg-cerulean/50 subtle-pop ring-cerulean/20 absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y overflow-hidden rounded-xl ring backdrop-blur-sm transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in'
+        className='divide-naples-yellow bg-cerulean subtle-pop ring-cerulean/20 absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y overflow-hidden rounded-xl ring backdrop-blur-sm transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in'
       >
         <div className='py-1'>
           <DropdownMenuItem href='/'>Home</DropdownMenuItem>
