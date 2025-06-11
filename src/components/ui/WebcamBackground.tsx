@@ -44,7 +44,7 @@ export default function WebcamBackground() {
 
           {/* 2. The Foreground Controls Container (MODIFIED) */}
           {/* Changed from centered to left-aligned */}
-          <div className='fixed bottom-4 left-4 z-10 flex gap-4'>
+          <div className='fixed bottom-3 left-5 z-10 flex gap-4'>
             <GlassButton type='button' onClick={toggleCamera}>
               Toggle Camera
             </GlassButton>
@@ -55,7 +55,7 @@ export default function WebcamBackground() {
         </>
       ) : (
         // === WHEN WEBCAM IS INACTIVE === (unchanged)
-        <div className='fixed bottom-4 left-4 z-10'>
+        <div className='fixed bottom-3 left-5 z-10'>
           <GlassButton type='button' onClick={startWebcam}>
             Start Webcam BG
           </GlassButton>
