@@ -2,7 +2,7 @@ import GlassButtonLink from '../ui/GlassButtonLink';
 
 export default function PageLinks() {
   return (
-    <section className='bg-cerulean/50 border-cerulean/20 pop flex w-full flex-col flex-wrap items-center justify-center gap-3 rounded-lg border p-3 text-black md:flex-row'>
+    <section className='bg-cerulean/50 border-cerulean/20 pop flex w-full flex-col flex-wrap items-center justify-center gap-3 rounded-lg border p-3 text-black backdrop-blur-sm md:flex-row'>
       <GlassButtonLink additionalClasses='w-full md:w-fit' href='#projects' prefetch={false}>
         Projects
       </GlassButtonLink>

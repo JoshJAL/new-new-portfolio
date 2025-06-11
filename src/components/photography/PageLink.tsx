@@ -13,7 +13,7 @@ export default function PageLink({ post }: Props) {
     <Link
       prefetch
       href={post.href}
-      className='bg-cerulean/50 border-cerulean/20 pop nice-hover-no-shadow grid w-full grid-cols-1 gap-5 rounded-lg border p-3 text-white transition-all duration-300 ease-in-out hover:scale-105 md:grid-cols-2'
+      className='bg-cerulean/50 border-cerulean/20 pop nice-hover-no-shadow grid w-full grid-cols-1 gap-5 rounded-lg border p-3 text-white backdrop-blur-sm transition-all duration-300 ease-in-out hover:scale-105 md:grid-cols-2'
     >
       <div className='relative w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
         <div className='pop absolute inset-0 z-10 bg-black/10' />
