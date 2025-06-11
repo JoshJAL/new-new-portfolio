@@ -1,6 +1,6 @@
 import LoadingSpinner from '@/components/loading/LoadingSpinner';
 import BreadCrumb from '@/components/ui/BreadCrumb';
-import ButtonLink from '@/components/ui/ButtonLink';
+import GlassButtonLink from '@/components/ui/GlassButtonLink';
 import ImageSlider from '@/components/ui/ImageSlider';
 import InfoCard from '@/components/ui/InfoCard';
 
@@ -30,9 +30,9 @@ export default function PhotographyPage({ children, images, instagramLink, title
             <ImageSlider autoScroll images={images} />
           </Suspense>
           <section className='flex w-full flex-col gap-3'>{children}</section>
-          <ButtonLink prefetch={false} target='_blank' href={instagramLink}>
+          <GlassButtonLink prefetch={false} target='_blank' href={instagramLink}>
             Instagram Post
-          </ButtonLink>
+          </GlassButtonLink>
         </article>
       </InfoCard>
     </div>

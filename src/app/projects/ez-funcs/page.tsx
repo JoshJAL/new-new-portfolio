@@ -8,7 +8,8 @@ import type { Tech } from '@/types/tech';
 export default function Page() {
   const tech: Tech[] = [
     {
-      color: 'bg-blue-500',
+      borderColor: 'border-blue-500/20',
+      color: 'bg-blue-500/50',
       icon: <BiLogoTypescript className='h-5 w-5' />,
       label: 'TypeScript'
     }

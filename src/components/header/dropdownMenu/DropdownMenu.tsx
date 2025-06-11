@@ -10,7 +10,7 @@ export default function DropdownMenu() {
       <div>
         <MenuButton
           className={
-            'bg-cerulean hover:bg-naples-yellow nice-hover inline-flex cursor-pointer justify-center rounded-lg border-2 border-white p-2 text-sm font-medium text-white shadow-xs transition-all hover:text-black focus:outline-hidden'
+            'bg-bittersweet/50 hover:bg-naples-yellow/50 nice-hover-no-shadow border-bittersweet/30 hover:border-naples-yellow/30 pop inline-flex cursor-pointer justify-center rounded-lg border p-2 text-sm font-medium text-white transition-all hover:text-black focus:outline-hidden'
           }
         >
           <IoMenu className='h-6 w-6' />
@@ -18,7 +18,7 @@ export default function DropdownMenu() {
       </div>
       <MenuItems
         transition
-        className='divide-naples-yellow bg-cerulean ring-opacity-5 absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y overflow-hidden rounded-xl shadow-[6px_6px_0px_rgba(0,0,0,1)] ring-2 ring-white transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in'
+        className='divide-naples-yellow bg-cerulean/50 subtle-pop ring-cerulean/20 absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y overflow-hidden rounded-xl ring backdrop-blur-sm transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in'
       >
         <div className='py-1'>
           <DropdownMenuItem href='/'>Home</DropdownMenuItem>

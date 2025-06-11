@@ -1,4 +1,4 @@
-import ButtonLink from '@/components/ui/ButtonLink';
+import GlassButtonLink from '@/components/ui/GlassButtonLink';
 import Image from 'next/image';
 
 import { Roboto } from 'next/font/google';
@@ -13,30 +13,33 @@ interface Props {
 
 export default function ProjectCard({ project }: Props) {
   return (
-    <div className='bg-cerulean flex w-full flex-col gap-3 rounded-lg border-2 border-white p-3 text-white shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
-      <Image
-        className={`h-auto w-full rounded-lg ${project.backgroundColor ? project.backgroundColor : 'bg-white'} border-2 border-white shadow-[3px_3px_0px_rgba(0,0,0,1)]`}
-        alt={project.title}
-        src={project.image}
-        placeholder='blur'
-        height={300}
-        width={300}
-        quality={60}
-      />
+    <div className='bg-cerulean/50 border-cerulean/20 pop flex w-full flex-col gap-3 rounded-lg border p-3 text-white backdrop-blur-sm'>
+      <div className='relative w-full overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
+        <div className='pop absolute inset-0 z-10 bg-black/10'></div>
+        <Image
+          className={`h-auto w-full ${project.backgroundColor ? project.backgroundColor : 'bg-white'}`}
+          alt={project.title}
+          src={project.image}
+          placeholder='blur'
+          height={300}
+          width={300}
+          quality={60}
+        />
+      </div>
       <h3 className={`text-xl font-semibold ${roboto.className}`}>{project.title}</h3>
       <p className='text-sm text-gray-100'>{project.description}</p>
-      <ButtonLink prefetch href={project.href}>
+      <GlassButtonLink prefetch href={project.href}>
         Learn More
-      </ButtonLink>
+      </GlassButtonLink>
       {project.codeHref && (
-        <ButtonLink colorSwap3 target='_blank' href={project.codeHref} prefetch={false}>
+        <GlassButtonLink colorSwap3 target='_blank' href={project.codeHref} prefetch={false}>
           View Source
-        </ButtonLink>
+        </GlassButtonLink>
       )}
       {project.projectHref && (
-        <ButtonLink colorSwap4 target='_blank' href={project.projectHref}>
+        <GlassButtonLink colorSwap4 target='_blank' href={project.projectHref}>
           Visit Project
-        </ButtonLink>
+        </GlassButtonLink>
       )}
     </div>
   );

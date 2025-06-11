@@ -13,17 +13,12 @@ export default function PageLink({ post }: Props) {
     <Link
       prefetch
       href={post.href}
-      className='bg-cerulean grid w-full grid-cols-1 gap-5 rounded-lg border-2 border-white p-3 text-white transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-[3px_3px_0px_rgba(0,0,0,1)] md:grid-cols-2'
+      className='bg-cerulean/50 border-cerulean/20 pop nice-hover-no-shadow grid w-full grid-cols-1 gap-5 rounded-lg border p-3 text-white transition-all duration-300 ease-in-out hover:scale-105 md:grid-cols-2'
     >
-      <Image
-        className='rounded-lg border-2 border-white shadow-[3px_3px_0px_rgba(0,0,0,1)]'
-        placeholder='blur'
-        src={post.image}
-        alt={post.heading}
-        height={250}
-        width={250}
-        quality={60}
-      />
+      <div className='relative w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
+        <div className='pop absolute inset-0 z-10 bg-black/10' />
+        <Image placeholder='blur' src={post.image} alt={post.heading} height={250} width={250} quality={60} />
+      </div>
       <div className='flex w-full flex-col gap-3'>
         <h2 className='text-xl font-semibold md:text-2xl'>{post.heading}</h2>
         <p className='text-sm md:text-base'>{post.description}</p>

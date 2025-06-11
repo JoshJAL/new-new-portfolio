@@ -8,7 +8,8 @@ import type { Tech } from '@/types/tech';
 export default function Page() {
   const tech: Tech[] = [
     {
-      color: 'bg-green-700',
+      borderColor: 'border-green-700/20',
+      color: 'bg-green-700/50',
       icon: <TbBrandCSharp className='h-5 w-5' />,
       label: ''
     }

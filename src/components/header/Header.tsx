@@ -8,7 +8,7 @@ const roboto = Roboto({ subsets: ['latin'] });
 export default function Header() {
   return (
     <header className='fixed top-0 z-50 w-full p-2'>
-      <nav className='bg-verdigris/60 mx-auto flex w-full max-w-7xl items-center gap-5 rounded-tl-lg rounded-br-lg border-2 border-white p-3 shadow-[3px_3px_0px_rgba(0,0,0,1)] backdrop-blur-md'>
+      <nav className='bg-verdigris/30 border-verdigris/20 pop mx-auto flex w-full max-w-7xl items-center gap-5 rounded-tl-lg rounded-br-lg border p-3 backdrop-blur-sm'>
         <Link
           prefetch
           href='/'

@@ -1,8 +1,8 @@
 import BreadCrumb from '@/components/ui/BreadCrumb';
-import ButtonLink from '@/components/ui/ButtonLink';
 import InfoCard from '@/components/ui/InfoCard';
 import Technology from '@/components/ui/Technology';
 import Image from 'next/image';
+import GlassButtonLink from '@/components/ui/GlassButtonLink';
 
 import { Roboto } from 'next/font/google';
 
@@ -41,15 +41,18 @@ export default function ProjectPage({
     <article className='flex w-full flex-col gap-5'>
       <BreadCrumb current={title} link={link} />
       <h1 className={`text-3xl font-semibold ${roboto.className}`}>{title}</h1>
-      <Image
-        className={`mx-auto rounded-lg border-2 border-white ${imageBackgroundColor ? imageBackgroundColor : 'bg-white'} shadow-[3px_3px_0px_rgba(0,0,0,1)] ${imagePadding}`}
-        alt={title}
-        src={image}
-        placeholder='blur'
-        height={450}
-        width={450}
-        quality={60}
-      />
+      <div className='relative mx-auto w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
+        <div className='pop absolute inset-0 z-10 bg-black/10'></div>
+        <Image
+          className={` ${imageBackgroundColor ? imageBackgroundColor : 'bg-white'} ${imagePadding}`}
+          alt={title}
+          src={image}
+          placeholder='blur'
+          height={450}
+          width={450}
+          quality={60}
+        />
+      </div>
       <InfoCard heading={'Technologies'}>
         <div className='flex w-full flex-wrap gap-3'>
           {tech.map((t) => (
@@ -61,14 +64,14 @@ export default function ProjectPage({
         <section className='flex w-full flex-col gap-3'>
           {children}
           {codeHref && (
-            <ButtonLink target='_blank' prefetch={false} colorSwap3 href={codeHref}>
+            <GlassButtonLink target='_blank' prefetch={false} colorSwap3 href={codeHref}>
               View Source Code
-            </ButtonLink>
+            </GlassButtonLink>
           )}
           {href && (
-            <ButtonLink target='_blank' prefetch={false} href={href}>
+            <GlassButtonLink target='_blank' prefetch={false} href={href}>
               Visit Project
-            </ButtonLink>
+            </GlassButtonLink>
           )}
         </section>
       </InfoCard>

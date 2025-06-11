@@ -7,11 +7,11 @@ interface Props {
 }
 
 export default function Technology({ tech }: Props) {
-  const { color, icon, label, textColor } = tech;
+  const { borderColor, color, icon, label, textColor } = tech;
 
   return (
     <p
-      className={`flex items-center gap-2 rounded-lg ${color} px-3 py-2 ${textColor ?? 'text-white'} shadow-[3px_3px_0px_rgba(255,255,255,1)]`}
+      className={`flex items-center gap-2 rounded-lg ${color} px-3 py-2 ${textColor ?? 'text-white'} border ${borderColor} pop backdrop-blur-sm`}
     >
       {icon}
       {label}

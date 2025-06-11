@@ -1,4 +1,4 @@
-import ButtonLink from '@/components/ui/ButtonLink';
+import GlassButtonLink from '@/components/ui/GlassButtonLink';
 
 import { FaChevronRight } from 'react-icons/fa';
 
@@ -13,9 +13,9 @@ interface Props {
 export default function BreadCrumb({ current, link }: Props) {
   return (
     <div className='flex w-full items-center gap-5'>
-      <ButtonLink fit href={link.href} prefetch>
+      <GlassButtonLink fit href={link.href} prefetch>
         {link.label}
-      </ButtonLink>
+      </GlassButtonLink>
       <FaChevronRight className='h-6 w-6' />
       <p>{current}</p>
     </div>

@@ -218,11 +218,40 @@ body {
   transition: all 200ms ease;
 }
 
+.gradient_underline_black {
+  background-image: linear-gradient(90deg, #000, #000);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: all 200ms ease;
+}
+
 .gradient_underline:hover {
+  background-size: 100% 2px;
+  cursor: pointer;
+}
+
+.gradient_underline_black:hover {
   background-size: 100% 2px;
   cursor: pointer;
 }
 
 .nice-hover {
   @apply hover:shadow-[3px_3px_0px_rgba(0,0,0,1),inset_-3px_-3px_5px_rgba(255,255,255,0.15),inset_4px_4px_10px_rgba(0,0,0,0.3)];
+}
+
+.nice-hover-no-shadow {
+  @apply hover:shadow-[inset_-3px_-3px_5px_rgba(255,255,255,0.15),inset_4px_4px_10px_rgba(0,0,0,0.3)];
+}
+
+.nice-focus-no-shadow {
+  @apply focus:shadow-[inset_-3px_-3px_5px_rgba(255,255,255,0.15),inset_4px_4px_10px_rgba(0,0,0,0.3)];
+}
+
+.pop {
+  @apply shadow-[inset_4px_4px_5px_rgba(255,255,255,0.07),inset_-3px_-3px_10px_rgba(0,0,0,0.3)];
+}
+
+.subtle-pop {
+  @apply shadow-[inset_4px_4px_5px_rgba(255,255,255,0.07),inset_-3px_-3px_10px_rgba(0,0,0,0.3)];
 }

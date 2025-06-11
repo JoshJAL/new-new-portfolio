@@ -1,7 +1,7 @@
-import ButtonLink from '@/components/ui/ButtonLink';
 import InfoCard from '@/components/ui/InfoCard';
 import StyledLink from '@/components/ui/StyledLink';
 import Technology from '@/components/ui/Technology';
+import GlassButtonLink from '@/components/ui/GlassButtonLink';
 
 import { BiLogoJavascript, BiLogoTypescript } from 'react-icons/bi';
 import { BsFiletypeCss } from 'react-icons/bs';
@@ -14,7 +14,8 @@ import type { Tech } from '@/types/tech';
 export default function RecentProjects() {
   const ez_funcs: Tech[] = [
     {
-      color: 'bg-blue-500',
+      borderColor: 'border-blue-500/20',
+      color: 'bg-blue-500/50',
       icon: <BiLogoTypescript className='h-5 w-5' />,
       label: 'TypeScript'
     }
@@ -22,40 +23,47 @@ export default function RecentProjects() {
 
   const monster: Tech[] = [
     {
-      color: 'bg-purple-800',
+      borderColor: 'border-purple-800/20',
+      color: 'bg-purple-800/50',
       icon: <BsFiletypeCss className='h-5 w-5' />,
       label: 'CSS'
     },
     {
-      color: 'bg-yellow-300',
+      borderColor: 'border-yellow-300/20',
+      color: 'bg-yellow-300/50',
       icon: <BiLogoJavascript className='h-5 w-5' />,
       label: 'Javascript',
       textColor: 'text-black'
     },
     {
-      color: 'bg-black',
+      borderColor: 'border-black/20',
+      color: 'bg-black/50',
       icon: <RiNextjsLine className='h-5 w-5' />,
       label: 'Next.js'
     },
     {
-      color: 'bg-lime-400',
+      borderColor: 'border-lime-400/20',
+      color: 'bg-lime-400/50',
       icon: <SiShopify className='h-5 w-5' />,
       label: 'Shopify',
       textColor: 'text-black'
     },
     {
-      color: 'bg-blue-400',
+      borderColor: 'border-blue-400/20',
+      color: 'bg-blue-400/50',
       icon: <SiSqlite className='h-5 w-5' />,
       label: 'SQLite'
     },
     {
-      color: 'bg-cyan-400',
+      borderColor: 'border-cyan-400/20',
+      color: 'bg-cyan-400/50',
       icon: <RiTailwindCssFill className='h-5 w-5' />,
       label: 'Tailwind',
       textColor: 'text-black'
     },
     {
-      color: 'bg-blue-500',
+      borderColor: 'border-blue-500/20',
+      color: 'bg-blue-500/50',
       icon: <BiLogoTypescript className='h-5 w-5' />,
       label: 'TypeScript'
     }
@@ -63,38 +71,45 @@ export default function RecentProjects() {
 
   const coastal: Tech[] = [
     {
-      color: 'bg-gradient-to-r from-purple-600 to-blue-500',
+      borderColor: 'border-purple-600/20',
+      color: 'bg-gradient-to-r from-purple-600/50 to-blue-500/50',
       icon: <SiClerk className='h-5 w-5' />,
       label: 'Clerk'
     },
     {
-      color: 'bg-black',
+      borderColor: 'border-black/20',
+      color: 'bg-black/50',
       icon: <RiNextjsLine className='h-5 w-5' />,
       label: 'Next.js'
     },
     {
-      color: 'bg-black',
+      borderColor: 'border-black/20',
+      color: 'bg-black/50',
       icon: <SiResend className='h-5 w-5' />,
       label: 'Resend'
     },
     {
-      color: 'bg-indigo-600',
+      borderColor: 'border-indigo-600/20',
+      color: 'bg-indigo-600/50',
       icon: <SiStripe className='h-5 w-5' />,
       label: 'Stripe'
     },
     {
-      color: 'bg-blue-400',
+      borderColor: 'border-blue-400/20',
+      color: 'bg-blue-400/50',
       icon: <SiSqlite className='h-5 w-5' />,
       label: 'SQLite'
     },
     {
-      color: 'bg-cyan-400',
+      borderColor: 'border-cyan-400/20',
+      color: 'bg-cyan-400/50',
       icon: <RiTailwindCssFill className='h-5 w-5' />,
       label: 'Tailwind',
       textColor: 'text-black'
     },
     {
-      color: 'bg-blue-500',
+      borderColor: 'border-blue-500/20',
+      color: 'bg-blue-500/50',
       icon: <BiLogoTypescript className='h-5 w-5' />,
       label: 'TypeScript'
     }
@@ -102,23 +117,27 @@ export default function RecentProjects() {
 
   const decoder: Tech[] = [
     {
-      color: 'bg-purple-800',
+      borderColor: 'border-purple-800/20',
+      color: 'bg-purple-800/50',
       icon: <BsFiletypeCss className='h-5 w-5' />,
       label: 'CSS'
     },
     {
-      color: 'bg-yellow-300',
+      borderColor: 'border-yellow-300/20',
+      color: 'bg-yellow-300/50',
       icon: <BiLogoJavascript className='h-5 w-5' />,
       label: 'Javascript',
       textColor: 'text-black'
     },
     {
-      color: 'bg-blue-400',
+      borderColor: 'border-blue-400/20',
+      color: 'bg-blue-400/50',
       icon: <FaReact className='h-5 w-5' />,
       label: 'React Native'
     },
     {
-      color: 'bg-blue-400',
+      borderColor: 'border-blue-400/20',
+      color: 'bg-blue-400/50',
       icon: <SiSqlite className='h-5 w-5' />,
       label: 'SQLite'
     }
@@ -156,9 +175,9 @@ export default function RecentProjects() {
                 ))}
               </div>
             </InfoCard>
-            <ButtonLink prefetch={false} href='https://www.npmjs.com/package/ez-funcs' target='_blank'>
+            <GlassButtonLink prefetch={false} href='https://www.npmjs.com/package/ez-funcs' target='_blank'>
               Project Link
-            </ButtonLink>
+            </GlassButtonLink>
           </div>
         </InfoCard>
         <InfoCard colorSwap heading={'Monster Transmission & Performance'}>
@@ -188,9 +207,9 @@ export default function RecentProjects() {
                 ))}
               </div>
             </InfoCard>
-            <ButtonLink prefetch={false} href='https://monstertransmission.com/' target='_blank'>
+            <GlassButtonLink prefetch={false} href='https://monstertransmission.com/' target='_blank'>
               Project Link
-            </ButtonLink>
+            </GlassButtonLink>
           </div>
         </InfoCard>
         <InfoCard colorSwap heading={'Coastal Crumb'}>
@@ -219,9 +238,9 @@ export default function RecentProjects() {
                 ))}
               </div>
             </InfoCard>
-            <ButtonLink prefetch={false} href='https://coastalcrumbllc.com/' target='_blank'>
+            <GlassButtonLink prefetch={false} href='https://coastalcrumbllc.com/' target='_blank'>
               Project Link
-            </ButtonLink>
+            </GlassButtonLink>
           </div>
         </InfoCard>
         <InfoCard colorSwap heading={'Transmission Decoder App'}>

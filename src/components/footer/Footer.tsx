@@ -66,7 +66,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='bg-bittersweet flex w-full flex-col gap-5 border-t-2 border-t-white p-5 text-black'>
+    <footer className='bg-bittersweet/50 border-t-bittersweet/20 pop flex w-full flex-col gap-5 border-t p-5 text-black'>
       <p className='text-center text-sm'>&copy; {new Date().getFullYear()} Joshua Levine</p>
       <nav className='mx-auto grid w-full max-w-7xl grid-cols-2 gap-5'>
         {links.map((link) => (
@@ -94,7 +94,7 @@ function FooterLink({ children, href, prefetch = true, target = '_self' }: Foote
       prefetch={prefetch}
       href={href}
       target={target}
-      className='text-dark-purple w-fit text-center underline-offset-4 hover:underline'
+      className='text-dark-purple gradient_underline_black w-fit text-center'
     >
       {children}
     </Link>

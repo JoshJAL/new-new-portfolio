@@ -8,7 +8,8 @@ import type { Tech } from '@/types/tech';
 export default function Page() {
   const tech: Tech[] = [
     {
-      color: 'bg-gradient-to-tr from-orange-800 via-red-700 to-blue-800',
+      borderColor: 'border-orange-800/20',
+      color: 'bg-gradient-to-tr from-orange-800/50 via-red-700/50 to-blue-800/50',
       icon: <FaJava className='h-5 w-5' />,
       label: 'Java'
     }

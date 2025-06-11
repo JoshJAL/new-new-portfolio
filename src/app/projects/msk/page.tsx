@@ -10,28 +10,33 @@ import type { Tech } from '@/types/tech';
 export default function Page() {
   const tech: Tech[] = [
     {
-      color: 'bg-gradient-to-r from-purple-600 to-blue-500',
+      borderColor: 'border-purple-600/20',
+      color: 'bg-gradient-to-r from-purple-600/50 to-blue-500/50',
       icon: <SiClerk className='h-5 w-5' />,
       label: 'Clerk'
     },
     {
-      color: 'bg-black',
+      borderColor: 'border-black/20',
+      color: 'bg-black/50',
       icon: <RiNextjsLine className='h-5 w-5' />,
       label: 'Next.js'
     },
     {
-      color: 'bg-blue-400',
+      borderColor: 'border-blue-400/20',
+      color: 'bg-blue-400/50',
       icon: <SiSqlite className='h-5 w-5' />,
       label: 'SQLite'
     },
     {
-      color: 'bg-cyan-400',
+      borderColor: 'border-cyan-400/20',
+      color: 'bg-cyan-400/50',
       icon: <RiTailwindCssFill className='h-5 w-5' />,
       label: 'Tailwind',
       textColor: 'text-black'
     },
     {
-      color: 'bg-blue-500',
+      borderColor: 'border-blue-500/20',
+      color: 'bg-blue-500/50',
       icon: <BiLogoTypescript className='h-5 w-5' />,
       label: 'TypeScript'
     }

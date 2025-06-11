@@ -118,16 +118,19 @@ export default function ImageSlider({ images, autoScroll, scrollInterval = 10000
             {images.map(({ src, alt }, index) => {
               return (
                 <div key={alt} style={{ width: `${100 / images.length}%`, padding: '0 8px' }}>
-                  <Image
-                    quality={60}
-                    height={300}
-                    width={300}
-                    src={src}
-                    placeholder='blur'
-                    alt={alt}
-                    aria-hidden={imageIndex !== index}
-                    className='img-slider-img mx-auto h-auto w-full max-w-[300px] rounded-lg border-2 border-white bg-white object-contain'
-                  />
+                  <div className='relative mx-auto w-fit overflow-hidden rounded-lg'>
+                    <div className='pop absolute inset-0 z-10 bg-black/10' />
+                    <Image
+                      quality={60}
+                      height={300}
+                      width={300}
+                      src={src}
+                      placeholder='blur'
+                      alt={alt}
+                      aria-hidden={imageIndex !== index}
+                      className='img-slider-img h-auto w-full max-w-[300px] bg-white object-contain'
+                    />
+                  </div>
                 </div>
               );
             })}
