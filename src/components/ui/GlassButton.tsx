@@ -29,7 +29,7 @@ export default function GlassButton({
         disabled={disabled}
         type={type}
         onClick={onClick}
-        className={`${fit ? 'w-fit' : 'w-full'} cursor-pointer rounded-lg border border-red-600/20 bg-red-600/50 px-3 py-2 text-center font-semibold text-white backdrop-blur-sm transition-all duration-300 ease-in-out hover:border-red-800/20 hover:bg-red-800/50 ${roboto.className} pop nice-hover-no-shadow backdrop-blur-sm`}
+        className={`${fit ? 'w-fit' : 'w-full'} cursor-pointer rounded-lg border border-red-600/20 bg-red-600/50 px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:border-red-800/20 hover:bg-red-800/50 ${roboto.className} pop nice-hover-no-shadow backdrop-blur-sm`}
       >
         {children}
       </button>

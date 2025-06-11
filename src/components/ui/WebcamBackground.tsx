@@ -43,8 +43,8 @@ export default function WebcamBackground() {
           </div>
 
           {/* 2. The Foreground Controls Container (MODIFIED) */}
-          {/* Changed from centered to left-aligned */}
-          <div className='fixed bottom-3 left-5 z-10 flex gap-4'>
+          {/* Positioned at the same level as BackToTopButton */}
+          <div className='fixed bottom-3 left-5 z-10 flex flex-col gap-4 md:flex-row'>
             <GlassButton type='button' onClick={toggleCamera}>
               Toggle Camera
             </GlassButton>
