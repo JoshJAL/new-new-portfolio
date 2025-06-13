@@ -30,10 +30,17 @@ export default function Page() {
   ];
 
   return (
-    <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2'>
-      {posts.map((post) => (
-        <PageLink black post={post} key={post.href} />
-      ))}
-    </div>
+    <article>
+      <h1>Photography</h1>
+      <p>
+        I&apos;m not very good, but I am enjoying getting out there and taking pictures of things if you want to check
+        them out here they are broken up by month and year.
+      </p>
+      <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2'>
+        {posts.map((post) => (
+          <PageLink black post={post} key={post.href} />
+        ))}
+      </div>
+    </article>
   );
 }

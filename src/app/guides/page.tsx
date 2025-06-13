@@ -41,10 +41,17 @@ export default function Page() {
   ];
 
   return (
-    <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2'>
-      {posts.map((post) => (
-        <PageLink post={post} key={post.href} />
-      ))}
-    </div>
+    <article>
+      <h1>Guides</h1>
+      <p>
+        Write ups, guides, and documentation on technologies I think are cool so that I can better understand them and
+        maybe you can too.
+      </p>
+      <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2'>
+        {posts.map((post) => (
+          <PageLink post={post} key={post.href} />
+        ))}
+      </div>
+    </article>
   );
 }
