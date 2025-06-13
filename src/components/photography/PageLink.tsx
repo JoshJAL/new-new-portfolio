@@ -17,7 +17,15 @@ export default function PageLink({ post }: Props) {
     >
       <div className='relative w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
         <div className='pop absolute inset-0 z-10 bg-black/10' />
-        <Image placeholder='blur' src={post.image} alt={post.heading} height={250} width={250} quality={60} />
+        <Image
+          className='h-full w-full bg-white'
+          placeholder='blur'
+          src={post.image}
+          alt={post.heading}
+          height={250}
+          width={250}
+          quality={60}
+        />
       </div>
       <div className='flex w-full flex-col gap-3'>
         <h2 className='text-xl font-semibold md:text-2xl'>{post.heading}</h2>

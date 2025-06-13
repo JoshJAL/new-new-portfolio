@@ -1,0 +1,1033 @@
+import MarkdownPage from '@/components/ui/MarkdownPage';
+
+import { JJLogo } from '@/guide-thumbnails';
+
+<MarkdownPage heading='Jujutsu — A Version Control System' image={JJLogo}>
+
+I am hearing of a new version control system called Jujutsu that even the
+creator of Git is acknowledging as a great alternative to Git. It is a version
+control system that is designed to be simple and powerful, and it is compatible
+with Git. This is going to be a simple overview of it while I teach myself how
+to use it. I am not sure if it is going to be something that we end up using,
+but I think it would be irresponsible if I did not at least explore it.
+
+## Installation
+
+JJ is written in Rust, so you can cargo install it. However, I am going to use
+Brew to install it on my Mac.
+
+### Cargo Binstall
+
+```bash
+cargo binstall --strategies crate-meta-data jj-cli
+```
+
+Without the `--strategies` option, you may get equivalent binaries that should
+be compiled from the same source code.
+
+### Linux
+
+#### From Source
+
+First, make sure that you have a Rust version >= 1.84 and that the `libssl-dev`,
+`openssl`, `pkg-config`, and `build-essential` packages are installed by running
+something like this:
+
+```bash
+sudo apt-get install libssl-dev openssl pkg-config build-essential
+```
+
+Now run either:
+
+```bash
+# To install the *prerelease* version from the main branch
+cargo install --git https://github.com/jj-vcs/jj.git --locked --bin jj jj-cli
+```
+
+or:
+
+```bash
+# To install the latest release
+cargo install --locked --bin jj jj-cli
+```
+
+### Arch Linux
+
+You can install the `jujutsu` package from the
+[official extra repository](https://archlinux.org/packages/extra/x86_64/jujutsu/):
+
+```bash
+pacman -S jujutsu
+```
+
+Or install from the
+[AUR repository](https://aur.archlinux.org/packages/jujutsu-git) with the
+[AUR Helper](https://wiki.archlinux.org/title/AUR_helpers):
+
+```bash
+yay -S jujutsu-git
+```
+
+### NixOS
+
+You can install a **released** version of `jj` using the
+[nixpkgs `jujutsu` package](https://search.nixos.org/packages?channel=unstable&show=jujutsu).
+
+To install a **prerelease** version, you can use the flake for this repository.
+For example, if you want to run `jj` loaded from the flake, use:
+
+```bash
+nix run 'github:jj-vcs/jj'
+```
+
+You can also add this flake url to your system input flakes. Or you can install
+the flake to your user profile:
+
+```bash
+# Installs the prerelease version from the main branch
+nix profile install 'github:jj-vcs/jj'
+```
+
+### Homebrew
+
+This is my preferred method.
+
+If you use Homebrew, you can run:
+
+```bash
+# Installs the latest release
+brew install jj
+```
+
+### Gentoo Linux
+
+`dev-vcs/jj` is available in the
+[GURU](https://wiki.gentoo.org/wiki/Project:GURU) repository. Details on how to
+enable the GURU repository can be found
+[here](https://wiki.gentoo.org/wiki/Project:GURU/Information_for_End_Users).
+
+Once you have synced the GURU repository, you can install `dev-vcs/jj` via
+Portage:
+
+```bash
+emerge -av dev-vcs/jj
+```
+
+### OpenSUSE Tumbleweed
+
+`jujutsu` can be installed from the official
+[openSUSE-Tumbleweed-Oss](http://download.opensuse.org/tumbleweed/repo/oss/)
+repository:
+
+```bash
+zypper install jujutsu
+```
+
+## Mac
+
+### From Source, Vendored OpenSSL
+
+First make sure that you have a Rust version >= 1.84. You may also need to run:
+
+```bash
+xcode-select --install
+```
+
+Now run either:
+
+```bash
+# To install the *prerelease* version from the main branch
+cargo install --git https://github.com/jj-vcs/jj.git \
+     --features vendored-openssl --locked --bin jj jj-cli
+```
+
+or:
+
+```bash
+# To install the latest release
+cargo install --features vendored-openssl --locked --bin jj jj-cli
+```
+
+### From Source, Homebrew OpenSSL
+
+First make sure that you have a Ruse version >= 1.84. You will also need
+[Homebrew](https://brew.sh/) installed. You may then need to run some or all of
+these:
+
+```bash
+xcode-select --install
+brew install openssl
+brew install pkg-config
+export PKG_CONFIG_PATH="$(brew --prefix)/opt/openssl@3/lib/pkgconfig"
+```
+
+Now run either:
+
+```bash
+# To install the *prerelease* version from the main branch
+cargo install --git https://github.com/jj-vcs/jj.git --locked --bin jj jj-cli
+```
+
+or:
+
+```bash
+# To install the latest release
+cargo install --locked --bin jj jj-cli
+```
+
+### Homebrew
+
+If you use Homebrew, you can run:
+
+```bash
+# Installs the latest release
+brew install jj
+```
+
+### MacPorts
+
+You can install `jj` via the
+[MacPorts `jujutsu` port](https://ports.macports.org/port/jujutsu/):
+
+```bash
+# Installs the latest release
+sudo port install jujutsu
+```
+
+## Windows
+
+First make sure that you have a Rust version >= 1.84. Now run either:
+
+```bash
+# To install the *prerelease* version from the main branch
+cargo install --git https://github.com/jj-vcs/jj.git --locked --bin jj jj-cli --features vendored-openssl
+```
+
+or:
+
+```bash
+# to install the latest release
+cargo install --locked --bin jj jj-cli --features vendored-openssl
+```
+
+## Initial Configuration
+
+You may want to configure your name and email so commits are made in your name.
+
+```bash
+jj config set --user user.name "Martin von Zweigbergk"
+jj config set --user user.email "martinvonz@google.com"
+```
+
+## Command-line Completion
+
+To set up command-line completion, source the output of
+`jj util completion bash/zsh/fish`. Exactly how to source it depends on your
+shell.
+
+Improved completions are also available. They will complete things like
+bookmarks, aliases, revisions, operations, and files. They can be context aware,
+for example they respect the global flags `--repository` and `--at-operation` as
+well as some command-specific ones like `--revision`, `--form`, and `--to`. You
+can activate them with the alternative "dynamic" instructions below. They should
+still complete everything the static completions did, so only activate one of
+them.
+
+## Bash
+
+### Standard
+
+```bash
+source <(jj util completion bash)
+```
+
+### Dynamic
+
+```bash
+source <(COMPLETE=bash jj)
+```
+
+## Zsh
+
+### Standard
+
+```zsh
+autoload -U compinit
+compinit
+source <(jj util completion zsh)
+```
+
+### Dynamic
+
+```zsh
+source <(COMPLETE=zsh jj)
+```
+
+## Fish
+
+| Note                                                                                     |
+| ---------------------------------------------------------------------------------------- |
+| No configuration is required with fish >= 4.1 which loads dynamic completions by default |
+
+### Standard
+
+```fish
+jj util completion fish | source
+```
+
+### Dynamic
+
+```fish
+COMPLETE=fish jj | source
+```
+
+## Nushell
+
+```bash
+jj util completion nushell | save completions-jj.nu
+use completions-jj.nu * # Or `source completions-jj.nu``
+```
+
+(Dynamic completions not available yet)
+
+## Xonsh
+
+```bash
+source-bash $(jj util completion
+```
+
+(Dynamic completions not available yet)
+
+## Powershell
+
+Insert this line in your
+$PORFILE file: (usually
+$HOME/Documents/PowerShell/Microsoft.PowerShell_profile.ps1)
+
+```bash
+Invoke-Expression (& { (jj util completion power-shell | Out-String) })
+```
+
+(Dynamic completions not available yet)
+
+## Tutorial/The Basics
+
+I am going to create a simple 'Hello World' project in go to test jj out. You
+can follow along in any language that you prefer or just read along.
+
+If you would rather follow along with a video, I would do that using the
+following
+[YouTube Video by DevOps Toolbox](https://www.youtube.com/watch?v=cZqFaMlufDY).
+He does a great job of walking you through the same tutorial I am about to.
+
+Create a file `main.go` with the following content:
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Hello World")
+}
+```
+
+Then in your terminal, run the following commands:
+
+```bash
+go mod init
+
+# After this finishes
+
+go mod tidy
+
+# After this finishes
+
+go run main.go
+```
+
+Our app should run and 'Hello World' should be printed to the console. No we can
+start plating with jj.
+
+Run the following command to initiate a new jj based repository:
+
+```bash
+jj git init
+```
+
+Jujutsu is still backed by git so git is still in the command. Instead of `.git`
+a `.jj` was created that is slightly different. The `.jj` holds a working copy
+with the state and a bunch of other files. The repo holds a state of operations
+and other storage information.
+
+### Get status
+
+The first command we will be looking at other than initiating the repo is
+`jj st` or 'get status'. Run the following in your terminal.
+
+```bash
+jj st
+```
+
+This will display files added indicated by an 'A' next to the file name. A
+parent root commit which is how jj repos start and a working copy commit with a
+few interesting details. Unlike git, jj has no index.
+
+If you are unfamiliar with git's index, this is also known as a staging area
+where files are staged and committed. In a way jj has everything staged at all
+times.
+
+Back to your terminal. You will notice that each line has a series of
+characters, this is what jj tracks as change and next to it will be a more
+familiar hash which indicates a commit.
+
+Typing just `jj` into the terminal is a shorthand for `jj log` and, seemingly,
+the most useful command in the system. Go ahead and type it in. It will show the
+same entries in the status but add a time-stamp and, more importantly,
+identifiers next to it. The most important of which is the '@' sign indicating
+which change we are currently editing. Now that we have made some changes, or,
+are ready to give our changes a proper description we can do this using
+`jj describe` and can be done more than once on the same change.
+
+### Descriptions
+
+Giving a description does not mean that we are done, it just means that we have
+a good description for what we have done. Think of this as making small commits
+when working with a git repo.
+
+We can provide a description in two ways by either using
+`jj describe -m "{message}"` or by typing `jj describe` and then using the
+internal editor. Choose your method and add a description to your change and
+save.
+
+```bash
+jj describe -m "Added hellow world"
+```
+
+Now if you run `jj` or `jj log` again you will see that the description has been
+added to the commit.
+
+### Blame
+
+Jujutsu, like git, asks you to identify yourself with a name and an email which
+we will run through really quick right here.
+
+Simply run the following command in your terminal:
+
+```bash
+jj config edit --user
+```
+
+And you will be taken to a file where you should add the following details:
+
+```bash
+[user]
+name = "YOUR NAME"
+email = "YOUR EMAIL"
+```
+
+Save this file run `jj describe` and leave the message 'Added my email.' and
+then run `jj` or `jj log` again and you will now see your name and email appear
+along the commit and message.
+
+You will also notice that the '@' symbol is still saying that we are editing the
+same change. A commit, or a 'change' as jj calls them, is a dynamic, ongoing,
+ever-evolving creation. This means that a change does not have an end of its
+own, or rather ends when a new change starts.
+
+### New Change
+
+`jj new` starts a new change and running it will move the '@' symbol. You will
+also notice that the change ID on the previous working copy above is now at the
+parent commit. This is also addressable by '@-'. Now there is a new change that
+is currently empty and has no description.
+
+Let's make a small change by adding a comment to the top of our file that simply
+says 'This is a hello world program'.
+
+Running `jj st` now will show that in the status there has been a modification
+indicated by 'M'. A new, unfamiliar file will always show up as a change that is
+added with an 'A' next to it. (Go ahead and create a new file really quick). In
+Git this would be an 'untracked' file, but in jj it is a change like any other
+(You can go ahead and delete the file now).
+
+Creating another new change by running `jj new` works even though the previous
+change has no description. This might seem weird but the intention of jj is to
+not get in the way, it wants to let you work even when it is not ideal.
+
+Before we make some changes backwards let's go over a mind blowing concept that
+is pulling me more and more towards using jj over git. JJ comes with 'undo'.
+Running `jj undo` will bring you back to the previous change. To try this out
+run `jj new` and then `jj st` to see that you are in a new change and then run
+`jj undo` and then `jj st` again to see that you are now back in the previous
+change.
+
+You might have also noticed at this point that the first letter of every id is
+colored. This is so that you can easily address a change without having to know
+the entire ID.
+
+Now lets describe our change really quick and add another commit. Remember that
+changes in jj are a dynamic creation and does not end it describing it again
+opens the editor with the current message that can be changed or added to and
+saved.
+
+We can also provide the message while starting a new change. Lets do this by
+running the following:
+
+```bash
+jj new -m 'Another comment'
+```
+
+### Squashing and Branching
+
+This feels like it could have fit with the previous change and like there was no
+need to add another change to the tree. `jj squash` will do exactly that;
+combines the changes and their message. Upon saving something interesting has
+happened. You might notice that while the change has stayed the same the commit
+hash changed as well as the time-stamp indicating this is a different atomic
+commit. Not only that, but there is a new, empty change automatically started on
+top that we are currently in.
+
+The cool and somewhat confusing thing about `jj squash` is that it does not have
+to address and existing change. If I make a change to my file 'main.go' with no
+description or anything by adding another comment and then running the following
+command:
+
+```bash
+jj squash main.go
+```
+
+This will specifically push changes from that file to the parent commit. This
+will again keep the change ID but changing the commit hash and time-stamp. To
+confirm this works run `jj st` again and you will see that the working copy has
+no changes, but the top of 'main.go' has the final comment that we just added.
+
+If you want to get really crazy you can run `jj squash -i` and this will run an
+interactive session where you can pick specific files and hunks of code and
+squash them down if you want them.
+
+If you don't like the current working change you can always abandon it by
+running `jj abandon` this will reset the working copy and create a new empty
+change for you to work on. No messing about with rebasing or reset commands.
+
+BUT we are just getting started this next bit is the real power of jj over git.
+
+Let's start a new change and give it a descriptive name. I went for the
+following:
+
+```bash
+jj new -m 'print something else'
+```
+
+And added the following code to my file:
+
+```go
+fmt.Println("Something else")
+```
+
+So the full file looks like this:
+
+```go
+// This is a hello world program in Go
+// This is another comment
+// ANother comment added to test jj squash
+package main
+
+import "fmt"
+
+func main() {
+ fmt.Println("Hello World")
+ fmt.Println("Something else")
+}
+
+```
+
+Now I am going to create a new change on top with an empty string by running
+`jj new -m ''`. Now, what if, I kept working, but I realized that I actually
+wanted to make additional modifications to my previous change? There are couple
+of ways to 'travel back in time' with jj.
+
+The first of which is rather straight forward. Let's run the following command:
+
+```bash
+jj new -B @ -m 'remove most comments'
+```
+
+This is telling jj to create a new change _before_ with '-B'. Before what
+change? Well in this case, we are going to go before the current change
+indicated by the '@' symbol. This does not _have_ to be the change that is on
+top. And, of course, we give it a description.
+
+After running that command you will see that jj is saying that it has rebased 1
+descendant commits. Why is it saying this? Because it pushed a change _before_
+the current edited one, so it had to rebase the changes on top.
+
+If you are a little confused I am going to break it down here because rebasing
+got me the first couple of times I worked with it on Git. We committed a change
+before the one that we are currently working on and it has automatically rebased
+our original change. But, what if there are conflicts? Well, we will get to that
+a little later. For now, understand something that is a little difficult to
+believe. This rebase will _always_ succeed. This sounds ridiculous, but it is
+AMAZING.
+
+Let's go back to our file and delete most of our comments so that the full file
+looks like this:
+
+```go
+// This is a hello world program in Go
+
+package main
+
+import "fmt"
+
+func main() {
+ fmt.Println("Hello World")
+ fmt.Println("Something else")
+}
+```
+
+Now, let's say I want to make changes to an earlier entry, not necessarily the
+last. Remember those colored letters at the front of our ID? Well, we are about
+to use them.
+
+By running `jj edit {ID OR it's colored first character(s)}` this will throw us
+back to it. If you open your file this will be evidenced by seeing that your new
+changes are gone and your previous changes have appeared. I ran `jj edit pn` and
+ended up back when I first created the file and there were no comments.
+
+If I know run `jj next --edit` this will move us to the next edit on the tree
+and you can keep doing this until you reach the current working copy. This can,
+of course, be done with a direct edit, but it is a super cool feature of jj and
+one that can help you run through and make changes to a tree as you need.
+
+So, now about the thing that I am sure we are all wondering. What about
+branches? Well, jj doesn't really use them. You can think of them as anonymous
+branches or think of them as a 'branch-less workflow'. Another huge difference
+is, it turns out, you don't really need to name your branches. Apparently, this
+is influenced by Facebook (Meta) who has supposedly been doing that in their own
+system for years (which is especially funny because jj was initially create, or
+trademarked or whatever by Google). The reason jj doesn't use branches is
+because branches are just changes stemming from different parents. We don't need
+to name our branches so long as we are describing their changes.
+
+To 'branch out' in jj you run `jj new` with a reference to a different change
+than the one that we are at. That is pretty much it. For example I am going to
+run `jj new zmw` to get to a different change than the one that I am currently
+at in my file tree. This will create a new working copy where the parent is the
+'print something else' change.
+
+Looking at the log by running `jj` or `jj log` will show a visual branch out of
+what we have just done, so it is easier to track later when we merge paths
+again. In my file at this branch I am going to make a quick comment saying 'This
+is the branch change' to note, well, that this is the change in this branch.
+
+Now when I describe it with `jj desc -m 'added a branch out comment'` we will
+see a fork in the road that is described by the change.
+
+I am going to get a little crazier and go to the change before that labeled
+'remove most comments' and add another function. To do this I am going to run
+`jj edit zmq` and I will add the following function to the file:
+
+```go
+func another() {
+  fmt.Println("Another function")
+}
+
+```
+
+Since jj doesn't have branches as first class citizens and these are just
+anonymous branches stemming out from different places to list branches we can
+use the `log` command along with two internal functions `'heads(all())` making
+the full command:
+
+```bash
+jj log -r 'heads(all())'
+```
+
+These functions are called 'rev sets' or 'revision sets' and they allow us to
+cover a range of commits.
+
+### Merging Branches
+
+Let's go ahead and start merging our branches. This is actually really easy. All
+you have to do in jj is make a new change with references to two parents and
+that will merge them. So, to merge our branches with changes we will run the
+following (obviously change your references as needed):
+
+```bash
+jj new zmq l -m 'merge branches'
+```
+
+This is actually insanely powerful. In jj you can add as many references as you
+like (not just the two that you changed) and combine them into one new working
+copy. Looking at our current file we have now our branched out comment and new
+function both merged successfully.
+
+Even though jj kind of eliminated the need for it, it does have a rebase command
+to instruct the system to do exactly that, place another change on top of
+another. Let's go ahead and do this by combining some of the concepts we have
+already covered.
+
+By using the 'undo' command we can get rid of the merges we just did (which can
+actually be ran again to undo the undo).
+
+So I am going to run `jj undo` to get rid of my merge and then I am going to
+rebase my merge on top of the main branch with the following command (again
+change your reference IDs as needed):
+
+```bash
+jj rebase -s l -d zmq
+```
+
+The tree is now flat but keep in mind that you are at the change you were
+working in not on top of the rebased change like we were earlier. We will run a
+nice trick for that and run `jj edit @+` to end up at the child of the commit of
+where we are at.
+
+### Resolving Conflicts
+
+Before we finish things up lets see how jj handles conflicts. Let's go ahead and
+remove the new function (this is the one that I called 'another') then creating
+a new change that is described as 'adding a third function' that stems from an
+earlier commit, in my case 'zmq' so the full command after you have removed the
+function will be:
+
+```bash
+jj new -m 'add third function' zmq
+```
+
+And then I will add a third function so that the whole file looks like:
+
+```go
+// This is a hello world program in Go
+
+package main
+
+import "fmt"
+
+func main() {
+ fmt.Println("Hello World")
+ fmt.Println("Something else")
+}
+
+func another() {
+ fmt.Println("Another function")
+}
+
+func third() {
+ fmt.Println("Third")
+}
+```
+
+Now I am going to rebase this change on top of the top one which will create a
+conflict with the following command:
+
+```bash
+jj rebase -s l -d ps
+```
+
+You will see that a conflict will appear, but what is more interested is that
+the rebase went through.
+
+Running `jj` or `jj log` will show a conflict and as earlier we are at the
+source of the rebase, not at the conflict, so we will run `jj edit @+` to get to
+the conflict where we are told that it is a two sided conflict.
+
+Going into the file shows a familiar site showing the changes and where they
+came from. So we fix them, save them, and describe them.
+
+But there is another way to do it built right into jj.
+
+Let's run `jj undo` to return to our conflict. Or create a host of other
+conflicts like I did and then jump into the first file with a conflict and run
+`jj resolve` this will pop an interactive interface where we can find conflicted
+files and resolve them. The mouse is available here and you can use it to
+resolve your conflicts as needed. It is important to note that only 2 sided
+conflicts are supported in the editor, if it is more than that you need to
+resolve them yourself if the method described before.
+
+## Cloning and Pushing to GitHub
+
+Now those are the basics. We are going to now go through how to work push this
+to GitHub or how to clone something from GitHub and work in it.
+
+More details instructions can be found on the jj docs page
+[here](https://jj-vcs.github.io/jj/latest/tutorial/).
+
+### Cloning a Git Repo
+
+Cloning is pretty straight forward you simply run `jj git clone {URL OF REPO}`
+and then cd into it to begin working in it just like with git. From there you
+can change the files that you want and make any changes you would like using jj
+as your version control.
+
+### Working with GitHub
+
+#### Set up an SSH key
+
+As of October 2023 it's recommended to set up an SSH key to work with GitHub
+projects. See
+[GitHub's Tutorial](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent).
+This restriction may be lifted in the future, see
+[issue #469](https://github.com/jj-vcs/jj/issues/469) for more information and
+progress on authenticated HTTP.
+
+#### Basic workflow
+
+The simplest way to start with jj is to create a stack of commits first. You
+will only need to create a bookmark when you need to push the stack to a remote.
+There are two primary workflows: using a generated bookmark or naming a
+bookmark.
+
+##### Using a generated bookmark name
+
+In this example we're letting jj auto-create a bookmark:
+
+```bash
+# Start a new commit off of the default bookmark.
+$ jj new main
+# Refactor some files, then add a description and start a new commit
+$ jj commit -m 'refactor(foo): restructure foo()'
+# Add a feature, then add a description and start a new commit
+$ jj commit -m 'feat(bar): add support for bar'
+# Let Jujutsu generate a bookmark name and push that to GitHub. Note that we
+# push the working-copy commit's *parent* because the working-copy commit
+# itself is empty.
+$ jj git push -c @-
+```
+
+##### Using a named bookmark
+
+In this example, we create a bookmark named `bar` and then push it to the
+remote.
+
+```bash
+# Start a new commit off of the default bookmark.
+$ jj new main
+# Refactor some files, then add a description and start a new commit
+$ jj commit -m 'refactor(foo): restructure foo()'
+# Add a feature, then add a description and start a new commit
+$ jj commit -m 'feat(bar): add support for bar'
+# Create a bookmark so we can push it to GitHub. Note that we created the bookmark
+# on the working-copy commit's *parent* because the working copy itself is empty.
+$ jj bookmark create bar -r @- # `bar` now contains the previous two commits.
+# Push the bookmark to GitHub (pushes only `bar`)
+$ jj git push --allow-new
+```
+
+While it's possible to create a bookmark in advance and commit on top of it in a
+Git-like manner, you will then need to move the bookmark manually when you
+create a new commits. Unlike Git, jj will not do it automatically.
+
+#### Updating the repo
+
+AS of October 2023, jj has no equivalent to `git pull` command (see
+[issue #1039](https://github.com/jj-vcs/jj/issues/1039)). Until such a command
+is added, you need to use `jj git fetch` followed by a
+`jj rebase -d $main_bookmark` to update your changes.
+
+#### Working in a Git co-located repo
+
+After doing `jj git init --colocate`, Git will be in a
+[detached HEAD state](https://git-scm.com/docs/git-checkout#_detached_head),
+which is unusual, as Git mainly works with named branches; jj does not.
+
+In a co-located repo, every jj command will automatically synchronize jj's view
+of the repo with Git's view. For example, `jj commit` updates the HEAD of the
+Git repo, enabling an incremental migration.
+
+```bash
+$ nvim docs/tutorial.md
+$ # Do some more work.
+$ jj commit -m "Update tutorial"
+# Create a bookmark on the working-copy commit's parent
+$ jj bookmark create doc-update -r @-
+$ jj git push --allow-new
+```
+
+#### Working in a Jujutsu repo
+
+In a jj repo, the workflow is simplified. If there's no need for explicitly
+named bookmarks, you can just generate one for a change. As jj is able to create
+a bookmark for a revision.
+
+```bash
+# Do your work
+jj commit
+# Push change "mw", letting Jujutsu automatically create a bookmark called
+# "push-mwmpwkwknuz"
+jj git push --change mw
+```
+
+#### Addressing review comments
+
+There are two workflows for addressing review comments, depending on your
+project's preference. Many projects prefer that you address comments by adding
+commits to your bookmark. Some projects (such as jj and LLVM) instead prefer
+that you keep your commits clean by rewriting them and then force-pushing.
+
+##### Adding new commits
+
+If your project prefers that you address review comments by adding commits on
+top, you can do that by doing something like this:
+
+```bash
+# Create a new commit on top of the `your-feature` bookmark from above.
+jj new your-feature
+# Address the comments by updating the code. Then review the changes.
+jj diff
+# Give the fix a description and create a new working-copy on top.
+jj commit -m 'address pr comments'
+# Update the bookmark to point to the new commit.
+jj bookmark move your-feature --to @-
+# Push it to your remote
+jj git push
+```
+
+Notably, the above workflow creates a new commit for you. The same can be
+achieved without creating a new commit.
+
+| Warning                                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------- |
+| We strongly suggest to `jj new` after the example below, as all further edits still get amended to the previous commit. |
+
+```bash
+# Create a new commit on top of the `your-feature` bookmark from above.
+jj new your-feature
+# Address the comments by updating the code. Then review the changes.
+jj diff
+# Give the fix a description.
+jj describe -m 'address pr comments'
+# Update the bookmark to point to the current commit.
+jj bookmark move your-feature --to @
+# Push it to your remote
+jj git push
+```
+
+##### Rewriting commits
+
+If your project prefers that you keep commits clean, you can do that by doing
+something like this:
+
+```bash
+# Create a new commit on top of the second-to-last commit in `your-feature`,
+# as reviewers requested a fix there.
+jj new your-feature- # NOTE: the trailing hyphen is not a typo!
+# Address the comments by updating the code. Then review the changes.
+jj diff
+# Squash the changes into the parent commit
+jj squash
+# Push the updated bookmark to the remote. Jujutsu automatically makes it a
+# force push
+jj git push --bookmark your-feature
+```
+
+The hyphen after `your-feature` comes from the
+[revset](https://github.com/jj-vcs/jj/blob/main/docs/revsets.md) syntax.
+
+#### Working with other people's bookmarks
+
+By default, `jj git clone` imports the default remote bookmark (which is usually
+`main` or `master`), but `jj git fetch` doesn't import new remote bookmarks to
+local bookmarks. This means that if you want to iterate or test another
+contributor's, you'll need to do `jj new <bookmark>@<remote>` onto it.
+
+If you want to import all remote bookmarks including inactive ones, set
+`git.auto-local-bookmark = true` in the config file. Then you can specify a
+contributor's bookmark as `jj new <bookmark>` instead of
+`jj new <bookmark>@<remote>`.
+
+You can find more information on that setting
+[here](https://jj-vcs.github.io/jj/latest/config/#automatic-local-bookmark-creation).
+
+#### Using GitHub CLI
+
+GitHub CLI will have trouble finding the proper Git repo path in jj repos that
+aren't
+[co-located](https://jj-vcs.github.io/jj/latest/git-compatibility/#co-located-jujutsugit-repos)
+(see [issue #1008](https://github.com/jj-vcs/jj/issues/1008))g. You can
+configure the `$GIT_DIR` environment variable to point it to the right path:
+
+```bash
+GIT_DIR=.jj/repo/store/git gh issue list
+```
+
+You can make that automatic by installing [direnv](https://direnv.net/) and
+defining hooks in a `.envrc` file in the repo root to configure `$GIT_DIR`. Just
+add this line into `.envrc`:
+
+```bash
+export GIT_DIR=$PWD/.jj/repo/store/git
+```
+
+Run `direnv allow` to approve it for direnv to run. Then GitHub CLI will work
+automatically even in repos that aren't co-located so you can execute commands
+like `gh issue list` normally.
+
+#### Useful Revsets
+
+Log all revisions across all local bookmarks that aren't on the main bookmark
+nor on any remote:
+
+```bash
+jj log -r 'bookmarks() & ~(main | remote_bookmarks())'
+```
+
+Log all revisions that you authored, across all bookmarks that aren't on any
+remote:
+
+```bash
+jj log -r 'mine() & bookmarks() & ~remote_bookmarks()'
+```
+
+Log all remote bookmarks that you authored or committed to:
+
+```bash
+jj log -r 'remote_bookmarks() & (mine() | committer(<your@email.com>))'
+```
+
+Log all ancestors of the current working copy that aren't on any remote:
+
+```bash
+jj log -r 'remote_bookmarks()..@'
+```
+
+#### Using several remotes
+
+It is common to use several remotes when contributing to a shared repository.
+For example, "upstream" can designate the remote where the changes will be
+merged through a pull-request while "origin" is your private fork of the
+project.
+
+```bash
+jj git clone --remote upstream https://github.com/upstream-org/repo
+cd repo
+jj git remote add origin git@github.com:your-org/your-repo-fork
+```
+
+This will automatically setup your repository to track the main bookmark from
+the upstream repository, typically main@upstream or master@upstream.
+
+You might want to jj git fetch from "upstream" and to jj git push to "origin".
+You can configure the default remotes to fetch from and push to in your
+configuration file (for example, .jj/repo/config.toml):
+
+```bash
+[git]
+fetch = "upstream"
+push = "origin"
+```
+
+The default for both git.fetch and git.push is "origin".
+
+If you usually work on a project from several computers, you may configure jj to
+fetch from both repositories by default, in order to keep your own bookmarks
+synchronized through your origin repository:
+
+```bash
+[git]
+fetch = ["upstream", "origin"]
+push = "origin"
+```
+
+</MarkdownPage>

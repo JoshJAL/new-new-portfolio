@@ -1,0 +1,1153 @@
+import MarkdownPage from '@/components/ui/MarkdownPage';
+
+import { GitLogo } from '@/guide-thumbnails';
+
+<MarkdownPage heading="Git & GitHub for Beginners" image={GitLogo}>
+Git is the most popular version control system in the world. A version control
+system records the changes to our codebase over time in a special database
+called a repository (repo for short). We can look at our product history from
+here, see when a change was made and why it was made. If something breaks, you
+can revert it or see the changes that caused it. The best way to use it, in my
+opinion, is with lots of small commits with clear messages. This way you can see
+exactly what was changed, and if something breaks, you won't have to revert a
+10,000-line change and painstakingly go through it to find the problem.
+
+Without a version control system, you would have to keep track of all the
+changes manually. Either by storing the entire codebase locally (which is bad
+practice because what do we do if your computer dies?) or by constantly storing
+new versions of the entire codebase and keeping track of them. Not to mention,
+if multiple people are working on the same codebase, you would have to email the
+entire codebase to each other every time you made a change and manually merge
+the changes. This is a nightmare and would be impossible to keep track of over
+time.
+
+There are two categories of version control systems: centralized and
+distributed. A centralized system means that there is a single server that all
+the users connect to that contains the entire codebase. The problem with this is
+the single point of failure. If the server goes down, you and everyone else
+could lose everything. With a distributed system, like Git, every user has a
+complete copy of the project on their local machine. This means that if the
+server goes down, you can continue working on your local copy and push your
+changes to the server when it comes back up.
+
+Git has become the standard for version control systems because it is free,
+fast, open-source, and scalable.
+
+GitHub is a cloud-based platform where you can store, share, and work together
+with others to write code. All of this is made possible by the open-source
+software, Git, upon which GitHub is built.
+
+I am sure that you're familiar with it, but if not, I'll do a quick little
+overview.
+
+## Using Git
+
+You can use Git in a couple of ways. The most common way, and the way that every
+developer should be at least familiar with, is through the command line.
+
+### Command Line
+
+You execute a series of commands in your terminal to interact with Git. This is
+probably the fastest way to get the job done, but it can be a bit confusing
+sometimes when utilizing some of the more advanced features of Git. That being
+said, I think that this is the best way to learn Git and, for the most part, the
+easiest way to utilize it with everyday tasks.
+
+### Code Editors and IDEs
+
+Most modern code editors and IDEs have built-in support for Git. This is a
+wonderful tool if you don't like the command line. They usually have a nice GUI
+that displays all your changes and how they will affect the codebase. Off the
+top of my head, I know that VSCode, JetBrains IDEs, and Zed all have built-in
+support for Git that is pretty easy to use. If you are a VIM/NeoVIM user like
+myself (did I mention I use VIM btw), there are a number of plugins that you can
+use to interact with Git. I personally use LazyGit, which is a terminal-based
+GUI for Git. It is pretty amazing and makes it easy to see all your changes and
+how they will affect the codebase.
+
+### GUI Clients
+
+There are a number of Graphical User Interfaces (GUIs) that you can use to
+interact with Git. There is SourceTree (which I have never used), GitKraken
+(which looks really pretty), and GitHub Desktop that I am familiar with. These
+are great if you don't like the command line and want something separate from
+your editor to interact with Git. They usually have a nice GUI that displays all
+your changes and how they will affect the codebase. I personally will jump into
+GitHub Desktop when I am resolving something that utilizes a lot of merging and
+I want to see those changes side by side.
+
+### Takeaways
+
+All of these methods are wonderful and have their own pros and cons. However,
+Git was made to be used in the command line. If you are using a GUI or plugin,
+you will eventually run into some kind of limitation. So, for the most part, I
+will be explaining how to use Git in the command line. Once you know the
+terminology and are comfortable with it, you should be able to navigate your GUI
+of choice with ease or leave them behind altogether.
+
+A side note is that a GUI tool will not always be available to you. Part of the
+reason I got so into VIM (did I mention I use VIM btw?) is because I had to SSH
+into a server to get some work done at a previous job, and I didn't have a code
+editor nor the ability to use a GUI to interact with Git. Luckily, I was already
+familiar with the command line, but navigating VIM for the first time was a bit
+of a learning curve. I would recommend that you at least get familiar with the
+command line and how to use Git in it. It will make your life so much easier in
+the long run and, for what it's worth, I do think that learning these tools in
+this way makes you a better developer in the long run.
+
+## Installing Git
+
+Open your terminal and run the following command:
+
+```bash
+git --version
+```
+
+This will check if you have Git installed and what version you have. If you
+don't have it installed or want to be sure that you have the latest version, you
+can either install it with Homebrew or download it from the official website.
+
+### Homebrew Install
+
+```bash
+brew install git
+```
+
+### Official Website Install
+
+You can download and install the latest version of Git from
+[here](https://git-scm.com/downloads), where you will find instructions to
+install Git on any operating system.
+
+### Windows
+
+If you are on Windows, after you install Git you will have an application called
+Git BASH, which is short for Born Again Shell. This is a terminal that emulates
+a Linux/Unix environment. I HIGHLY recommend using this over your default
+terminal. Windows is a horrifically broken operating system, and its terminal is
+the pinnacle of all of its mistakes rolled into a single application.
+
+## Configuring Git
+
+The first time you use Git, you have to configure a couple of settings:
+
+- Name
+- Email
+- Default Editor
+- Line Endings
+
+You can configure these settings on three different levels:
+
+- **System**
+  - These settings apply to every user on the system
+- **Global**
+  - These settings apply to all repositories of the current user
+- **Local**
+  - These settings apply to the current repository only
+
+Open your terminal and run the following commands to set your name:
+
+```bash
+git config --global user.name "{Your Name}"
+```
+
+Run the following command to set your email:
+
+```bash
+git config --global user.email "{Your Email}"
+```
+
+Run the following command to set your default editor. By default, I think it
+uses VIM.
+
+I am not sure of all the commands for all the editors, so be sure to check how
+to set the path for your editor, but the following example shows how to set it
+for VSCode.
+
+```bash
+git config --global core.editor "code --wait"
+```
+
+All of Git's global settings are stored in a text file, and if you would like to
+see all of them, you can run the following command to open it in your default
+editor:
+
+```bash
+git config --global -e
+```
+
+Now go back to your terminal. If it is waiting for you to close your editor,
+then go ahead and do that. We are now going to configure Git on how to handle
+end of lines.
+
+### Windows End of Lines
+
+On Windows, end of lines are represented by a carriage return `\r` and a line
+feed `\n`.
+
+### macOS / Linux End of Lines
+
+In both macOS and Linux, end of lines are represented by a line feed `\n`.
+
+This means that if you don't configure this properly, you will end up running
+into problems later down the road if you are working on a project with people
+who are using different operating systems than your own.
+
+If we don't configure this properly, we will run into some issues down the road.
+
+To adjust this, we have to edit a field called `core.autocrlf`.
+
+If you are on Windows, you are going to want to set this to `true`, and if you
+are on macOS or Linux, you are going to want to set this to `input`.
+
+```bash
+git config --global core.autocrlf input
+```
+
+## Initializing a Repository
+
+Open your terminal and navigate to a directory where we can create and work with
+a new project.
+
+Once you are in this directory, let's create a new directory that will be the
+project that we are going to work with from here on out.
+
+```bash
+mkdir my-project
+cd my-project
+```
+
+The first time you want to push files to a repository, you have to initialize an
+empty repository.
+
+```bash
+git init
+```
+
+This will initialize an empty Git repo within your working directory. By
+default, this folder is hidden because you are not supposed to touch it.
+
+Inside this folder is where Git stores information about your project. You don't
+need to understand the structure of the folder, but it is important to know that
+it exists and that you shouldn't touch it. If you delete, corrupt, or otherwise
+lose this folder, you will lose all of your project history. 99% of the time
+this is not something you want, but there is the rare case where you do want to
+delete it and reinitialize the repo. Know that you will lose all history before
+the deletion and begin taking snapshots of your project from where you currently
+are.
+
+If you need to delete the folder for whatever reason, you can either do so with
+your file explorer of choice or you can run the following command:
+
+```bash
+rm -rf .git
+```
+
+If you are on macOS or Linux, you might need to run the command with `sudo`.
+
+## Git Workflow
+
+Throughout any given day, we might work on, change, or create a number of files
+within our project. When our project reaches a state that we want to record, we
+`commit` those changes to our repository. Creating a commit is like taking a
+snapshot of our project.
+
+Within Git, we have an area called the `staging area` where all of our changes
+live. These changes are not yet part of our project history. Within the staging
+area, we are able to review our changes before we commit them to our project
+history, as well as pick and choose which changes we want to actually be part of
+the commit if not all of them.
+
+Within our new project, let's create two files called `file-1.txt` and
+`file-2.txt`. You don't have to put anything in them, but you can if you want.
+
+You can create these files within your editor of choice, within your file
+explorer, or by running the following command on macOS or Linux (I know there is
+a command for Windows, but I don't know it off the top of my head):
+
+```bash
+touch file-1.txt file-2.txt
+```
+
+Now that those files are created, let's add them to our staging area with the
+following command:
+
+```bash
+git add .
+```
+
+The period `.` adds all changes to the staging area. You can also add files
+individually like so:
+
+```bash
+git add file-1.txt
+git add file-2.txt
+```
+
+Remember, the staging area is where we are proposing changes for our next
+commit, so it is important to review the files and changes and ensure that those
+are the ones that you want going out with your next commit. In this case, we
+have decided that we want to commit all of our changes from the staging area, so
+we will run the following command to do so:
+
+```bash
+git commit -m "Add file-1 and file-2"
+```
+
+We are committing those changes with a small message explaining what we did. You
+cannot make a commit without leaving a message. A message can be left in single
+or double quotes and must come after the `-m` flag.
+
+Leaving meaningful messages is important because we are able to look through our
+history and see the changes that were made and why. This can be especially
+useful when searching for bugs or trying to understand why a certain change was
+made. It is a good practice to keep your commit messages short and to the point,
+but also descriptive enough to understand what was changed.
+
+Not only that, but I also recommend making frequent, small commits. That way, if
+we ever need to revert a change (something that we will cover later), we are not
+digging through thousands of lines of code to find the problem. That being said,
+big commits are fine, and it all depends on the project and the situation. All I
+am saying is no one is going to get mad at you for making one hundred commits in
+a day, but someone might get mad at you for making one commit every week,
+especially if something breaks.
+
+Once you commit a change, that does not mean that the staging area is empty. In
+fact, it contains the commit that you just made. The only way to empty the
+staging area is to either discard or push the changes that are in it, but we
+will cover that in a moment.
+
+Let's make some changes to `file-1.txt`. Add some text to it, anything you want.
+When you are done with that, save the file and run one of the following
+commands:
+
+```bash
+git add .
+```
+
+--- or ---
+
+```bash
+git add file-1.txt
+```
+
+Now let's make a commit to record that state:
+
+```bash
+git commit -m "Added some text to file-1.txt"
+```
+
+Now, let's delete `file-2.txt`. We have decided that we no longer need it in our
+project. We have to remember that this file is still being tracked by Git, so we
+need to stage the deletion and commit again to record that change:
+
+```bash
+git add .
+```
+
+--- or ---
+
+```bash
+git add file-2.txt
+```
+
+(It can be kind of confusing using the word "add" here when we are actually
+removing a file, but in Git, "add" means to stage changes, not necessarily to
+add new files.)
+
+This will stage the deletion of `file-2.txt`. Now we should commit that change
+as well so that we can capture that snapshot of our project:
+
+```bash
+git commit -m "Deleted file-2.txt, it was no longer needed."
+```
+
+Now that we have several commits in our repository, let's go over what a commit
+is/contains.
+
+Each commit has a unique identifier and contains information about what was
+changed, when it was changed, and who made that change. It also contains a
+complete snapshot of the project at the time of our change. So, in plain terms,
+Git doesn't just store the differences; it stores the full project _with_ those
+changes.
+
+This might sound like Git is going to take up a lot of space, but it is
+extremely efficient in how it stores the information. It compresses the data and
+doesn't store duplicate content, which is really cool.
+
+## Staging Files
+
+Let's add a couple more files to our project. Create `file-3.txt` and write some
+text in it. You can do that however you choose, or by running the following
+command:
+
+```bash
+echo hello > file-3.txt
+```
+
+We now have a new file in our project. We should now have two files in our
+project: `file-1.txt` and `file-3.txt`.
+
+Run the following command to see the status of your current project:
+
+```bash
+git status
+```
+
+This will show you the current status of your project and what files are in the
+staging area. In our case, it will show us that we have an untracked file,
+`file-3.txt`, which will be indicated in red text, meaning it is not in the
+staging area yet.
+
+Before we add this file to the staging area, let's create another file with the
+following command or its equivalent:
+
+```bash
+echo world > file-4.txt
+```
+
+Now we are going to add all of these changes to the staging area. This can be
+done in a number of ways that I have yet to go over.
+
+```bash
+git add .
+```
+
+- This method adds all changes to the staging area, including new files,
+  modified files, and deleted files.
+
+```bash
+git add file-3.txt file-4.txt
+```
+
+- This adds both specified files to the staging area. You can list as many files
+  as you want, but this can become tedious.
+
+```bash
+git add *.txt
+```
+
+- You can also use patterns to add many files at once. The one above will add
+  any `.txt` files to the staging area.
+
+Add all of these files and then run the following command:
+
+```bash
+git status
+```
+
+You will see all of your files appear in green text, meaning that they are in
+the staging area.
+
+Let's modify `file-3.txt` with the following command, which will append
+something to the end of the file:
+
+```bash
+echo something >> file-3.txt
+```
+
+Now check the status again. You will notice that `file-4.txt` is appearing in
+green, but there is also a message saying that changes are not staged for commit
+with `file-3.txt` in red. This is because additional changes have been made
+since you last staged it, and they have not been recorded, even though there are
+changes staged from before in the exact same file.
+
+If you run `git add .` again and then `git status` again, you will see that all
+files are green and all current changes are staged for commit.
+
+## Committing Changes
+
+Previously, I have shown you how to commit changes with the `-m` flag, but this
+is not the only way to commit changes. Sometimes you need to write a longer
+commit message. In this case, you would just run the following command:
+
+```bash
+git commit
+```
+
+This will then open your default editor where you can write a quick commit
+message at the top and then a longer description below it.
+
+To try this, run the following commands:
+
+```bash
+echo "this is a new longer string" >> file-3.txt
+git add .
+git commit
+```
+
+When your editor opens, write 'This is a quick heading', add a blank line (by
+hitting Enter twice), and then write a longer description of what you did. Then
+save and close the editor. When you are done, your terminal will have a small
+message indicating what you have just done and that the changes are committed.
+
+### Committing Best Practices
+
+You will find that there are a number of different ways to write a commit and
+also how large or how small a commit should be. I think it depends on the
+situation. There might be a case where you are writing some basic changes to a
+codebase that require you to touch every file in the project, but the changes
+are so simple (like correcting imports, for example) that it makes sense to make
+a monolith commit, and that is okay. There are also times when you have made a
+number of larger changes and want to commit those independently, and that can be
+okay too. Of course, there are also times when you are going to be making a
+number of meaningful changes and end up committing a hundred tiny changes in a
+day, and that is also okay. Ultimately, it is up to you and your team to decide
+what is best for your projects and the problem at hand. Personally, I like to
+make lots and lots of tiny commits most of the time because it makes it easier
+to see what is done, where, and why. But when I am writing documentation (like
+this), I usually get it all done in one large monolith commit because what can I
+really break when I am essentially just writing essays?
+
+## Skipping the Staging Area
+
+You don't always have to stage your changes when committing them, but be sure
+this is what you want to do when you are doing it. Most of the time, this is
+done when your changes do not need to be reviewed before being committed.
+
+Let's make some changes to one of our files to practice this with the following
+command:
+
+```bash
+echo test >> file-1.txt
+```
+
+Then, to skip the staging area and commit those changes directly, you can run
+one of the following commands:
+
+```bash
+git commit -a -m "Added test to file-1.txt"
+```
+
+--- or ---
+
+```bash
+git commit -am "Added test to file-1.txt"
+```
+
+This is the same as above; it just combines the `-a` and `-m` flags into one.
+
+--- or ---
+
+```bash
+git commit -a
+```
+
+The second command will open your editor like before, and you can write your
+commit message there.
+
+To explain what we are doing, we are simply running the commit command with the
+`-a` flag, which indicates that we want to commit all of our changes directly
+without staging them.
+
+(Side note: if you end up using some kind of GUI to work with your Git repos,
+then they will likely force you to stage your changes and then commit them, but
+honestly, you're not saving any time by committing them directly anyway.)
+
+## Removing Files
+
+To remove a file from the terminal, run the following command:
+
+```bash
+rm file-4.txt
+```
+
+This is not a Git command, just a standard Unix command.
+
+Now check the status of your repo:
+
+```bash
+git status
+```
+
+You will see that there are changes not staged for commit, specifically that
+`file-4.txt` is in red and has been deleted. This means that even though we have
+removed `file-4.txt` from our working directory, it still exists in our staging
+area. You can confirm this by running the following command:
+
+```bash
+git ls-files
+```
+
+This will list out all the files in our staging area, and you will still see
+that `file-4.txt` is there. Let's add this change to our staging area with one
+of the add commands and then list our files again and check our status:
+
+```bash
+git add file-4.txt
+git ls-files
+git status
+```
+
+Now you will see that `file-4.txt` has been removed from the staging area,
+reflecting what is in our working directory. Now commit those changes.
+
+This is an extremely common operation, and because of that, Git has a built-in
+way to speed this up.
+
+Let's add `file-5.txt` to our project with the following command:
+
+```bash
+touch file-5.txt
+```
+
+--- or ---
+
+```bash
+echo something >> file-5.txt
+```
+
+Now add those changes and commit them:
+
+```bash
+git add .
+git commit -m "added another file"
+```
+
+Now we're going to use Git to delete the file and remove it from our staging
+area with the following command. With this command, like the add command before
+it, you can specify multiple files, a single file, or use patterns to delete
+multiple files at once:
+
+```bash
+git rm file-5.txt
+```
+
+Now if you run `git ls-files`, you will see that `file-5.txt` is no longer in
+the staging area, and if you run `git status`, you will see that it is in green,
+indicating that it is staged for commit. Now commit those changes:
+
+```bash
+git commit -m "removed another file"
+```
+
+## Renaming or Moving Files
+
+Right now, our working directory should contain two files: `file-1.txt` and
+`file-3.txt`. Let's rename `file-1.txt` to `main.js` and then list our files
+with the following Unix commands:
+
+```bash
+mv file-1.txt main.js
+ls
+```
+
+You will see that `file-1.txt` is no longer in our working directory and that
+`main.js` is. If you open `main.js`, you will see that the text that was in
+`file-1.txt` is in `main.js`, confirming that we have successfully renamed the
+file.
+
+Of course, this means that our working directory is dirty, so we should add
+those changes, check the status, and commit them:
+
+```bash
+git add .
+git status
+git commit -m "renamed file-1.txt to main.js"
+```
+
+When you check the status, you will see that Git recognizes that you have
+successfully renamed the file and that it is staged for commit. This is then
+confirmed when you commit the changes.
+
+This is a two-step operation, just like deleting files, so Git has also given us
+a special operation to make this one step. We are going to now rename `main.js`
+back to `file-1.txt` and then check the status with the following commands:
+
+```bash
+git mv main.js file-1.txt
+git status
+```
+
+You will see that the file has been successfully renamed and is staged for
+commit. Commit those changes with the following command:
+
+```bash
+git commit -m "renamed main.js to file-1.txt"
+```
+
+## Ignoring files
+
+In just about every project, you should tell Git to ignore certain files. For
+example, in a JavaScript/TypeScript project, you don't want to commit your
+`node_modules` nor do you want to commit your `.env` file. These files are
+either generated by the project or contain sensitive information that you don't
+want to share with the world.
+
+In this example, we are going to ignore log files. So let's create a directory
+for those log files and then create a simple log file with the following Unix
+commands:
+
+```bash
+mkdir logs
+echo hello >> logs/dev.log
+```
+
+To ignore these logs, we are going to create a file called `.gitignore`. This
+file does not have a name; it is just an extension, and it should be in the root
+of your project. Let's create it with the following command:
+
+```bash
+echo "logs/" > .gitignore
+```
+
+Typically, this is a hidden file, so open it with your text editor of choice. I
+am going to open it with NVIM with the following command:
+
+```bash
+nvim .gitignore
+```
+
+You will see that the file contains "logs/", which indicates that Git should
+ignore that entire directory. You can list as many files and directories as you
+want here. You can use patterns if you want as well to ignore specific file
+types; for example, `*.log` will ignore all log files in your project.
+
+Save your changes and then run `git status` again. You will see that Git does
+not list the `logs` directory and is instead showing that we have a single new
+file called `.gitignore`. Add this file to the staging area and commit it with
+the following commands:
+
+```bash
+git add .
+git commit -m "added .gitignore file"
+```
+
+This only works if you ignore files before you add them to the staging area. If
+you accidentally add a file that you want to ignore and then add it to the
+`.gitignore` file, Git will continue to track that file. You will have to remove
+it from the staging area using the methods we discussed above and then commit
+for Git to respect the changes in the `.gitignore` file. For example, run the
+following commands:
+
+```bash
+mkdir bin
+echo hello > bin/app.bin
+git status
+```
+
+You will see that there is a new directory being tracked called `bin/`.
+
+Let's add that to the staging area:
+
+```bash
+git add .
+```
+
+Now we have realized that we do not want to track the `bin/` directory, so let's
+change our `.gitignore` file to include this with the following command:
+
+```bash
+echo "bin/" >> .gitignore
+git status
+```
+
+We will see that we have modified the `.gitignore` file and that change is being
+tracked. Add and commit those changes:
+
+```bash
+git add .
+git commit -m "Added bin/ to .gitignore"
+```
+
+But it is not going to ignore the changes in the `bin` file since Git is already
+tracking it. To show this, let's modify our bin file and check the status with
+the following commands:
+
+```bash
+echo world >> bin/app.bin
+git status
+```
+
+You will see that Git is saying that that file is modified. This is not what we
+want, so let's remove it from the staging area with the following commands:
+
+```bash
+git rm --cached -r bin/
+```
+
+This will remove the `bin` directory recursively from the index of the staging
+area, but not from our working directory, which is what we want.
+
+Now if you run `git ls-files`, you will see that the `bin` directory is no
+longer in the staging area. Running `git status` will confirm this by showing
+that there is one change waiting to be committed: the `bin` directory has been
+deleted from tracking.
+
+Commit those changes with the following command:
+
+```bash
+git commit -m "Remove the bin directory that was accidentally added."
+```
+
+From this point forward, Git is no longer going to track the changes in the
+`bin` directory. To prove this, run the following commands:
+
+```bash
+echo test > bin/app.bin
+git status
+```
+
+You will see that there are no changes to be made, nothing to commit, and the
+working tree is clean.
+
+If you are working with a framework, a lot of the time the `.gitignore` file is
+provided for you, and there is nothing to worry about. Also, if you go to
+[GitHub's .gitignore templates directory](https://github.com/github/gitignore),
+you will find a number of `.gitignore` templates for different languages and
+frameworks provided by GitHub.
+
+## Short Status
+
+I have gone over many times how to get the status of your project with the
+`git status` command. This provides great and comprehensive information, but it
+is very wordy, especially with larger commits. There is a shorter version of
+this command that provides a more concise output, which is `git status -s` or
+`git status --short`. This will give you a short summary of the changes in your
+project.
+
+Let's go ahead and run through an example:
+
+```bash
+echo "something else" >> file-3.txt
+echo "another thing" > file-6.txt
+git status
+```
+
+We will see that we have a modified file and a new file that need to be tracked.
+As you can see, there is a ton of information provided, which is great but can
+be a lot to parse with a lot of changes. So let's run the following command
+instead:
+
+```bash
+git status -s
+```
+
+You will see a much shorter list of the two files with some characters next to
+them indicating what is going on with them. Here we have two columns: the left
+column represents the staging area, and the right column represents the working
+directory. In this case, a red `M` is shown next to `file-3.txt`, indicating
+that it has been modified and is not in the staging area yet. Next to
+`file-6.txt`, we will see red `??` indicating that this is a new, untracked
+file.
+
+Let's run the following commands:
+
+```bash
+git add file-3.txt
+git status -s
+```
+
+You will see that the left column next to `file-3.txt` has changed to a green
+`M`, indicating that this file has been modified and is in the staging area,
+while there is still a red `??` next to `file-6.txt`.
+
+Let's modify `file-3.txt` again and check the status again with the following
+commands:
+
+```bash
+echo "another another thing" >> file-3.txt
+git status -s
+```
+
+You will still see that `file-6.txt` is untracked, but now `file-3.txt` has a
+green `M` and a red `M` next to each other, indicating that there are staged
+changes and also new changes that have not been staged. So let's add all of our
+changes to the staging area and check the status with the following commands:
+
+```bash
+git add .
+git status -s
+```
+
+You will see that `file-3.txt` now has a single green `M` next to it and
+`file-6.txt` has a green `A` next to it, indicating that a new file has been
+added to the staging area. Now commit those changes with the following command:
+
+```bash
+git commit -m "Modified file-3.txt and added file-6.txt"
+```
+
+## Viewing the Staged & Unstaged Changes
+
+I have shown you how to view the status of your project and see that certain
+files are going to be changed or have been changed or added, but what if you
+want to see _the exact_ lines of code that have been changed? This is where the
+`git diff` command comes in.
+
+Run the following commands to modify `file-6.txt`:
+
+```bash
+echo "some changes" >> file-6.txt
+git add .
+git diff --staged
+```
+
+You will see the exact changes in the exact files that have been staged for the
+next commit. Honestly, this sucks to do in the terminal, and I would never
+recommend doing it this way unless you absolutely have to, which, unfortunately,
+does happen sometimes and is the **ONLY** reason I am going to cover it at all.
+
+You can also see the changes that you have not staged yet. To see this, run the
+following commands:
+
+```bash
+echo "more changes" >> file-3.txt
+git diff
+```
+
+Now you will see changes that are not yet staged. Again, I would never
+personally do this in the terminal, but it is good to know regardless.
+
+## Viewing the History
+
+We have made a number of commits already, but where do those go? We can view
+them using the `git log` command. This will display the entire history of our
+project from latest to earliest. Run that command to see for yourself.
+
+What you will see is your entire history, but I am going to focus on the latest
+one at the top. You will see the word `commit` followed by a unique 40-character
+hexadecimal string that Git generates for us. Then, in parentheses, you will see
+`(HEAD -> master)`. `HEAD` is a reference to the current commit (this is how Git
+knows which branch we are currently working on), and `master` is the name of the
+current branch. You can work on different branches that you do not want to
+commit to the main branch (in this case, the main branch is called `master`, but
+modern conventions and platforms like GitHub now default to `main`).
+
+Below that, for each commit, you can see the Author, the name of the author, and
+their email. Below that, you can see the date and time of the commit, and
+finally, below that, you can see the commit message that the author left.
+
+If your Git history is long, you can press `space` to go to the next page and
+continue viewing the history. To quit, you can hit `q`.
+
+The log command has some interesting options, like `git log --oneline`, which
+will display a quick summary of the history in one line per commit. You will
+have a shortened identifier as well as the one-line description, but no other
+information.
+
+You can also reverse the sort order by adding the option `--reverse`. For
+example, run the following command:
+
+```bash
+git log --oneline --reverse
+```
+
+And you will see the history in one line in reverse order.
+
+## Viewing a Commit
+
+Say you want to inspect a specific commit. For that, you use the `git show`
+command. You have to specify the commit that you want to inspect, and there are
+two ways to do that.
+
+1. You can use the **shortened** unique identifier.
+2. Using the `HEAD` pointer. `HEAD` points to the latest commit. To refer to
+   previous commits, you can use `~` followed by a number. For example, to see
+   the commit before the current one, you would run `git show HEAD~1`.
+
+Run the following command to see an example:
+
+```bash
+git show HEAD~1
+```
+
+You will see the Author, the date and time of the commit, the one-line
+description, and the code diff of the commit.
+
+Now, what if you don't want to see the entire diff of the commit, but rather one
+file that was changed? You would run the following command:
+
+```bash
+git show HEAD~1:file-6.txt
+```
+
+And you would be shown the code in that file at the time of that commit.
+
+Now, what if you want to see the entire repo's file structure and not just the
+differences within a single commit? For that, you would use the following
+command:
+
+```bash
+git ls-tree HEAD~1
+```
+
+This will show all the files and directories stored in the repo at the commit
+that you specified.
+
+If you ran the command before, you will see that each file name is shown. Before
+the file name, you will see a unique identifier and what type of object it is.
+Directories are called `tree`s and files are called `blob`s. You can easily see
+the contents of each file or directory by running `git show` followed by the
+unique identifier before the file/directory name. Doing this for a file will
+show the content of the file, and doing this for a directory will show the
+contents of that directory.
+
+## Unstaging Files
+
+Let's say we have some changes staged that we do not want to commit yet, or at
+all. If this isn't the case in your current project, run the following command:
+
+```bash
+echo "another another another change" >> file-1.txt
+git add .
+git status -s
+```
+
+You will see that `file-1.txt` has a green `M` next to it. We want to unstage
+the changes that we made to `file-1.txt`. To do this, we can run the following
+command:
+
+```bash
+git restore --staged file-1.txt
+```
+
+Like other commands before it, you can specify multiple files here, use
+patterns, or, if you want to unstage everything, you can use `.`.
+
+Now if you run `git status -s`, you will see that `file-1.txt` has a red `M`
+next to it, indicating that we have successfully removed it from the staging
+area.
+
+## Discarding Local Changes
+
+Let's say we have made some changes that we want to throw away. For this
+example, we can use the `file-1.txt` that should be out of the staging area. If
+you did something else with this file, you can run the following command to
+modify it and then follow along from there:
+
+```bash
+echo "doing something" >> file-1.txt
+```
+
+Now let's discard those changes using the `restore` command:
+
+```bash
+git restore file-1.txt
+```
+
+When we do this, Git is going to take the version of the file in our next
+environment, which is our staging environment (or the last commit if not
+staged), and copy it into our working directory. We can also use patterns,
+multiple files, or a `.` here to restore multiple things at once.
+
+Now if you run `git status -s`, you will no longer see `file-1.txt` at all.
+However, if you were working with a new untracked file, Git will not know what
+to do with this, so you will see the file with a red `??` next to it. To remove
+those files, you would have to run `git clean`. When you run that, you will get
+a fatal error stating `requireForce` defaults to true and none of the displayed
+switches were given. Basically, Git is telling us that this is a dangerous
+operation, and if we run it, there will be no way to get that file back. So
+let's run the following command to do exactly that:
+
+```bash
+git clean -f
+```
+
+That will force the removal of the untracked file. If you are working with a
+whole directory, you would need to add the `-d` flag as well or combine it with
+the `-f` flag, so often you would just run:
+
+```bash
+git clean -fd
+```
+
+Now if you run `git status -s` again, you will see that the untracked files are
+gone.
+
+## Restoring a File to an Earlier Version
+
+Git stores every version of the files in its database so that if you mess
+something up, you can always go back to a previous version of that file.
+
+Let's make sure that all of our current changes are added and committed by
+running the following commands:
+
+```bash
+git add .
+git commit -m "ensure everything is up to date"
+```
+
+Now let's delete `file-3.txt`, and then we are going to restore it with the
+following commands:
+
+```bash
+git rm file-3.txt
+git commit -m "removed file-3.txt"
+ls
+```
+
+You will see that `file-3.txt` has been removed from your local directory and
+from the current commit. If you open this project in a text editor, you will not
+be able to find `file-3.txt` either. But what if we did not mean to delete it
+and we want to get it back? Let's look at our history:
+
+```bash
+git log --oneline
+```
+
+We will see our history. We want to restore to the version just before our
+current head, so we will run the following command:
+
+```bash
+git restore --source=HEAD~1 file-3.txt
+git status -s
+```
+
+This is telling Git that we want to restore from the source before our current
+head and that we just want to restore `file-3.txt`. We will also see in our git
+status that `file-3.txt` is now in the staging area and ready to be committed.
+Also, if you run `ls`, you will see that `file-3.txt` is back in our working
+directory and can be found with our text editors again.
+
+## Pushing to GitHub
+
+Now that we have a local repo set up and you know the basics, let's push this to
+GitHub (you can delete it later if you want).
+
+Open GitHub in your browser, navigate to repositories, and then click `New`.
+GitHub will ask you what you want the repo to be called; let's name this one
+`git-practice`. You can make it public or private, depending on whether or not
+you want other people to be able to see it. You can also add a description if
+you would like. Now click `Create repository`.
+
+GitHub will take you to a new screen that shows you a bunch of commands. We are
+interested in the section "...or push an existing repository from the command
+line". We have already initialized a repo and made commits. The modern standard
+is to name the primary branch `main`, so we will run the commands to do that and
+push our existing work:
+
+```bash
+git branch -M main
+git remote add origin {COPY THE URL FROM GITHUB}
+git push -u origin main
+```
+
+Then refresh your page, and you will see all of your files and directories
+(outside of those specified in your `.gitignore`) in GitHub! Now, every time you
+make a commit, you should run the following command:
+
+```bash
+git push
+```
+
+And this will push your commits and changes to GitHub so that your project and
+its history are not exclusively stored on your local machine.
+
+You can copy the code if you ever delete the project off of your computer or
+need to work on a different one by clicking the "Code" button and then following
+the instructions in one of the three ways that GitHub provides. Personally, I
+like the following:
+
+```bash
+git clone {COPY THE URL FROM GITHUB}
+```
+
+That is pretty much the basics of working with Git and pushing it into GitHub.
+Now you're ready to start working on projects with a team!
+
+If you would prefer a video version of this guide, I used this one to help draft
+this guide:
+[Git Tutorial for Beginners: Learn Git in 1 Hour](https://www.youtube.com/watch?v=8JJ101D3knE).
+
+</MarkdownPage>

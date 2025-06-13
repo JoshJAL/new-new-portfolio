@@ -255,3 +255,49 @@ body {
 .subtle-pop {
   @apply shadow-[inset_4px_4px_5px_rgba(255,255,255,0.07),inset_-3px_-3px_10px_rgba(0,0,0,0.3)];
 }
+
+h1 {
+  font-family: 'Roboto', sans-serif;
+  @apply text-2xl font-semibold md:text-3xl;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  @apply text-xl font-semibold md:text-2xl;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  @apply text-lg font-semibold md:text-xl;
+}
+
+h4 {
+  font-family: 'Roboto', sans-serif;
+  @apply text-base font-semibold md:text-lg;
+}
+
+article {
+  @apply flex w-full flex-col gap-5;
+}
+
+section {
+  @apply flex w-full flex-col gap-3;
+}
+
+pre {
+  padding: 1.5em;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3);
+  @apply shadow-[inset_4px_4px_5px_rgba(255,255,255,0.07),inset_-3px_-3px_10px_rgba(0,0,0,0.3)];
+}
+
+pre > code {
+  all: unset;
+}
+
+blockquote {
+  border-left: 4px solid var(--color-bittersweet);
+  padding: 0 0 0 20px;
+  margin: 0px;
+  font-size: 1.333em;
+}

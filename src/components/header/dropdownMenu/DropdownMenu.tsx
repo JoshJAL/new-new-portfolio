@@ -31,6 +31,7 @@ export default function DropdownMenu() {
               <p>Github</p>
             </div>
           </DropdownMenuItem>
+          <DropdownMenuItem href='/guides'>Guides</DropdownMenuItem>
           <DropdownMenuItem prefetch={false} target='_blank' href='https://www.instagram.com/mygovtnamej/'>
             <div className='flex w-full items-center gap-1'>
               <FaInstagram className='h-4 w-4' />
