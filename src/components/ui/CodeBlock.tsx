@@ -88,7 +88,7 @@ export default function CodeBlock({ children }: CodeBlockProps) {
   return (
     // Use a relative parent to position the button absolutely
     <div className='group relative'>
-      <div className='absolute top-4 right-4 cursor-pointer opacity-0 transition-opacity duration-300 group-hover:opacity-100 focus:opacity-100'>
+      <div className='absolute top-4 right-4 cursor-pointer opacity-100 transition-opacity duration-300 group-hover:opacity-100 focus:opacity-100 md:opacity-0'>
         <GlassButton
           onClick={handleCopy}
           disabled={isCopied}
