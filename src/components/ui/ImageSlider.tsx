@@ -121,6 +121,7 @@ export default function ImageSlider({ images, autoScroll, scrollInterval = 10000
                   <div className='relative mx-auto w-fit overflow-hidden rounded-lg'>
                     <div className='pop absolute inset-0 z-10 bg-black/10' />
                     <Image
+                      loading='eager'
                       quality={60}
                       height={300}
                       width={300}

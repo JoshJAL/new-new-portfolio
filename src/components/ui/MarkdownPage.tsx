@@ -20,6 +20,7 @@ export default function MarkdownPage({ children, heading, image }: Props) {
           <div className='relative mx-auto w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
             <div className='pop absolute inset-0 z-10 bg-black/10' />
             <Image
+              loading='eager'
               className='h-full w-full bg-white'
               placeholder='blur'
               src={image}
