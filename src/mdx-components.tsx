@@ -1,4 +1,5 @@
-import StyledLink from './components/ui/StyledLink';
+import CodeBlock from '@/components/ui/CodeBlock';
+import StyledLink from '@/components/ui/StyledLink';
 
 import type { MDXComponents } from 'mdx/types';
 import type { ComponentPropsWithoutRef } from 'react';
@@ -33,6 +34,7 @@ const components: MDXComponents = {
 export function useMDXComponents(otherComponents: MDXComponents): MDXComponents {
   return {
     ...otherComponents,
-    ...components
+    ...components,
+    pre: CodeBlock
   };
 }
