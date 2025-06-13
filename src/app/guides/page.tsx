@@ -19,7 +19,7 @@ export default function Page() {
       image: JJLogo
     },
     {
-      heading: 'Lightweight Markup Language',
+      heading: 'Markdown & MDX',
       description:
         'Markdown is an extremely simple markup language used to generate text files with simple formatting syntax.',
       href: '/guides/markdown',
