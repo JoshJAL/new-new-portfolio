@@ -1,14 +1,16 @@
 import Image from 'next/image';
 
 import { Link } from 'next-view-transitions';
+import { BiChevronRightCircle } from 'react-icons/bi';
 
 import type { Post } from '@/types/photography';
 
 interface Props {
+  black?: boolean;
   post: Post;
 }
 
-export default function PageLink({ post }: Props) {
+export default function PageLink({ black, post }: Props) {
   return (
     <Link
       prefetch
@@ -18,7 +20,7 @@ export default function PageLink({ post }: Props) {
       <div className='relative w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
         <div className='pop absolute inset-0 z-10 bg-black/10' />
         <Image
-          className='h-full w-full bg-white object-contain'
+          className={`h-full w-full ${black ? 'bg-black' : 'bg-white'} object-contain`}
           placeholder='blur'
           src={post.image}
           alt={post.heading}
@@ -30,6 +32,9 @@ export default function PageLink({ post }: Props) {
       <div className='flex w-full flex-col gap-3'>
         <h2 className='text-xl font-semibold md:text-2xl'>{post.heading}</h2>
         <p className='text-sm md:text-base'>{post.description}</p>
+        <div className='gradient_underline flex w-fit items-center gap-2'>
+          <BiChevronRightCircle /> See More
+        </div>
       </div>
     </Link>
   );
