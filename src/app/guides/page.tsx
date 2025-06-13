@@ -41,7 +41,7 @@ export default function Page() {
   ];
 
   return (
-    <div className='flex w-full flex-col gap-5'>
+    <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2'>
       {posts.map((post) => (
         <PageLink post={post} key={post.href} />
       ))}

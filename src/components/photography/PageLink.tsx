@@ -18,7 +18,7 @@ export default function PageLink({ post }: Props) {
       <div className='relative w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
         <div className='pop absolute inset-0 z-10 bg-black/10' />
         <Image
-          className='h-full w-full bg-white'
+          className='h-full w-full bg-white object-contain'
           placeholder='blur'
           src={post.image}
           alt={post.heading}
