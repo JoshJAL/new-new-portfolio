@@ -1,0 +1,405 @@
+import MarkdownPage from '@/components/ui/MarkdownPage';
+
+import { TypeScriptLogo } from '@/guide-thumbnails';
+
+<MarkdownPage heading="TypeScript" image={TypeScriptLogo}>
+
+## What is TypeScript?
+
+TypeScript is just Javascript with some extra features. It adds additional
+syntax and uses type inference to give you great tooling, a tighter integration
+with your editor. Using it makes your code less error prone, makes debugging a
+lot easier and for the little bit of extra time you take to type your functions,
+variables, props, etc. you get a lot of benefits in return. It also makes it
+easier to work with other developers as the code is more self documenting and
+you can see what types are expected where.
+
+TypeScript was created by Microsoft, is free, and open source. It has become the
+standard when creating anything using Javascript. While there are alternatives
+like JSDoc and I have used them in the past, I find that adopting TypeScript is
+a little bit easier and the benefits of other typing and documenting solutions
+over TypeScript while great require a little bit more of a learning curve for
+newer developers and I am always thinking of making things as easy as possible
+for a new dev to jump in and get to work.
+
+## The Basics
+
+TypeScript will infer the type of a variable, function, prop, etc based on its
+usage when it can, but for the most part you want to explicitly define the type
+as much as possible/where it makes sense to make things easier for you while you
+code and so that your editor can start linting for you right away. I don't think
+there is much use in typing a variable that is not going to be modified in some
+way down the line, but to each there own.
+
+Below are some examples of explicitly and implicitly typed variables, functions,
+and props so you can see the difference.
+
+```typescript
+function helloWold(name: string): string {
+  // Given the prop a type of string and a return type of string on the function
+  const message: string = `Welcome ${name}!`; // Explicitly typed
+  const helloWorld = 'Hello World!'; // Implicitly typed
+
+  console.log(message);
+  console.log(helloWorld);
+}
+
+helloWorld('John Doe'); // This will product no error since it is taking in a string
+helloWorld(1); // This will lint in your editor and say 'Argument of type
+// "string" is not assignable to parameter of type "number"'
+```
+
+Generally, even though it is not needed because it will happen implicitly, I
+think it is important to give an explicit return type to your functions that way
+new developers (new devs to your codebase), can hover over a function and see
+what parameters a function is expecting to take in and what it should be
+returning. Error handling is important too even in something as chaotic as
+Javascript, but I'll cover that one in another guide. All I will mention now is
+generally you want to have two types for your return function one for what you
+expect if everything goes right and one for what happens when there is an error.
+I will give two examples below.
+
+```typescript
+function checkHello(str: string): Promise<string | null> {
+  return new Promise((resolve) => {
+    if (str === 'hello') {
+      resolve('world');
+    } else {
+      resolve(null);
+    }
+  });
+}
+
+// Usage example:
+checkHello('test').then((result) => {
+  console.log(result); // null
+});
+
+checkHello('hello').then((result) => {
+  console.log(result); // will log 'world'
+});
+```
+
+In the case above we know the function is a Promise and that it will either
+result in a string or null because it is explicitly typed this can be determined
+at a glance and we can begin using it right away. We know that we are going to
+have to await it and based on the return types we can determine what our uses
+for it will be in either case within our code.
+
+## Types
+
+### Boolean
+
+- This is the most basic datatype and either means true or false.
+
+  ```typescript
+  const isTrue: boolean = true; // Explicitly typed
+  const isFalse = false; // Implicitly typed
+  ```
+
+### Number
+
+- Just like in Javascript, all numbers are either floating point values or
+  BigIntegers. These floating point numbers get the type 'number', while
+  BigIntegers get the type 'bigint'. In addition to hexadecimal and decimal
+  literals, TypeScript also supports binary and octal literals.
+- I am going to be perfectly honest, I have quite literally never used bigint
+  and did not know it was a thing until making this documentation, so do with
+  that what you will.
+
+  ```typescript
+  const decimal: number = 6;
+  const hex: number = 0xf00d;
+  const binary: number = 0b1010;
+  const octal: number = 0o744;
+  const big: bigint = 100n;
+  ```
+
+### String
+
+- To type textual data we use type 'string' and just like Javascript you can use
+  either single or double quotes to surround text data. I prefer single quote if
+  you couldn't already tell, but feel free to use whatever you want, I am not
+  picky about that one.
+
+  ```typescript
+  const color: string = 'blue';
+  const anotherColor = 'green';
+
+  const name = 'John Doe';
+  const number = 20;
+  const sentence: string = `${name} is ${number} years old!`;
+
+  console.log(sentence); // 'John Doe is 20 years old!'
+  ```
+
+### Array
+
+- Like Javascript, TypeScript allows you to work with arrays of values. Array
+  types can be written in one of two ways. In the first, you use the type of the
+  elements followed by `[]` to denote an array of that element type.
+
+```typescript
+const list: number[] = [1, 2, 3];
+```
+
+- The second way uses a generic array type, `Array<elemType>`
+
+```typescript
+const list: Array<number> = [1, 2, 3];
+```
+
+- And of course arrays can be implicitly typed like everything else
+
+```typescript
+const list = [1, 2, 3];
+```
+
+### Tuple
+
+- Tuple types allow you to express an array with a fixed number of elements
+  whose types are known, but need not be the same.
+
+```typescript
+// This is how you declare a tuple type
+const x: [string, number];
+// Initialize it
+x = ['hello', 3]; // OK
+// Initialize it incorrectly
+x = [10, 'hello']; // Error
+
+// Type 'number' is not assignable to type 'string'
+// Type 'string' is not assignable to type 'number'
+```
+
+- When accessing an element with a known index, the correct type is retrieved
+
+```typescript
+// OK
+console.log(x[0].substring(1));
+
+console.log(x[1].substring(1)); // Error
+
+// Property 'substring' does not exist on type 'number'
+```
+
+- Accessing an element outside the set of known indices fails with an error
+
+```typescript
+x[3] = 'world';
+// Tuple type '[string, number]' of length '2' has no element at index '3'
+
+console.log(x[5].toString());
+// Object is possibly 'undefined'
+// Tuple type '[string, number]' of length '2' has no element at index '5'
+```
+
+### Enum
+
+- This one is only available using Typescript and does not exist in Javascript
+  like the others. It is just a way of giving more friendly names to sets of
+  numeric values
+- In theory this is wonderful, and in other languages like C# they absolutely
+  are and I use them all the time, but they are pretty broken in TypeScript and
+  do not behave the way that they should. Generally avoid enums in TypeScript,
+  but I will explain them here for completeness sake.
+
+```typescript
+enum Color {
+  Red,
+  Green,
+  Blue
+}
+const c: Color = Color.Green;
+```
+
+- By default, enums begin numbering their members starting at 0. You can change
+  this manually setting the value of one of its members
+
+```typescript
+enum Color {
+  Red = 1,
+  Green,
+  Blue
+}
+```
+
+- Or, even manually set all the values in the enum
+
+```typescript
+enum Color {
+  Red = 1,
+  Green = 3,
+  Blue = 6
+}
+```
+
+- You can go form a numeric value to the name of that value in the enum
+
+```typescript
+enum Color {
+  Red = 1,
+  Green = 3,
+  Blue = 6
+}
+const colorName: string = Color[3]; // Green
+
+console.log(colorName); // Displays Green
+```
+
+- If all of that felt a little confusing, literally do not worry about it. Just
+  use arrays as your normally do, type them if you feel and you are fine.
+
+### Unknown
+
+- Avoid this at all costs. While it does have its benefits and uses, generally
+  we should know what we are working with and we should only accept specific
+  types everywhere we can.
+- We may need to describe the type of variables that we do not know when we are
+  writing an application. This might come from some dynamic source like the user
+  or we might be accepting all values in our API.
+
+  ```typescript
+  let notSure: unknown = 4;
+  notSure = 'maybe a string instead';
+
+  notSure = false; // OK, definitely a boolean
+  ```
+
+- If you have a variable with an unknown type, you can narrow it so something
+  more specific by doing `typeof` checks, comparison checks, or more advanced
+  type guards that I'll go over in another guide.
+
+  ```typescript
+  declare const maybe: unknown;
+  const aNumber: number = maybe; // Error
+
+  // Type 'unknown' is not assignable to type 'number'
+  // Unknown is SUPER WEIRD
+
+  if (maybe === true) {
+    // TypeScript now knows that maybe is a boolean;
+    const aBoolean: boolean = maybe; // OK
+    // But it cannot be anything else
+    const aString: string = maybe; /// Error
+    // Type 'boolean' is not assignable to type 'string'
+  }
+
+  if (typeof maybe === 'string') {
+    // TypeScript now knows that maybe is a string
+    const aString: string = maybe; // OK
+    // But it cannot be anything else
+    const aBoolean: boolean = maybe; // Error
+    // Type 'string' is not assignable to type 'boolean'
+  }
+  ```
+
+### Any
+
+- Another one to avoid at all costs. The whole point of TypeScript is to type
+  everything and to know what you're working with to avoid errors and bugs, but
+  I'll go over it anyway.
+- If you want to opt out of type checking for whatever reason you can do so with
+  the `any` type
+
+  ```typescript
+  declare function getValue(key: string): any;
+  // OK, return value of 'getValue' is not checked
+  const str string = getValue('myString');
+  ```
+
+- The any type is a powerful way to work with existing Javascript, allowing you
+  to opt-in and out of type checking during compilation.
+- Unlike `unknown`, variables of type `any` allow you to access arbitrary
+  properties, even ones that don't exist. These properties include functions and
+  TypeScript will not check their existence or type
+
+### Void
+
+- `void` is a little like the opposite of `any`: the absence of having any type
+  at all. You may commonly see this as the return type of functions that do not
+  return a value.
+
+  ```typescript
+  function log(message: string): void {
+    console.log(message);
+  }
+  ```
+
+- Declaring variables of type `void` is not useful because you can only assign
+  `null` or `undefined` to them
+
+### Null and Undefined
+
+- In TypeScript, both `undefined` and `null` actually have their typed names
+  `undefined` and `null` respectively. Much like `void`, they're not extremely
+  useful on their own.
+- By default `null` and `undefined` are subtypes of all other types. That means
+  you can assign `null` and `undefined` to something like `number`
+
+### Never
+
+- The `never` type represents the type of values that never occur. For instance,
+  `never` is the return type for a function expression or an arrow function
+  expression that always throws an exception or one that never returns.
+- The `never` type is a subtype of, and assignable to, every type; however,
+  <i>no</i> type is a subtype of, or assignable to, `never`.
+- Even `any` isn't assignable to `never`.
+
+### Object
+
+- `object` is a type that represents the non-primitive type, i.e. anything that
+  is not `number`, `string`, `boolean`, `bigint`, `symbol`, `null`, or
+  `undefined`.
+- With `object` type, APIs like `Object.create` can be better represented
+
+```typescript
+declare function create(o: object | null): void;
+
+// OK
+create({ prop: 0 });
+create(null);
+create(undefined); // with `--strictNullChecks` flag enabled, undefined is not a subtype of null
+// Argument of type 'undefined' is not assignable to parameter of type 'object | null'
+
+create(42); // Error
+// Argument jof type 'number' is not assignable to parameter of type 'object'
+
+create('string'); // Error
+// Argument of type 'string' is not assignable to parameter of type 'object'
+
+create(false); // Error
+// Argument of type 'boolean' is not assignable to parameter of type 'object'
+```
+
+- Generally you won't need to use this
+
+### Type Assertions
+
+- Sometimes you'll end up in a situation where you'll know more about a value
+  than TypeScript does. Usually this will happen when you know the type of some
+  entity could be more specific than its current type.
+
+- Type assertions are a way to tell the compiler "trust me, I know what I'm
+  doing." A type assertion is like a type cast in other languages, but performs
+  no special checking or restructuring of data. It has no runtime impact, and is
+  used purely by the compiler. TypeScript assumes that you, the programmer, have
+  performed any special checks that you need.
+
+  ```typescript
+  let someValue: any = 'this is a string';
+
+  let strLength: number = (<string>someValue).length;
+  let strLength2: number = (someValue as string).length;
+  ```
+
+- The other version is the "angle-bracket" syntax:
+
+  ```typescript
+  let someValue: any = 'this is a string';
+
+  let strLength: number = (<string>someValue).length;
+  let strLength2: number = (someValue as string).length;
+  ```
+
+</MarkdownPage>

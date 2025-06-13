@@ -1,0 +1,172 @@
+import MarkdownPage from '@/components/ui/MarkdownPage';
+
+import { MarkdownLogo } from '@/guide-thumbnails';
+
+<MarkdownPage heading="Markdown and MDX" image={MarkdownLogo}>
+
+Markdown is a simple markup language that uses a really simple syntax to format
+plain text documents, making them easy to read and write. I take all of my notes
+in markdown and when I am creating text heavy sites I like to integrate it into
+them since it is easy to format, style, and display on the web as well. These
+guides are writtin in MDX and Markdown.
+
+MDX is just Markdown but it allows you to use Javascipt components inside of it.
+The index.mdx page on this site is a good example that uses styled JSX
+components to display the cards on the home page despite being a Markdown file.
+It is really nice.
+
+## Basic Syntax
+
+### Heading
+
+```markdown
+# H1
+
+## H2
+
+### H3
+
+#### H4
+
+##### H5
+
+###### H6
+```
+
+### Bold
+
+```markdown
+**bold text**
+```
+
+### Italic
+
+```markdown
+_italicized text_
+```
+
+### Blockquote
+
+```markdown
+> blockquote
+```
+
+### Ordered List
+
+```markdown
+1. First Item
+2. Second Item
+3. Third Item
+```
+
+### Unordered List
+
+```markdown
+- First Item
+- Second Item
+- Third Item
+```
+
+### Code
+
+```markdown
+`code`
+```
+
+### Horizontal Rule
+
+```markdown
+---
+```
+
+### Link
+
+```markdown
+[title](https://example.com)
+```
+
+### Image
+
+```markdown
+![alt text](image.jpg)
+```
+
+## Extended Syntax
+
+It is important to note that not all Markdown applications support the following
+syntax.
+
+### Table
+
+```markdown
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
+```
+
+### Fenced Code Block
+
+```markdown
+{ "firstName": "John", "lastName": "Smith", "age": 25 }
+```
+
+### Footnote
+
+```markdown
+Here's a sentence with a footnote. [^1]
+
+[^1]: This is the footnote.
+```
+
+### Heading ID
+
+```markdown
+### My Great Heading {#custom-id}
+```
+
+### Definition List
+
+```markdown
+term : definition
+```
+
+### Strikethrough
+
+```markdown
+~~The world is flat.~~
+```
+
+### Task List
+
+```markdown
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+```
+
+### Emoji
+
+```markdown
+This is so funny! :joy:
+```
+
+### Highlight
+
+```markdown
+I need to highlight these ==very important words==.
+```
+
+### Subscript
+
+```markdown
+H~2~O
+```
+
+### Superscript
+
+```markdown
+X^2^
+```
+
+</MarkdownPage>

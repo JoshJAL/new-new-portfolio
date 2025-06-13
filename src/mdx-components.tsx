@@ -1,4 +1,4 @@
-import { Link } from 'next-view-transitions';
+import StyledLink from './components/ui/StyledLink';
 
 import type { MDXComponents } from 'mdx/types';
 import type { ComponentPropsWithoutRef } from 'react';
@@ -10,9 +10,9 @@ const components: MDXComponents = {
     const className = 'text-moonstone hover:text-coquelicot hover:underline underline-offset-4';
     if (href?.startsWith('/')) {
       return (
-        <Link prefetch href={href} className={className} {...props}>
+        <StyledLink prefetch href={href}>
           {children}
-        </Link>
+        </StyledLink>
       );
     }
     if (href?.startsWith('#')) {

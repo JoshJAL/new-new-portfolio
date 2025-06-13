@@ -1,0 +1,90 @@
+import MarkdownPage from '@/components/ui/MarkdownPage';
+
+import { PrettierLogo } from '@/guide-thumbnails';
+
+<MarkdownPage heading="Prettier - Opinionated Code Formatter" image={PrettierLogo}>
+
+## What is Prettier?
+
+Prettier is an opinionated code formatter that formats your code on save. The
+need to discuss style in code review is typically a thing at large companies,
+but I have carried the same prettier config with me for years. I think that
+having a style guide for your code is important because it improves legibility
+of your code and ensures that your code is consistent. In the root of your
+folder add the following config and your code will magically format on save,
+**_you must name the file `prettierrc.json`_**.
+
+I am sure that someone is going to have some opinions about this config, feel
+free to let me know how much you love it or hate it on my
+[contact page](/contact)!
+
+## Config
+
+```json
+{
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "arrowParens": "always",
+  "bracketSpacing": true,
+  "jsxSingleQuote": true,
+  "printWidth": 120,
+  "semi": true,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "tabWidth": 2,
+  "useTabs": false,
+  "endOfLine": "auto",
+  "proseWrap": "always",
+  "overrides": [
+    {
+      "files": ["*.md", "*.mdx"],
+      "options": {
+        "printWidth": 80
+      }
+    }
+  ]
+}
+```
+
+## Explanation
+
+The one line that can be removed depending on the project that you're in is
+`plugins`. The `plugins` just ensures that certain prettier plugins are
+recognized; in this case it is the `prettier-plugin-tailwindcss` which ensures
+that tailwind classes are sorted in the order that they are defined in the
+tailwind config. This is a nice touch, but not necessary for all projects. If
+you don't use tailwind, you can remove this line.
+
+- <u>**Arrow Parens**</u>: This option controls the printing of parentheses
+  around a sole arrow function parameter. It can be set to `always` or `avoid`.
+  The default value is `always`.
+- <u>**Bracket Spacing**</u>: This option controls the printing of spaces
+  between brackets in object literals. It can be set to `true` or `false`. The
+  default value is `true`.
+- <u>**JSX Single Quote**</u>: This option controls the printing of single
+  quotes in JSX attributes. It can be set to `true` or `false`. The default
+  value is `false`. I prefer single quotes to double quotes always.
+- <u>**Print Width**</u>: This option controls the maximum line length that
+  Prettier will wrap code to. The default value is `80`.
+- <u>**Semi**</u>: This option controls the printing of semicolons at the end of
+  statements. It can be set to `true` or `false`. The default value is `true`.
+- <u>**Single Quote**</u>: This option controls the printing of single quotes in
+  strings. It can be set to `true` or `false`. The default value is `false`.
+- <u>**Trailing Comma**</u>: This option controls the printing of trailing
+  commas in object literals, array literals, and function parameters. It can be
+  set to `none`, `es5`, or `all`. The default value is `es5`.
+- <u>**Tab Width**</u>: This option controls the number of spaces per
+  indentation level. The default value is `2`.
+- <u>**Use Tabs**</u>: This option controls the printing of tabs instead of
+  spaces. It can be set to `true` or `false`. The default value is `false`.
+- <u>**End Of Line**</u>: This option controls the printing of end of line
+  characters. It can be set to `auto`, `lf`, `crlf`, or `cr`. The default value
+  is `auto`.
+- <u>**Prose Wrap**</u>: This option controls the printing of markdown text. It
+  can be set to `always`, `never`, or `preserve`. The default value is
+  `preserve`.
+- <u>**Overrides**</u>: This option allows you to specify different options for
+  different files. In this case, it is used to set the `printWidth` option to
+  `80` for markdown files. This is useful because markdown files are typically
+  more readable with a smaller print width.
+
+</MarkdownPage>
