@@ -25,6 +25,9 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang='en'>
+        <head>
+          <meta name='google-site-verification' content='aq6hqjPSa8IEyhU-KQiLBe8vucj8S2aI_wLb1CsXaPM' />
+        </head>
         <body className={`${lexend.className} flex min-h-screen flex-col antialiased`}>
           <WebcamBackground />
           <Header />
