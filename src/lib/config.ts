@@ -1,3 +1,3 @@
 export const siteConfig = {
-  url: 'https://joshualevine.me'
+  url: 'https://www.joshualevine.me'
 };
