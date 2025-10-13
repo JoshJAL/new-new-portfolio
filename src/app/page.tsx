@@ -1,5 +1,6 @@
 import Education from '@/components/home/Education';
 import Experience from '@/components/home/Experience';
+import Freelance from '@/components/home/Freelance';
 import Intro from '@/components/home/Intro';
 import PageLinks from '@/components/home/PageLinks';
 import RecentProjects from '@/components/home/RecentProjects';
@@ -13,6 +14,7 @@ export default function Home() {
       <PageLinks />
       <RecentProjects />
       <Experience />
+      <Freelance />
       <Education />
       <BackToTopButton />
     </article>

@@ -9,6 +9,9 @@ export default function PageLinks() {
       <GlassButtonLink additionalClasses='w-full md:w-fit' colorSwap href='#experience' prefetch={false}>
         Experience
       </GlassButtonLink>
+      <GlassButtonLink additionalClasses='w-full md:w-fit' colorSwap4 href='#freelance' prefetch={false}>
+        Freelance
+      </GlassButtonLink>
       <GlassButtonLink additionalClasses='w-full md:w-fit' colorSwap3 href='#education' prefetch={false}>
         Education
       </GlassButtonLink>
