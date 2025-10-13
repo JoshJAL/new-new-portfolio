@@ -4,6 +4,10 @@ export default function Freelance() {
   return (
     <InfoCard id='freelance' heading='Freelance'>
       <section className='flex w-full flex-col gap-5'>
+        <p>
+          Along with professional experience, I have done a lot of freelance work for small businesses and individuals.
+        </p>
+
         <InfoCard colorSwap heading={'Full Stack Web Developer | Coastal Crumb LLC | 03/2025 - Present'}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
