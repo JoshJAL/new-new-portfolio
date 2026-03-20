@@ -210,6 +210,26 @@ body {
   }
 }
 
+.lightbox-nav-btn {
+  position: absolute;
+  z-index: 50;
+  cursor: pointer;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+  padding: 0.5rem;
+  color: white;
+  transition: background-color 200ms ease;
+}
+
+.lightbox-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lightbox-nav-btn > * {
+  stroke: var(--color-bittersweet);
+}
+
 .gradient_underline {
   background-image: linear-gradient(90deg, var(--color-naples-yellow), var(--color-bittersweet));
   background-size: 0% 2px;

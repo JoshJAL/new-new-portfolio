@@ -4,9 +4,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'mdx', 'md'],
-  experimental: {
-    reactCompiler: true
-  }
+  reactCompiler: true
 };
 
 const withMDX = createMDX({});

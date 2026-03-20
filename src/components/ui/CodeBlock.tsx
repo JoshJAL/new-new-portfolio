@@ -71,9 +71,9 @@ interface CodeBlockProps {
 export default function CodeBlock({ children }: CodeBlockProps) {
   const [isCopied, setIsCopied] = useState(false);
 
-  const { props: codeProps } = children;
-  const language = codeProps.className?.replace(/language-/, '') || 'text';
-  const codeString = String(codeProps.children).trim();
+  const codeProps = children?.props;
+  const language = codeProps?.className?.replace(/language-/, '') || 'text';
+  const codeString = String(codeProps?.children ?? '').trim();
 
   const handleCopy = async () => {
     try {

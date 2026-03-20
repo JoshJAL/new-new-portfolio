@@ -10,7 +10,7 @@ interface DropdownMenuItemProps {
 
 export default function DropdownMenuItem({ children, href, prefetch = true, target = '_self' }: DropdownMenuItemProps) {
   return (
-    <MenuItem>
+    <MenuItem as="div">
       <Link
         prefetch={prefetch}
         target={target}

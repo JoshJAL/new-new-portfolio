@@ -1,10 +1,7 @@
-import LoadingSpinner from '@/components/loading/LoadingSpinner';
 import BreadCrumb from '@/components/ui/BreadCrumb';
 import GlassButtonLink from '@/components/ui/GlassButtonLink';
-import ImageSlider from '@/components/ui/ImageSlider';
 import InfoCard from '@/components/ui/InfoCard';
-
-import { Suspense } from 'react';
+import PhotoGallery from '@/components/ui/PhotoGallery';
 
 import type { StaticImageData } from 'next/image';
 
@@ -26,15 +23,13 @@ export default function PhotographyPage({ children, images, instagramLink, title
       <BreadCrumb current={title} link={link} />
       <InfoCard heading={title}>
         <article className='flex w-full flex-col gap-5'>
-          <Suspense fallback={<LoadingSpinner />}>
-            <ImageSlider autoScroll images={images} />
-          </Suspense>
           <section className='flex w-full flex-col gap-3'>{children}</section>
           <GlassButtonLink prefetch={false} target='_blank' href={instagramLink}>
             Instagram Post
           </GlassButtonLink>
         </article>
       </InfoCard>
+      <PhotoGallery images={images} />
     </div>
   );
 }
