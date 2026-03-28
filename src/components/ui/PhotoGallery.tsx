@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import TiltCard from '@/components/ui/TiltCard';
 
 import { IoClose } from 'react-icons/io5';
 import { LuArrowBigLeft, LuArrowBigRight } from 'react-icons/lu';
@@ -73,17 +74,19 @@ export default function PhotoGallery({ images }: PhotoGalleryProps) {
             className='group mb-4 block w-full break-inside-avoid cursor-pointer'
             aria-label={`View ${alt} fullscreen`}
           >
-            <div className='pop relative overflow-hidden rounded-2xl transition-transform duration-300 ease-in-out group-hover:scale-[1.02]'>
-              <div className='pop pointer-events-none absolute inset-0 z-10 bg-black/10 transition-colors duration-300 group-hover:bg-black/0' />
-              <Image
-                src={src}
-                alt={alt}
-                placeholder='blur'
-                quality={60}
-                sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
-                className='block h-auto w-full bg-white'
-              />
-            </div>
+            <TiltCard tiltMax={8} scale={1.02}>
+              <div className='pop relative overflow-hidden rounded-2xl'>
+                <div className='pop pointer-events-none absolute inset-0 z-10 bg-black/10 transition-colors duration-300 group-hover:bg-black/0' />
+                <Image
+                  src={src}
+                  alt={alt}
+                  placeholder='blur'
+                  quality={60}
+                  sizes='(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
+                  className='block h-auto w-full bg-white'
+                />
+              </div>
+            </TiltCard>
           </button>
         ))}
       </div>
