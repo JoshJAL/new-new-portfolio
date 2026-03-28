@@ -22,6 +22,8 @@ export default function Page() {
       href='https://www.npmjs.com/package/ez-funcs'
       codeHref='https://github.com/JoshJAL/ez-funcs'
       title='ez-funcs'
+      breadcrumbLabel='Packages'
+      breadcrumbLink='/packages'
     >
       <p>
         I found myself copying and pasting the same utility functions between personal and professional projects
@@ -34,8 +36,8 @@ export default function Page() {
         only took me 30 minutes from start to finish and it was only my second time doing it.
       </p>
       <p>
-        If you haven&apos;t creating your own NPM package I would recommend throwing a simple one together and
-        publishing it to go through the process. You will be shocked to find out just how easy it is.
+        If you haven&apos;t created your own NPM package I would recommend throwing a simple one together and publishing
+        it to go through the process. You will be shocked to find out just how easy it is.
       </p>
       <p>
         There are a couple things that I think every developer should do to get over that imposter syndrome hump and I

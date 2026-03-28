@@ -20,6 +20,8 @@ interface Props {
   imagePadding?: string;
   tech: Tech[];
   title: string;
+  breadcrumbLabel?: string;
+  breadcrumbLink?: string;
 }
 
 export default function ProjectPage({
@@ -30,11 +32,13 @@ export default function ProjectPage({
   imageBackgroundColor,
   imagePadding,
   tech,
-  title
+  title,
+  breadcrumbLabel = 'Projects',
+  breadcrumbLink = '/projects'
 }: Props) {
   const link = {
-    label: 'Projects',
-    href: '/projects'
+    label: breadcrumbLabel,
+    href: breadcrumbLink
   };
 
   return (
