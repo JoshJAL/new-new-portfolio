@@ -1,5 +1,6 @@
 import BreadCrumb from '@/components/ui/BreadCrumb';
 import InfoCard from '@/components/ui/InfoCard';
+import TiltCard from '@/components/ui/TiltCard';
 import Technology from '@/components/ui/Technology';
 import Image from 'next/image';
 import GlassButtonLink from '@/components/ui/GlassButtonLink';
@@ -45,18 +46,20 @@ export default function ProjectPage({
     <article className='flex w-full flex-col gap-5'>
       <BreadCrumb current={title} link={link} />
       <h1 className={`text-3xl font-semibold ${roboto.className}`}>{title}</h1>
-      <div className='relative mx-auto w-fit overflow-hidden rounded-xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)]'>
-        <div className='pop absolute inset-0 z-10 bg-black/10'></div>
-        <Image
-          className={` ${imageBackgroundColor ? imageBackgroundColor : 'bg-white'} ${imagePadding}`}
-          alt={title}
-          src={image}
-          placeholder='blur'
-          height={450}
-          width={450}
-          quality={60}
-        />
-      </div>
+      <TiltCard className='mx-auto w-fit' tiltMax={12} glareOpacity={0.25}>
+        <div className='relative overflow-hidden rounded-xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)]'>
+          <div className='pop absolute inset-0 z-10 bg-black/10'></div>
+          <Image
+            className={` ${imageBackgroundColor ? imageBackgroundColor : 'bg-white'} ${imagePadding}`}
+            alt={title}
+            src={image}
+            placeholder='blur'
+            height={450}
+            width={450}
+            quality={60}
+          />
+        </div>
+      </TiltCard>
       <InfoCard heading={'Technologies'}>
         <div className='flex w-full flex-wrap gap-3'>
           {tech.map((t) => (
