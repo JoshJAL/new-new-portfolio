@@ -8,7 +8,7 @@ export default function Freelance() {
           Along with professional experience, I have done a lot of freelance work for small businesses and individuals.
         </p>
 
-        <InfoCard colorSwap heading={'Full Stack Web Developer | Coastal Crumb LLC | 03/2025 - Present'}>
+        <InfoCard heading={'Full Stack Web Developer | Coastal Crumb LLC | 03/2025 - Present'}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
               <li>Fully built out client&apos;s front-end application.</li>
@@ -19,7 +19,7 @@ export default function Freelance() {
             </ul>
           </div>
         </InfoCard>
-        <InfoCard colorSwap heading={'Full Stack Web Developer | MSK Structural Therapy | 12/2024 - 02/2025'}>
+        <InfoCard heading={'Full Stack Web Developer | MSK Structural Therapy | 12/2024 - 02/2025'}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
               <li>Fully built out client&apos;s business website.</li>
@@ -29,7 +29,7 @@ export default function Freelance() {
             </ul>
           </div>
         </InfoCard>
-        <InfoCard colorSwap heading={"Full Stack Web Developer | Anissa's Soaps | 06/2024 - 08/2024"}>
+        <InfoCard heading={"Full Stack Web Developer | Anissa's Soaps | 06/2024 - 08/2024"}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
               <li>Fully built out client&apos;s business website.</li>
@@ -39,7 +39,7 @@ export default function Freelance() {
             </ul>
           </div>
         </InfoCard>
-        <InfoCard colorSwap heading={'Full Stack Web Developer | Shoelacetip Ink | 03/2023 - 06/2023'}>
+        <InfoCard heading={'Full Stack Web Developer | Shoelacetip Ink | 03/2023 - 06/2023'}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
               <li>Fully built out client&apos;s business website.</li>
@@ -49,7 +49,7 @@ export default function Freelance() {
             </ul>
           </div>
         </InfoCard>
-        <InfoCard colorSwap heading={'Web Developer | Almanzar-Paramio Law, LLC | 04/2023 - 06/2023'}>
+        <InfoCard heading={'Web Developer | Almanzar-Paramio Law, LLC | 04/2023 - 06/2023'}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
               <li>Full website redesign.</li>

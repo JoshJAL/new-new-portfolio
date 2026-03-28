@@ -17,7 +17,7 @@ export default function MarkdownPage({ children, heading, image }: Props) {
       <BreadCrumb link={{ label: 'Guides', href: '/guides' }} current={heading} />
       <InfoCard heading={heading}>
         <section>
-          <div className='relative mx-auto w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
+          <div className='relative mx-auto w-fit overflow-hidden rounded-xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)]'>
             <div className='pop absolute inset-0 z-10 bg-black/10' />
             <Image
               loading='eager'

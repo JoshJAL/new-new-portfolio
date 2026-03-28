@@ -28,7 +28,7 @@ export function TextAreaField({ autoFocus, label, noLabel, onChange, placeholder
           onChange={onChange ? onChange : (e) => field.handleChange(e.target.value)}
           name={field.name}
           id={field.name}
-          className='pop nice-focus-no-shadow block w-full rounded-lg border-0 bg-white/85 px-3 py-2 text-black ring ring-white/20 backdrop-blur-sm transition-all duration-300 ease-in-out outline-none placeholder:text-gray-500 focus:shadow-[3px_3px_0px_rgba(0,0,0,1)]'
+          className='pop nice-focus-no-shadow block w-full rounded-xl border-0 bg-white/85 px-3 py-2 text-black ring-1 ring-white/20 liquid-blur transition-all duration-300 ease-in-out outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-verdigris/40'
           placeholder={placeholder}
         />
       </div>

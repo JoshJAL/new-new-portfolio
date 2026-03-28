@@ -29,7 +29,7 @@ export default function GlassButton({
         disabled={disabled}
         type={type}
         onClick={onClick}
-        className={`${fit ? 'w-fit' : 'w-full'} cursor-pointer rounded-lg border border-red-600/20 bg-red-600/50 px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:border-red-800/20 hover:bg-red-800/50 ${roboto.className} pop nice-hover-no-shadow backdrop-blur-sm`}
+        className={`${fit ? 'w-fit' : 'w-full'} cursor-pointer rounded-xl border border-red-600/20 bg-red-600/50 px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:border-red-800/20 hover:bg-red-800/50 ${roboto.className} pop nice-hover-no-shadow liquid-blur`}
       >
         {children}
       </button>
@@ -42,7 +42,7 @@ export default function GlassButton({
         disabled={disabled}
         type={type}
         onClick={onClick}
-        className={`${fit ? 'w-fit' : 'w-full'} bg-cerulean/50 nice-hover-no-shadow hover:bg-verdigris/50 hover:border-verdigris/20 border-cerulean/20 pop cursor-pointer rounded-lg border px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:text-white ${roboto.className} backdrop-blur-sm`}
+        className={`${fit ? 'w-fit' : 'w-full'} bg-cerulean/50 nice-hover-no-shadow hover:bg-verdigris/50 hover:border-verdigris/20 border-cerulean/20 pop cursor-pointer rounded-xl border px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:text-white ${roboto.className} liquid-blur`}
       >
         {children}
       </button>
@@ -55,7 +55,7 @@ export default function GlassButton({
         disabled={disabled}
         type={type}
         onClick={onClick}
-        className={`${fit ? 'w-fit' : 'w-full'} bg-bittersweet/50 hover:bg-cerulean/50 nice-hover-no-shadow border-bittersweet/20 hover:border-cerulean/20 pop cursor-pointer rounded-lg border px-3 py-2 text-center font-semibold text-black transition-all duration-300 ease-in-out hover:text-white ${roboto.className} backdrop-blur-sm`}
+        className={`${fit ? 'w-fit' : 'w-full'} bg-bittersweet/50 hover:bg-cerulean/50 nice-hover-no-shadow border-bittersweet/20 hover:border-cerulean/20 pop cursor-pointer rounded-xl border px-3 py-2 text-center font-semibold text-black transition-all duration-300 ease-in-out hover:text-white ${roboto.className} liquid-blur`}
       >
         {children}
       </button>
@@ -67,7 +67,7 @@ export default function GlassButton({
       disabled={disabled}
       type={type}
       onClick={onClick}
-      className={`${fit ? 'w-fit' : 'w-full'} bg-verdigris/50 hover:bg-naples-yellow/50 border-verdigris/20 hover:border-naples-yellow/20 pop cursor-pointer rounded-lg border px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:text-black ${roboto.className} nice-hover-no-shadow backdrop-blur-sm`}
+      className={`${fit ? 'w-fit' : 'w-full'} bg-verdigris/50 hover:bg-naples-yellow/50 border-verdigris/20 hover:border-naples-yellow/20 pop cursor-pointer rounded-xl border px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:text-black ${roboto.className} nice-hover-no-shadow liquid-blur`}
     >
       {children}
     </button>

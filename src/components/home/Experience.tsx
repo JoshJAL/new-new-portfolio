@@ -20,10 +20,7 @@ export default function Experience() {
           &quot; page!
         </p>
 
-        <InfoCard
-          colorSwap
-          heading={'Lead Web & Software Developer | Monster Transmission & Performance | 06/2023 - Present'}
-        >
+        <InfoCard heading={'Lead Web & Software Developer | Monster Transmission & Performance | 06/2023 - Present'}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
               <li>
@@ -53,7 +50,7 @@ export default function Experience() {
             </ul>
           </div>
         </InfoCard>
-        <InfoCard colorSwap heading={'Javascript Developer | Rob Graham Enterprises | 05/2022 - 11/2022'}>
+        <InfoCard heading={'Javascript Developer | Rob Graham Enterprises | 05/2022 - 11/2022'}>
           <div className='flex w-full flex-col gap-3'>
             <ul className='list-inside list-disc'>
               <li>Maintained frontend and backend code for various enterprises.</li>

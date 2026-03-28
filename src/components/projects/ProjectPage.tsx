@@ -41,7 +41,7 @@ export default function ProjectPage({
     <article className='flex w-full flex-col gap-5'>
       <BreadCrumb current={title} link={link} />
       <h1 className={`text-3xl font-semibold ${roboto.className}`}>{title}</h1>
-      <div className='relative mx-auto w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
+      <div className='relative mx-auto w-fit overflow-hidden rounded-xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)]'>
         <div className='pop absolute inset-0 z-10 bg-black/10'></div>
         <Image
           className={` ${imageBackgroundColor ? imageBackgroundColor : 'bg-white'} ${imagePadding}`}

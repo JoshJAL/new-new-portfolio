@@ -14,6 +14,11 @@
   --color-verdigris: #70c1b3;
 }
 
+@utility liquid-blur {
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  backdrop-filter: blur(20px) saturate(1.5);
+}
+
 * {
   scroll-behavior: smooth;
 }
@@ -29,7 +34,7 @@ body {
 }
 
 .comic-shadow {
-  @apply shadow-[3px_3px_0px_rgba(0,0,0,1)];
+  @apply shadow-[0_4px_20px_-4px_rgba(0,0,0,0.25)];
 }
 
 .tileText {
@@ -215,15 +220,20 @@ body {
   z-index: 50;
   cursor: pointer;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  backdrop-filter: blur(20px) saturate(1.5);
   padding: 0.5rem;
   color: white;
-  transition: background-color 200ms ease;
+  transition: all 200ms ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .lightbox-nav-btn:hover {
   background: rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 4px 16px -4px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .lightbox-nav-btn > * {
@@ -257,23 +267,51 @@ body {
 }
 
 .nice-hover {
-  @apply hover:shadow-[3px_3px_0px_rgba(0,0,0,1),inset_-3px_-3px_5px_rgba(255,255,255,0.15),inset_4px_4px_10px_rgba(0,0,0,0.3)];
+  @apply hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.3),inset_0_-1px_0_rgba(0,0,0,0.08)];
 }
 
 .nice-hover-no-shadow {
-  @apply hover:shadow-[inset_-3px_-3px_5px_rgba(255,255,255,0.15),inset_4px_4px_10px_rgba(0,0,0,0.3)];
+  @apply hover:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-1px_0_rgba(0,0,0,0.08)];
 }
 
 .nice-focus-no-shadow {
-  @apply focus:shadow-[inset_-3px_-3px_5px_rgba(255,255,255,0.15),inset_4px_4px_10px_rgba(0,0,0,0.3)];
+  @apply focus:shadow-[0_12px_40px_-8px_rgba(0,0,0,0.18),inset_0_1px_0_rgba(255,255,255,0.35),inset_0_-1px_0_rgba(0,0,0,0.08)];
 }
 
 .pop {
-  @apply shadow-[inset_4px_4px_5px_rgba(255,255,255,0.07),inset_-3px_-3px_10px_rgba(0,0,0,0.3)];
+  @apply shadow-[0_8px_32px_-8px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.2),inset_0_-1px_0_rgba(0,0,0,0.06)];
 }
 
 .subtle-pop {
-  @apply shadow-[inset_4px_4px_5px_rgba(255,255,255,0.07),inset_-3px_-3px_10px_rgba(0,0,0,0.3)];
+  @apply shadow-[0_4px_16px_-4px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.15),inset_0_-1px_0_rgba(0,0,0,0.04)];
+}
+
+.glass-edge {
+  position: relative;
+}
+
+.glass-edge::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  padding: 1.5px;
+  background:
+    radial-gradient(80px 80px at 0% 0%, rgba(255, 255, 255, 0.5), transparent 70%),
+    radial-gradient(80px 80px at 100% 0%, rgba(255, 255, 255, 0.3), transparent 70%),
+    radial-gradient(60px 60px at 100% 100%, rgba(255, 255, 255, 0.08), transparent 70%),
+    radial-gradient(70px 70px at 0% 100%, rgba(255, 255, 255, 0.2), transparent 70%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.03));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
 }
 
 h1 {
@@ -305,10 +343,37 @@ section {
 }
 
 pre {
+  position: relative;
   padding: 1.5em;
-  border-radius: 8px;
+  border-radius: 16px;
   background: rgba(0, 0, 0, 0.3);
-  @apply shadow-[inset_4px_4px_5px_rgba(255,255,255,0.07),inset_-3px_-3px_10px_rgba(0,0,0,0.3)];
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  backdrop-filter: blur(20px) saturate(1.5);
+  @apply shadow-[0_8px_32px_-8px_rgba(0,0,0,0.12),inset_0_1px_0_rgba(255,255,255,0.1),inset_0_-1px_0_rgba(0,0,0,0.06)];
+}
+
+pre::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  padding: 1.5px;
+  background:
+    radial-gradient(80px 80px at 0% 0%, rgba(255, 255, 255, 0.5), transparent 70%),
+    radial-gradient(80px 80px at 100% 0%, rgba(255, 255, 255, 0.3), transparent 70%),
+    radial-gradient(60px 60px at 100% 100%, rgba(255, 255, 255, 0.08), transparent 70%),
+    radial-gradient(70px 70px at 0% 100%, rgba(255, 255, 255, 0.2), transparent 70%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.03));
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
 }
 
 pre > code {

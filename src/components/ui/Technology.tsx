@@ -11,7 +11,7 @@ export default function Technology({ tech }: Props) {
 
   return (
     <p
-      className={`flex items-center gap-2 rounded-lg ${color} px-3 py-2 ${textColor ?? 'text-white'} border ${borderColor} pop backdrop-blur-sm`}
+      className={`flex items-center gap-2 rounded-xl ${color} px-3 py-2 ${textColor ?? 'text-white'} border ${borderColor} pop liquid-blur`}
     >
       {icon}
       {label}

@@ -73,7 +73,7 @@ export default function PhotoGallery({ images }: PhotoGalleryProps) {
             className='group mb-4 block w-full break-inside-avoid cursor-pointer'
             aria-label={`View ${alt} fullscreen`}
           >
-            <div className='pop relative overflow-hidden rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-[1.02]'>
+            <div className='pop relative overflow-hidden rounded-2xl transition-transform duration-300 ease-in-out group-hover:scale-[1.02]'>
               <div className='pop pointer-events-none absolute inset-0 z-10 bg-black/10 transition-colors duration-300 group-hover:bg-black/0' />
               <Image
                 src={src}
@@ -90,7 +90,7 @@ export default function PhotoGallery({ images }: PhotoGalleryProps) {
 
       {isOpen && (
         <div
-          className='fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm'
+          className='fixed inset-0 z-50 flex items-center justify-center bg-black/85 liquid-blur'
           onClick={close}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
@@ -101,7 +101,7 @@ export default function PhotoGallery({ images }: PhotoGalleryProps) {
         >
           <button
             onClick={close}
-            className='absolute top-4 right-4 z-50 cursor-pointer rounded-full bg-white/10 p-2 text-white backdrop-blur-sm transition-colors hover:bg-white/25'
+            className='absolute top-4 right-4 z-50 cursor-pointer rounded-full bg-white/10 p-2 text-white liquid-blur transition-colors hover:bg-white/25'
             aria-label='Close lightbox'
           >
             <IoClose className='h-6 w-6' />
@@ -143,7 +143,7 @@ export default function PhotoGallery({ images }: PhotoGalleryProps) {
               placeholder='blur'
               quality={85}
               sizes='90vw'
-              className='max-h-[85vh] w-auto rounded-lg object-contain'
+              className='max-h-[85vh] w-auto rounded-2xl object-contain'
             />
           </div>
         </div>

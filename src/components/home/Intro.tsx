@@ -3,8 +3,8 @@ import Image from 'next/image';
 
 export default function Intro() {
   return (
-    <section className='bg-cerulean/50 border-cerulean/30 pop grid w-full grid-cols-1 items-center gap-5 rounded-tr-lg rounded-bl-lg border p-3 text-white backdrop-blur-sm md:grid-cols-2'>
-      <div className='relative mx-auto w-fit overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
+    <section className='bg-cerulean/50 border-cerulean/30 pop glass-edge grid w-full grid-cols-1 items-center gap-5 rounded-2xl border p-3 text-white liquid-blur md:grid-cols-2'>
+      <div className='relative mx-auto w-fit overflow-hidden rounded-xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)]'>
         <div className='pop absolute inset-0 z-10 bg-black/10' />
         <Image
           quality={60}

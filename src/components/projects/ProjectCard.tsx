@@ -13,8 +13,8 @@ interface Props {
 
 export default function ProjectCard({ project }: Props) {
   return (
-    <div className='bg-cerulean/50 border-cerulean/20 pop flex w-full flex-col gap-3 rounded-lg border p-3 text-white backdrop-blur-sm'>
-      <div className='relative w-full overflow-hidden rounded-lg shadow-[3px_3px_0px_rgba(0,0,0,1)]'>
+    <div className='bg-cerulean/50 border-cerulean/20 pop glass-edge flex w-full flex-col gap-3 rounded-2xl border p-3 text-white liquid-blur'>
+      <div className='relative w-full overflow-hidden rounded-xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)]'>
         <div className='pop absolute inset-0 z-10 bg-black/10'></div>
         <Image
           className={`h-auto w-full ${project.backgroundColor ? project.backgroundColor : 'bg-white'}`}

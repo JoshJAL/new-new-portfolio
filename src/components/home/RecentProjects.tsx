@@ -155,7 +155,7 @@ export default function RecentProjects() {
           </StyledLink>
           &quot; page!
         </p>
-        <InfoCard colorSwap heading={'ez-funcs'}>
+        <InfoCard heading={'ez-funcs'}>
           <div className='flex w-full flex-col gap-3'>
             <p>
               A simple npm package that contains a list of utility functions that I use over a variety of projects both
@@ -168,7 +168,7 @@ export default function RecentProjects() {
               </li>
               <li>Well documented with examples and explanations of code.</li>
             </ul>
-            <InfoCard heading={'Technologies'}>
+            <InfoCard colorSwap heading={'Technologies'}>
               <div className='flex w-full flex-wrap gap-3'>
                 {ez_funcs.map((t) => (
                   <Technology tech={t} key={t.label} />
@@ -180,7 +180,7 @@ export default function RecentProjects() {
             </GlassButtonLink>
           </div>
         </InfoCard>
-        <InfoCard colorSwap heading={'Monster Transmission & Performance'}>
+        <InfoCard heading={'Monster Transmission & Performance'}>
           <div className='flex w-full flex-col gap-3'>
             <p>
               I am the lead developer for Monster Transmission & Performance. I have built all of our internal tooling
@@ -200,7 +200,7 @@ export default function RecentProjects() {
                 React Server Components. Can be used in Next.js as well.
               </li>
             </ul>
-            <InfoCard heading={'Technologies'}>
+            <InfoCard colorSwap heading={'Technologies'}>
               <div className='flex w-full flex-wrap gap-3'>
                 {monster.map((t) => (
                   <Technology tech={t} key={t.label} />
@@ -212,7 +212,7 @@ export default function RecentProjects() {
             </GlassButtonLink>
           </div>
         </InfoCard>
-        <InfoCard colorSwap heading={'Coastal Crumb'}>
+        <InfoCard heading={'Coastal Crumb'}>
           <div className='flex w-full flex-col gap-3'>
             <p>
               A local bakery opened up and asked me to make their website and set up their ordering and subscription
@@ -231,7 +231,7 @@ export default function RecentProjects() {
               <li>Created image uploading system for custom and editable images of products.</li>
               <li>Allow users to sign in to manage their own subscription status.</li>
             </ul>
-            <InfoCard heading={'Technologies'}>
+            <InfoCard colorSwap heading={'Technologies'}>
               <div className='flex w-full flex-wrap gap-3'>
                 {coastal.map((t) => (
                   <Technology tech={t} key={t.label} />
@@ -243,7 +243,7 @@ export default function RecentProjects() {
             </GlassButtonLink>
           </div>
         </InfoCard>
-        <InfoCard colorSwap heading={'Transmission Decoder App'}>
+        <InfoCard heading={'Transmission Decoder App'}>
           <div className='flex w-full flex-col gap-3'>
             <p>
               This one is no longer available on the app store, but it was a really cool iOS app that would allow you to
@@ -257,7 +257,7 @@ export default function RecentProjects() {
               <li>Suggested products of multiple shops.</li>
               <li>Allowed users to save any number of searches.</li>
             </ul>
-            <InfoCard heading={'Technologies'}>
+            <InfoCard colorSwap heading={'Technologies'}>
               <div className='flex w-full flex-wrap gap-3'>
                 {decoder.map((t) => (
                   <Technology tech={t} key={t.label} />
