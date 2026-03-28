@@ -9,6 +9,8 @@ import Joshua from '@/public/projects/happyHeadshot.jpg';
 import Michael from '@/public/projects/Michael-Levine.jpg';
 import Monster from '@/public/projects/monster_logo_white.webp';
 import Msk from '@/public/projects/msk.png';
+import AgentMakerIcon from '@/public/projects/agent-maker.jpeg';
+import TaskPilotLogo from '@/public/projects/taskpilot.jpeg';
 import Omar from '@/public/projects/o-almanzar.webp';
 import Scribble from '@/public/projects/scribble.jpg';
 import Snake from '@/public/projects/snake.jpg';
@@ -18,6 +20,26 @@ import type { Project } from '@/types/project';
 
 export default function Page() {
   const projects: Project[] = [
+    {
+      codeHref: 'https://github.com/JoshJAL/claude-trello',
+      description:
+        'Point AI coding agents at your task boards. Connects to Trello, GitHub, and GitLab with support for Claude, OpenAI, and Groq. Desktop app available.',
+      backgroundColor: 'bg-[#50767c]',
+      href: '/projects/claude-trello',
+      image: TaskPilotLogo,
+      projectHref: 'https://claude-trello-two.vercel.app',
+      title: 'TaskPilot'
+    },
+    {
+      backgroundColor: 'bg-[#50767c]',
+      codeHref: 'https://github.com/JoshJAL/agent-maker',
+      description:
+        'Interactive CLI wizard that generates CLAUDE.md, AGENTS.md, and GEMINI.md files for your project with AI-powered suggestions and optional framework scaffolding.',
+      href: '/projects/agent-maker',
+      image: AgentMakerIcon,
+      projectHref: 'https://www.npmjs.com/package/@joshjal/agent-maker',
+      title: 'Agent Maker'
+    },
     {
       codeHref: 'https://github.com/JoshJAL/new-new-portfolio',
       description: 'This portfolio website, this is the third or fourth iteration of my portfolio.',
