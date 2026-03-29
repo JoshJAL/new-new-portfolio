@@ -4,7 +4,7 @@ import NPMIcon from '@/public/projects/npm-icon.png';
 import type { Project } from '@/types/project';
 
 export default function Page() {
-  const projects: Project[] = [
+  const packages: Project[] = [
     {
       codeHref: 'https://github.com/JoshJAL/ez-funcs',
       description:
@@ -36,18 +36,14 @@ export default function Page() {
 
   return (
     <article className='flex w-full flex-col gap-5'>
-      <h1 className='text-3xl font-semibold'>Projects</h1>
+      <h1 className='text-3xl font-semibold'>Packages</h1>
       <p>
-        These are most, if not all of the packages that I have worked on. I can&apos;t provide the source code for all
-        of my pacakges since they were built for work or clients, but if you care to learn more or visit the public
-        facing portion of the packages, feel free to click the links and look around!
-      </p>
-      <p>
-        While most of my projects are private because I wouldn&apos;t want to expose my clients code. My GitHub
-        portfolio currently features 105 projects and counting with thouands of commits per year.
+        Open source npm packages I&apos;ve published. These are tools and utilities I built to solve problems I kept
+        running into across projects, so I packaged them up for anyone to use. Each one is available on npm and fully
+        open source on GitHub.
       </p>
       <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3'>
-        {projects.map((project) => (
+        {packages.map((project) => (
           <ProjectCard key={project.href} project={project} />
         ))}
       </div>
