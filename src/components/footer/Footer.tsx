@@ -50,11 +50,11 @@ export default function Footer() {
       target: '_blank' as const
     },
     {
-      href: '/photography',
+      href: 'https://photography.joshualevine.me',
       icon: <FaCamera className='h-5 w-5' />,
       label: 'Photography',
-      prefetch: true,
-      target: '_self' as const
+      prefetch: false,
+      target: '_blank' as const
     },
     {
       href: '/projects',

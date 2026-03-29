@@ -1,8 +1,8 @@
-import PageLink from '@/components/photography/PageLink';
+import PageLink from '@/components/ui/PageLink';
 
 import { GitLogo, JJLogo, MarkdownLogo, PrettierLogo, TypeScriptLogo } from '@/guide-thumbnails';
 
-import type { Post } from '@/types/photography';
+import type { Post } from '@/types/post';
 
 export default function Page() {
   const posts: Post[] = [

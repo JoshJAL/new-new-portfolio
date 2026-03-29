@@ -45,7 +45,7 @@ export default function DropdownMenu() {
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem href='/packages'>Packages</DropdownMenuItem>
-          <DropdownMenuItem href='/photography'>Photography</DropdownMenuItem>
+          <DropdownMenuItem prefetch={false} target='_blank' href='https://photography.joshualevine.me'>Photography</DropdownMenuItem>
           <DropdownMenuItem href='/projects'>Projects</DropdownMenuItem>
         </div>
       </MenuItems>
