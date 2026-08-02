@@ -1,26 +1,24 @@
-import ButtonLink from '@/components/ui/ButtonLink';
-import Info from '@/components/ui/Info';
-import InfoCard from '@/components/ui/InfoCard';
+import GlassButtonLink from '@/components/ui/GlassButtonLink';
+import GlassPanel from '@/components/ui/GlassPanel';
+import SectionHeading from '@/components/ui/SectionHeading';
 
-import { getMessageById } from '@/server/fetches/messages';
-import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 
-export default async function Page(props: { searchParams: Promise<{ id: string }> }) {
-  const { id } = await props.searchParams;
+export const metadata: Metadata = {
+  robots: {
+    follow: false,
+    index: false
+  },
+  title: 'Thank You'
+};
 
-  if (!id) return notFound();
-
-  const message = await getMessageById(id);
-
-  if (!message) return notFound();
-
-  const name = message.firstName + ' ' + message.lastName;
-
+export default function Page() {
   return (
-    <InfoCard heading={name}>
-      <div className='flex w-full flex-col gap-3'>
+    <article className='flex w-full flex-col gap-6'>
+      <SectionHeading as='h1'>Thank you!</SectionHeading>
+      <GlassPanel tint='verdigris' className='flex flex-col gap-3'>
         <p>
-          Thank you for your message you should be receiving a confirmation email shortly from
+          Your message has been received. You should also receive a confirmation email shortly from
           joshua.levine@contact.joshualevine.me!
         </p>
         <p>
@@ -28,9 +26,10 @@ export default async function Page(props: { searchParams: Promise<{ id: string }
             <u>That email is not monitored and any responses to it will not be seen!</u>
           </strong>
         </p>
-        <Info label='Message'>{message.message}</Info>
-        <ButtonLink href='/'>Back Home!</ButtonLink>
-      </div>
-    </InfoCard>
+        <GlassButtonLink fit href='/'>
+          Back Home!
+        </GlassButtonLink>
+      </GlassPanel>
+    </article>
   );
 }

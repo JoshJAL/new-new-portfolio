@@ -1,64 +1,64 @@
-import { EMAIL } from '@/consts';
-
 import { Link } from 'next-view-transitions';
 import { FaCamera, FaCode, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { IoMdContact } from 'react-icons/io';
 import { TiDocumentText, TiMail } from 'react-icons/ti';
 
+import { SITE_CONFIG } from '@/utils/siteConfig';
+
 export default function Footer() {
   const links = [
     {
       href: '/about',
-      icon: <TiDocumentText className='h-5 w-5' />,
+      icon: <TiDocumentText className='size-5' />,
       label: 'About Me',
       prefetch: true,
       target: '_self' as const
     },
     {
       href: '/contact',
-      icon: <IoMdContact className='h-5 w-5' />,
+      icon: <IoMdContact className='size-5' />,
       label: 'Contact Me',
       prefetch: true,
       target: '_self' as const
     },
     {
-      href: `mailto:${EMAIL}`,
-      icon: <TiMail className='h-5 w-5' />,
+      href: `mailto:${SITE_CONFIG.email}`,
+      icon: <TiMail className='size-5' />,
       label: 'Email',
       prefetch: false,
       target: '_blank' as const
     },
     {
       href: `https://github.com/JoshJAL`,
-      icon: <FaGithub className='h-5 w-5' />,
+      icon: <FaGithub className='size-5' />,
       label: 'GitHub',
       prefetch: false,
       target: '_blank' as const
     },
     {
       href: 'https://www.instagram.com/mygovtnamej/',
-      icon: <FaInstagram className='h-5 w-5' />,
+      icon: <FaInstagram className='size-5' />,
       label: 'Instagram',
       prefetch: false,
       target: '_blank' as const
     },
     {
       href: 'https://www.linkedin.com/in/josh-lev/',
-      icon: <FaLinkedin className='h-5 w-5' />,
+      icon: <FaLinkedin className='size-5' />,
       label: 'LinkedIn',
       prefetch: false,
       target: '_blank' as const
     },
     {
       href: 'https://photography.joshualevine.me',
-      icon: <FaCamera className='h-5 w-5' />,
+      icon: <FaCamera className='size-5' />,
       label: 'Photography',
       prefetch: false,
       target: '_blank' as const
     },
     {
       href: '/projects',
-      icon: <FaCode className='h-5 w-5' />,
+      icon: <FaCode className='size-5' />,
       label: 'Projects',
       prefetch: true,
       target: '_self' as const
@@ -66,7 +66,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='bg-dark-cyan/50 border-t-dark-cyan/20 pop flex w-full flex-col gap-5 border-t p-5 text-black liquid-blur'>
+    <footer className='flex w-full flex-col gap-5 border-t border-white/10 bg-dark-purple/40 p-5 pb-20 text-white liquid-blur'>
       <p className='text-center text-sm'>&copy; {new Date().getFullYear()} Joshua Levine</p>
       <nav className='mx-auto grid w-full max-w-7xl grid-cols-2 gap-5'>
         {links.map((link) => (
@@ -94,7 +94,7 @@ function FooterLink({ children, href, prefetch = true, target = '_self' }: Foote
       prefetch={prefetch}
       href={href}
       target={target}
-      className='text-dark-purple gradient_underline_black w-fit text-center'
+      className='gradient_underline w-fit text-center text-champagne'
     >
       {children}
     </Link>

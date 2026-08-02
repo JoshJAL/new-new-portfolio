@@ -10,16 +10,16 @@ export default function DropdownMenu() {
       <div>
         <MenuButton
           className={
-            'bg-bittersweet/50 hover:bg-naples-yellow/50 nice-hover-no-shadow border-bittersweet/30 hover:border-naples-yellow/30 pop liquid-blur inline-flex cursor-pointer justify-center rounded-xl border p-2 text-sm font-medium text-white transition-all hover:text-black focus:outline-hidden'
+            'nice-hover-no-shadow pop inline-flex cursor-pointer justify-center rounded-xl border border-bittersweet/30 bg-bittersweet/50 p-2 text-sm font-medium text-white liquid-blur transition-[background-color,border-color,color,box-shadow] hover:border-naples-yellow/30 hover:bg-naples-yellow/50 hover:text-black focus:outline-hidden'
           }
         >
-          <IoMenu className='h-6 w-6' />
+          <IoMenu className='size-6' />
         </MenuButton>
       </div>
       <MenuItems
         as='div'
         transition
-        className='divide-naples-yellow bg-cerulean/80 subtle-pop ring-cerulean/20 liquid-blur absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y overflow-hidden rounded-2xl ring transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in'
+        className='subtle-pop absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-naples-yellow overflow-hidden rounded-2xl bg-cerulean/80 ring ring-cerulean/20 liquid-blur transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in'
       >
         <div className='py-1'>
           <DropdownMenuItem href='/'>Home</DropdownMenuItem>
@@ -27,25 +27,27 @@ export default function DropdownMenu() {
           <DropdownMenuItem href='/contact'>Contact Me</DropdownMenuItem>
           <DropdownMenuItem prefetch={false} target='_blank' href='https://github.com/JoshJAL'>
             <div className='flex w-full items-center gap-1'>
-              <FaGithub className='h-4 w-4' />
+              <FaGithub className='size-4' />
               <p>Github</p>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem href='/guides'>Guides</DropdownMenuItem>
           <DropdownMenuItem prefetch={false} target='_blank' href='https://www.instagram.com/mygovtnamej/'>
             <div className='flex w-full items-center gap-1'>
-              <FaInstagram className='h-4 w-4' />
+              <FaInstagram className='size-4' />
               <p>Instagram</p>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem prefetch={false} href='https://www.linkedin.com/in/josh-lev/' target='_blank'>
             <div className='flex w-full items-center gap-1'>
-              <FaLinkedin className='h-4 w-4' />
+              <FaLinkedin className='size-4' />
               <p>LinkedIn</p>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem href='/packages'>Packages</DropdownMenuItem>
-          <DropdownMenuItem prefetch={false} target='_blank' href='https://photography.joshualevine.me'>Photography</DropdownMenuItem>
+          <DropdownMenuItem prefetch={false} target='_blank' href='https://photography.joshualevine.me'>
+            Photography
+          </DropdownMenuItem>
           <DropdownMenuItem href='/projects'>Projects</DropdownMenuItem>
         </div>
       </MenuItems>

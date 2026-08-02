@@ -10,12 +10,12 @@ interface DropdownMenuItemProps {
 
 export default function DropdownMenuItem({ children, href, prefetch = true, target = '_self' }: DropdownMenuItemProps) {
   return (
-    <MenuItem as="div">
+    <MenuItem as='div'>
       <Link
         prefetch={prefetch}
         target={target}
         href={href}
-        className='hover:bg-verdigris/50 block px-4 py-2 text-sm text-white transition-all duration-200 ease-in-out hover:no-underline'
+        className='block px-4 py-2 text-sm text-white transition-colors duration-200 ease-in-out hover:bg-verdigris/50 hover:no-underline'
       >
         {children}
       </Link>

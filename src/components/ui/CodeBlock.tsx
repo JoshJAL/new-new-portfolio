@@ -2,20 +2,19 @@
 
 import GlassButton from '@/components/ui/GlassButton';
 
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-
-import { useState } from 'react';
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-
-import type { ReactElement } from 'react';
-
-// Import and register languages...
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import json from 'react-syntax-highlighter/dist/esm/languages/prism/json';
 import markdown from 'react-syntax-highlighter/dist/esm/languages/prism/markdown';
 import scss from 'react-syntax-highlighter/dist/esm/languages/prism/scss';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typescript';
+
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
+
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { useState } from 'react';
+
+import type { ReactElement } from 'react';
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);
 SyntaxHighlighter.registerLanguage('typescript', typescript);
@@ -24,7 +23,6 @@ SyntaxHighlighter.registerLanguage('bash', bash);
 SyntaxHighlighter.registerLanguage('markdown', markdown);
 SyntaxHighlighter.registerLanguage('json', json);
 
-// --- Helper Icons ---
 const CopyIcon = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
@@ -58,7 +56,6 @@ const CheckIcon = () => (
   </svg>
 );
 
-// --- Prop Types ---
 interface CodeElementProps {
   className?: string;
   children?: string;
@@ -79,32 +76,21 @@ export default function CodeBlock({ children }: CodeBlockProps) {
     try {
       await navigator.clipboard.writeText(codeString);
       setIsCopied(true);
-      setTimeout(() => setIsCopied(false), 2000); // Reset after 2 seconds
+      setTimeout(() => setIsCopied(false), 2000);
     } catch (error) {
       console.error('Failed to copy text: ', error);
     }
   };
 
   return (
-    // Use a relative parent to position the button absolutely
     <div className='group relative'>
       <div className='absolute top-4 right-4 z-10 cursor-pointer opacity-100 transition-opacity duration-300 group-hover:opacity-100 focus:opacity-100 md:opacity-0'>
-        <GlassButton
-          onClick={handleCopy}
-          disabled={isCopied}
-          aria-label='Copy code to clipboard'
-          // Using Tailwind CSS for styling. Adjust classes as needed.
-        >
+        <GlassButton onClick={handleCopy} disabled={isCopied} aria-label='Copy code to clipboard'>
           {isCopied ? <CheckIcon /> : <CopyIcon />}
         </GlassButton>
       </div>
 
-      <SyntaxHighlighter
-        language={language}
-        style={oneDark}
-        showLineNumbers={true}
-        // Add padding to the pre tag to prevent code from flowing under the button
-      >
+      <SyntaxHighlighter language={language} style={oneDark} showLineNumbers>
         {codeString}
       </SyntaxHighlighter>
     </div>

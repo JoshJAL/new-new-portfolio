@@ -10,7 +10,7 @@ export default function Page() {
     {
       borderColor: 'border-blue-500/20',
       color: 'bg-blue-500/50',
-      icon: <BiLogoTypescript className='h-5 w-5' />,
+      icon: <BiLogoTypescript className='size-5' />,
       label: 'TypeScript'
     }
   ];
@@ -21,7 +21,7 @@ export default function Page() {
       href='https://www.npmjs.com/package/@joshjal/agent-maker'
       title='Agent Maker'
       image={AgentMakerIcon}
-      imageBackgroundColor='bg-[#50767c]'
+      imageBackgroundColor='bg-project-slate'
       tech={tech}
     >
       <p>

@@ -24,14 +24,14 @@ export default function Page() {
       codeHref: 'https://github.com/JoshJAL/claude-trello',
       description:
         'Point AI coding agents at your task boards. Connects to Trello, GitHub, and GitLab with support for Claude, OpenAI, and Groq. Desktop app available.',
-      backgroundColor: 'bg-[#50767c]',
+      backgroundColor: 'bg-project-slate',
       href: '/projects/claude-trello',
       image: TaskPilotLogo,
       projectHref: 'https://claude-trello-two.vercel.app',
       title: 'TaskPilot'
     },
     {
-      backgroundColor: 'bg-[#50767c]',
+      backgroundColor: 'bg-project-slate',
       codeHref: 'https://github.com/JoshJAL/agent-maker',
       description:
         'Interactive CLI wizard that generates CLAUDE.md, AGENTS.md, and GEMINI.md files for your project with AI-powered suggestions and optional framework scaffolding.',
@@ -157,7 +157,7 @@ export default function Page() {
 
   return (
     <article className='flex w-full flex-col gap-5'>
-      <h1 className='text-3xl font-semibold'>Projects</h1>
+      <h1>Projects</h1>
       <p>
         These are most, if not all of the projects that I have worked on. I can&apos;t provide the source code for all
         of my projects since they were built for work or clients, but if you care to learn more or visit the public
@@ -165,7 +165,7 @@ export default function Page() {
       </p>
       <p>
         While most of my projects are private because I wouldn&apos;t want to expose my clients code. My GitHub
-        portfolio currently features 105 projects and counting with thouands of commits per year.
+        portfolio currently features 105 projects and counting with thousands of commits per year.
       </p>
       <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3'>
         {projects.map((project) => (

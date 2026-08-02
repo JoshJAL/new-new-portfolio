@@ -16,7 +16,7 @@ export default function BreadCrumb({ current, link }: Props) {
       <GlassButtonLink fit href={link.href} prefetch>
         {link.label}
       </GlassButtonLink>
-      <FaChevronRight className='h-6 w-6' />
+      <FaChevronRight className='size-6' />
       <p>{current}</p>
     </div>
   );

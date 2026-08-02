@@ -10,7 +10,7 @@ export default function Page() {
     {
       borderColor: 'border-green-700/20',
       color: 'bg-green-700/50',
-      icon: <TbBrandCSharp className='h-5 w-5' />,
+      icon: <TbBrandCSharp className='size-5' />,
       label: ''
     }
   ];

@@ -12,26 +12,26 @@ export default function Page() {
     {
       borderColor: 'border-black/20',
       color: 'bg-black/50',
-      icon: <RiNextjsLine className='h-5 w-5' />,
+      icon: <RiNextjsLine className='size-5' />,
       label: 'Next.js'
     },
     {
       borderColor: 'border-blue-400/20',
       color: 'bg-blue-400/50',
-      icon: <SiSqlite className='h-5 w-5' />,
+      icon: <SiSqlite className='size-5' />,
       label: 'SQLite'
     },
     {
       borderColor: 'border-cyan-400/20',
       color: 'bg-cyan-400/50',
-      icon: <RiTailwindCssFill className='h-5 w-5' />,
+      icon: <RiTailwindCssFill className='size-5' />,
       label: 'Tailwind',
       textColor: 'text-black'
     },
     {
       borderColor: 'border-blue-500/20',
       color: 'bg-blue-500/50',
-      icon: <BiLogoTypescript className='h-5 w-5' />,
+      icon: <BiLogoTypescript className='size-5' />,
       label: 'TypeScript'
     }
   ];

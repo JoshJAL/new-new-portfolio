@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Joshua Levine Portfolio
 
-## Getting Started
+Personal portfolio built with Next.js App Router, React, TypeScript, Tailwind
+CSS, and MDX. The contact form stores messages in Turso through Drizzle ORM and
+sends confirmation email through Resend.
 
-First, run the development server:
+## Setup
+
+Install dependencies with Bun:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+bun install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copy the environment template and fill in the local values:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The application uses these variables:
 
-## Learn More
+- `CONTACT_RATE_LIMIT_SECRET`: secret of at least 32 random bytes used to hash
+  contact rate-limit keys. Generate one with `openssl rand -base64 32`.
+- `DATABASE_URL`: Turso/libSQL database URL.
+- `DATABASE_AUTH_TOKEN`: Turso/libSQL authentication token.
+- `RESEND_API_KEY`: Resend API key used for contact confirmation email.
 
-To learn more about Next.js, take a look at the following resources:
+Start the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+bun run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The site is available at <http://localhost:3000>.
 
-## Deploy on Vercel
+## Commands
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `bun run dev`: start the Turbopack development server.
+- `bun run build`: create a production build.
+- `bun run start`: serve the production build.
+- `bun run format`: format the repository with Prettier.
+- `bun run format:check`: verify repository formatting.
+- `bun run lint`: run ESLint with zero warnings allowed.
+- `bun run typecheck`: regenerate Next.js route types and run TypeScript.
+- `bun run test`: run the Bun test suite.
+- `bun run check`: run the complete verification pipeline.
+- `bun run push`: push Drizzle schemas manually when a database change is
+  intentional. This command is never part of routine verification.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Architecture
+
+The project uses Next.js's optional `src/` application root:
+
+- `src/app/` contains App Router pages, layouts, metadata routes, global CSS,
+  and MDX guide content.
+- `src/components/` contains feature components and reusable UI.
+- `src/server/actions/` contains the public contact Server Action.
+- `src/types/` contains shared domain contracts.
+- `src/utils/` contains site configuration, sitemap traversal, contact logic,
+  environment validation, the database client, and Drizzle schemas.
+- `src/mdx-components.tsx` remains at the `src/` root as required by Next.js.
+- `public/` contains portfolio images and guide/project artwork.
+
+The public contact action validates and normalizes every value on the server
+before any side effect. A database failure is returned to the form as a safe
+error. Once a message is stored, confirmation-email failure is logged but is not
+surfaced as a failed submission, preventing retries from duplicating the
+message.

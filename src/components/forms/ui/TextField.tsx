@@ -1,10 +1,11 @@
-import { FieldErrors } from '@/components/forms/ui/FieldErrors';
+import FieldErrors from './FieldErrors';
 
-import { useFieldContext } from '@/components/forms/ui';
+import { useFieldContext } from './formContexts';
 
 interface Props {
   autoFocus?: boolean;
   label: string;
+  maxLength?: number;
   min?: string;
   noLabel?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -15,9 +16,10 @@ interface Props {
   value?: string;
 }
 
-export function TextField({
+export default function TextField({
   autoFocus,
   label,
+  maxLength,
   min,
   noLabel,
   onChange,
@@ -38,6 +40,7 @@ export function TextField({
         <input
           step={step}
           autoFocus={autoFocus}
+          maxLength={maxLength}
           min={min}
           onChange={onChange ? onChange : (e) => field.handleChange(e.target.value)}
           value={value ? value : field.state.value}
@@ -46,7 +49,7 @@ export function TextField({
           name={field.name}
           type={type}
           placeholder={placeholder}
-          className='pop nice-focus-no-shadow block w-full rounded-xl border-0 bg-white/85 px-3 py-2 text-black ring-1 ring-white/20 liquid-blur transition-all duration-300 ease-in-out outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-verdigris/40'
+          className='pop nice-focus-no-shadow block w-full rounded-xl border-0 bg-white/85 px-3 py-2 text-black ring-1 ring-white/20 liquid-blur transition-shadow duration-300 ease-in-out outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-verdigris/40'
         />
       </div>
       <FieldErrors meta={field.state.meta} />

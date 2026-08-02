@@ -1,5 +1,3 @@
-import React from 'react';
-
 import type { Tech } from '@/types/tech';
 
 interface Props {
@@ -11,7 +9,7 @@ export default function Technology({ tech }: Props) {
 
   return (
     <p
-      className={`flex items-center gap-2 rounded-xl ${color} px-3 py-2 ${textColor ?? 'text-white'} border ${borderColor} pop liquid-blur`}
+      className={`flex items-center gap-2 rounded-full ${color} px-2.5 py-1 text-sm ${textColor ?? 'text-white'} border ${borderColor} liquid-blur`}
     >
       {icon}
       {label}

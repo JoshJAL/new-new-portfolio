@@ -13,33 +13,33 @@ export default function Page() {
     {
       borderColor: 'border-blue-400/20',
       color: 'bg-blue-400/50',
-      icon: <FaReact className='h-5 w-5' />,
+      icon: <FaReact className='size-5' />,
       label: 'React'
     },
     {
       borderColor: 'border-white/20',
       color: 'bg-white/50',
-      icon: <RiNextjsLine className='h-5 w-5' />,
+      icon: <RiNextjsLine className='size-5' />,
       label: 'Next.js',
       textColor: 'text-black'
     },
     {
       borderColor: 'border-cyan-400/20',
       color: 'bg-cyan-400/50',
-      icon: <RiTailwindCssFill className='h-5 w-5' />,
+      icon: <RiTailwindCssFill className='size-5' />,
       label: 'Tailwind',
       textColor: 'text-black'
     },
     {
       borderColor: 'border-blue-500/20',
       color: 'bg-blue-500/50',
-      icon: <BiLogoTypescript className='h-5 w-5' />,
+      icon: <BiLogoTypescript className='size-5' />,
       label: 'TypeScript'
     },
     {
       borderColor: 'border-sky-400/20',
       color: 'bg-sky-400/50',
-      icon: <SiSqlite className='h-5 w-5' />,
+      icon: <SiSqlite className='size-5' />,
       label: 'SQLite',
       textColor: 'text-black'
     }
@@ -51,13 +51,13 @@ export default function Page() {
       href='https://claude-trello-two.vercel.app'
       title='TaskPilot'
       image={TaskPilotLogo}
-      imageBackgroundColor='bg-[#50767c]'
+      imageBackgroundColor='bg-project-slate'
       tech={tech}
     >
       <p>
         TaskPilot is a full-stack web application that lets you point AI coding agents at your task boards. It connects
-        to Trello, GitHub, and GitLab, reads your cards and issues, and uses AI to work through them — checking off items
-        as it goes.
+        to Trello, GitHub, and GitLab, reads your cards and issues, and uses AI to work through them — checking off
+        items as it goes.
       </p>
       <p>
         It supports multiple AI providers including Claude (Anthropic), OpenAI (GPT-4o), and Groq (Llama 3.3 70B). It

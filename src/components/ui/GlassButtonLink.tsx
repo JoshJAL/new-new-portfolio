@@ -1,7 +1,4 @@
 import { Link } from 'next-view-transitions';
-import { Roboto } from 'next/font/google';
-
-const roboto = Roboto({ subsets: ['latin'] });
 
 interface Props {
   additionalClasses?: string;
@@ -42,7 +39,7 @@ export default function GlassButtonLink({
         prefetch={prefetch}
         href={href}
         onClick={onClick}
-        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} nice-hover-no-shadow cursor-pointer rounded-xl border border-red-600/20 bg-red-600/50 px-3 py-2 text-center font-semibold text-white liquid-blur transition-all duration-300 ease-in-out hover:border-red-800/20 hover:bg-red-800/50 ${roboto.className} pop`}
+        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} nice-hover-no-shadow pop cursor-pointer rounded-xl border border-red-600/20 bg-red-600/50 px-3 py-2 text-center font-semibold text-white liquid-blur transition-all duration-300 ease-in-out hover:border-red-800/20 hover:bg-red-800/50`}
       >
         {children}
       </Link>
@@ -57,7 +54,7 @@ export default function GlassButtonLink({
         prefetch={prefetch}
         href={href}
         onClick={onClick}
-        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-dark-cyan/50 hover:bg-desert-sand/50 border-dark-cyan/20 hover:border-desert-sand/20 nice-hover-no-shadow cursor-pointer rounded-xl border px-3 py-2 text-center font-semibold text-white liquid-blur transition-all duration-300 ease-in-out hover:text-black ${roboto.className} pop`}
+        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} nice-hover-no-shadow pop cursor-pointer rounded-xl border border-dark-cyan/20 bg-dark-cyan/50 px-3 py-2 text-center font-semibold text-white liquid-blur transition-all duration-300 ease-in-out hover:border-desert-sand/20 hover:bg-desert-sand/50 hover:text-black`}
       >
         {children}
       </Link>
@@ -72,7 +69,7 @@ export default function GlassButtonLink({
         href={href}
         prefetch={prefetch}
         onClick={onClick}
-        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-cerulean/50 nice-hover-no-shadow hover:bg-verdigris/50 border-cerulean/20 hover:border-verdigris/20 pop cursor-pointer rounded-xl border px-3 py-2 text-center font-semibold text-white liquid-blur transition-all duration-300 ease-in-out hover:text-white ${roboto.className} pop`}
+        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} nice-hover-no-shadow pop pop cursor-pointer rounded-xl border border-cerulean/20 bg-cerulean/50 px-3 py-2 text-center font-semibold text-white liquid-blur transition-all duration-300 ease-in-out hover:border-verdigris/20 hover:bg-verdigris/50 hover:text-white`}
       >
         {children}
       </Link>
@@ -87,7 +84,7 @@ export default function GlassButtonLink({
         href={href}
         prefetch={prefetch}
         onClick={onClick}
-        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-davys-gray/50 hover:bg-naples-yellow/50 border-davys-gray/20 hover:border-naples-yellow/20 pop cursor-pointer rounded-xl border px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:text-black ${roboto.className} nice-hover-no-shadow`}
+        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} pop nice-hover-no-shadow cursor-pointer rounded-xl border border-davys-gray/20 bg-davys-gray/50 px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:border-naples-yellow/20 hover:bg-naples-yellow/50 hover:text-black`}
       >
         {children}
       </Link>
@@ -102,7 +99,7 @@ export default function GlassButtonLink({
         href={href}
         prefetch={prefetch}
         onClick={onClick}
-        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-bittersweet/50 hover:bg-cerulean/50 nice-hover-no-shadow border-bittersweet/20 hover:border-cerulean/20 pop cursor-pointer rounded-xl border px-3 py-2 text-center font-semibold text-black transition-all duration-300 ease-in-out hover:text-white ${roboto.className}`}
+        className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} nice-hover-no-shadow pop cursor-pointer rounded-xl border border-bittersweet/20 bg-bittersweet/50 px-3 py-2 text-center font-semibold text-white liquid-blur transition-all duration-300 ease-in-out hover:border-cerulean/20 hover:bg-cerulean/50`}
       >
         {children}
       </Link>
@@ -116,7 +113,7 @@ export default function GlassButtonLink({
       href={href}
       prefetch={prefetch}
       onClick={onClick}
-      className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} bg-verdigris/50 hover:bg-naples-yellow/50 border-verdigris/20 hover:border-naples-yellow/20 pop cursor-pointer rounded-xl border px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:text-black ${roboto.className} nice-hover-no-shadow`}
+      className={`${additionalClasses ? additionalClasses : fit ? 'w-fit' : 'w-full'} pop nice-hover-no-shadow cursor-pointer rounded-xl border border-verdigris/20 bg-verdigris/50 px-3 py-2 text-center font-semibold text-white transition-all duration-300 ease-in-out hover:border-naples-yellow/20 hover:bg-naples-yellow/50 hover:text-black`}
     >
       {children}
     </Link>

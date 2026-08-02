@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface TiltCardProps {
   children: React.ReactNode;
@@ -24,46 +24,63 @@ export default function TiltCard({
   const glareRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number>(0);
   const reducedMotion = useRef(false);
+  const resetPendingRef = useRef(false);
 
   useEffect(() => {
+    const inner = innerRef.current;
     reducedMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      resetPendingRef.current = false;
+
+      if (inner) inner.style.willChange = '';
+    };
   }, []);
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (reducedMotion.current) return;
-      const container = containerRef.current;
-      const inner = innerRef.current;
-      const glare = glareRef.current;
-      if (!container || !inner) return;
+  const handleMouseEnter = () => {
+    if (reducedMotion.current) return;
 
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(() => {
-        const rect = container.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width;
-        const y = (e.clientY - rect.top) / rect.height;
+    resetPendingRef.current = false;
+    if (innerRef.current) innerRef.current.style.willChange = 'transform';
+  };
 
-        const rotateX = (0.5 - y) * tiltMax * 2;
-        const rotateY = (x - 0.5) * tiltMax * 2;
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (reducedMotion.current) return;
+    const container = containerRef.current;
+    const inner = innerRef.current;
+    const glare = glareRef.current;
+    if (!container || !inner) return;
 
-        inner.style.transition = 'transform 150ms ease-out';
-        inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${scale}, ${scale}, ${scale})`;
+    const { clientX, clientY } = event;
+    cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      const rect = container.getBoundingClientRect();
+      const x = (clientX - rect.left) / rect.width;
+      const y = (clientY - rect.top) / rect.height;
 
-        if (glare) {
-          const angle = Math.atan2(y - 0.5, x - 0.5) * (180 / Math.PI) + 90;
-          glare.style.background = `linear-gradient(${angle}deg, rgba(255, 255, 255, ${glareOpacity}) 0%, transparent 80%)`;
-          glare.style.opacity = '1';
-        }
-      });
-    },
-    [tiltMax, scale, glareOpacity]
-  );
+      const rotateX = (0.5 - y) * tiltMax * 2;
+      const rotateY = (x - 0.5) * tiltMax * 2;
 
-  const handleMouseLeave = useCallback(() => {
+      inner.style.transition = 'transform 150ms ease-out';
+      inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${scale}, ${scale}, ${scale})`;
+
+      if (glare) {
+        const angle = Math.atan2(y - 0.5, x - 0.5) * (180 / Math.PI) + 90;
+        glare.style.background = `linear-gradient(${angle}deg, rgba(255, 255, 255, ${glareOpacity}) 0%, transparent 80%)`;
+        glare.style.opacity = '1';
+      }
+    });
+  };
+
+  const handleMouseLeave = () => {
+    if (reducedMotion.current) return;
+
     cancelAnimationFrame(rafRef.current);
     const inner = innerRef.current;
     const glare = glareRef.current;
     if (inner) {
+      resetPendingRef.current = true;
       inner.style.transition = 'transform 600ms cubic-bezier(0.03, 0.98, 0.52, 0.99)';
       inner.style.transform = 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
     }
@@ -71,12 +88,20 @@ export default function TiltCard({
       glare.style.transition = 'opacity 600ms ease-out';
       glare.style.opacity = '0';
     }
-  }, []);
+  };
+
+  const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+    if (event.propertyName !== 'transform' || !resetPendingRef.current) return;
+
+    resetPendingRef.current = false;
+    event.currentTarget.style.willChange = '';
+  };
 
   return (
     <div
       ref={containerRef}
       className={className}
+      onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ perspective: `${perspective}px` }}
@@ -84,9 +109,9 @@ export default function TiltCard({
       <div
         ref={innerRef}
         className='relative'
+        onTransitionEnd={handleTransitionEnd}
         style={{
-          transformStyle: 'preserve-3d',
-          willChange: 'transform'
+          transformStyle: 'preserve-3d'
         }}
       >
         {children}

@@ -1,6 +1,6 @@
 import PageLink from '@/components/ui/PageLink';
 
-import { GitLogo, JJLogo, MarkdownLogo, PrettierLogo, TypeScriptLogo } from '@/guide-thumbnails';
+import { GitLogo, JJLogo, MarkdownLogo, PrettierLogo, TypeScriptLogo } from '@/utils/guides/guideThumbnails';
 
 import type { Post } from '@/types/post';
 

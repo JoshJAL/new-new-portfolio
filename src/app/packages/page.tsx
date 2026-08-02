@@ -8,7 +8,7 @@ export default function Page() {
     {
       codeHref: 'https://github.com/JoshJAL/ez-funcs',
       description:
-        'A list of easy utility functions that I use in a variety of projects both pewrsonally and professionally. I created an npm package for it so I can easily install them rather than copying and pasting over and over again.',
+        'A list of easy utility functions that I use in a variety of projects both personally and professionally. I created an npm package for it so I can easily install them rather than copying and pasting over and over again.',
       href: '/packages/ez-funcs',
       image: NPMIcon,
       projectHref: 'https://www.npmjs.com/package/ez-funcs',
@@ -36,7 +36,7 @@ export default function Page() {
 
   return (
     <article className='flex w-full flex-col gap-5'>
-      <h1 className='text-3xl font-semibold'>Packages</h1>
+      <h1>Packages</h1>
       <p>
         Open source npm packages I&apos;ve published. These are tools and utilities I built to solve problems I kept
         running into across projects, so I packaged them up for anyone to use. Each one is available on npm and fully

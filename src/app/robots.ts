@@ -1,15 +1,14 @@
-import { siteConfig } from '@/lib/config';
+import { SITE_CONFIG } from '@/utils/siteConfig';
 
 import type { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
-      userAgent: '*',
-      allow: '/'
-      // You can add disallow rules here for specific paths
-      // disallow: '/private/',
+      allow: '/',
+      disallow: '/thank-you',
+      userAgent: '*'
     },
-    sitemap: `${siteConfig.url}/sitemap.xml`
+    sitemap: `${SITE_CONFIG.url}/sitemap.xml`
   };
 }

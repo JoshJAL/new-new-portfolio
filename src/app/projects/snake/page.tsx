@@ -9,8 +9,8 @@ export default function Page() {
   const tech: Tech[] = [
     {
       borderColor: 'border-orange-800/20',
-      color: 'bg-gradient-to-tr from-orange-800/50 via-red-700/50 to-blue-800/50',
-      icon: <FaJava className='h-5 w-5' />,
+      color: 'bg-linear-to-tr from-orange-800/50 via-red-700/50 to-blue-800/50',
+      icon: <FaJava className='size-5' />,
       label: 'Java'
     }
   ];

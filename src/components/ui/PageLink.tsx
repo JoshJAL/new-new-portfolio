@@ -16,13 +16,13 @@ export default function PageLink({ black, post }: Props) {
     <Link
       prefetch
       href={post.href}
-      className='bg-cerulean/50 border-cerulean/20 pop glass-edge nice-hover-no-shadow grid w-full grid-cols-1 gap-5 rounded-2xl border p-3 text-white liquid-blur transition-all duration-300 ease-in-out hover:scale-[1.02] md:grid-cols-2'
+      className='pop glass-edge nice-hover-no-shadow grid w-full grid-cols-1 gap-5 rounded-2xl border border-cerulean/20 bg-cerulean/50 p-3 text-white liquid-blur transition-[transform,box-shadow] duration-300 ease-in-out hover:scale-102 md:grid-cols-2'
     >
       <TiltCard tiltMax={8} scale={1} className='mx-auto w-fit md:mx-0'>
-        <div className='relative overflow-hidden rounded-xl shadow-[0_8px_24px_-6px_rgba(0,0,0,0.25)]'>
+        <div className='relative overflow-hidden rounded-xl media-shadow'>
           <div className='pop absolute inset-0 z-10 bg-black/10' />
           <Image
-            className={`h-full w-full ${black ? 'bg-black' : 'bg-white'} object-contain`}
+            className={`size-full ${black ? 'bg-black' : 'bg-white'} object-contain`}
             placeholder='blur'
             src={post.image}
             alt={post.heading}

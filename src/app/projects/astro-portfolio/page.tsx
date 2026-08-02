@@ -13,34 +13,34 @@ export default function Page() {
   const tech: Tech[] = [
     {
       borderColor: 'border-purple-600/20',
-      color: 'bg-gradient-to-tr from-purple-600/50 via-black/50 to-pink-500/50',
-      icon: <SiAstro className='h-5 w-5' />,
+      color: 'bg-linear-to-tr from-purple-600/50 via-black/50 to-pink-500/50',
+      icon: <SiAstro className='size-5' />,
       label: 'Astro'
     },
     {
       borderColor: 'border-blue-400/20',
       color: 'bg-blue-400/50',
-      icon: <FaReact className='h-5 w-5' />,
+      icon: <FaReact className='size-5' />,
       label: 'React'
     },
     {
       borderColor: 'border-cyan-400/20',
       color: 'bg-cyan-400/50',
-      icon: <RiTailwindCssFill className='h-5 w-5' />,
+      icon: <RiTailwindCssFill className='size-5' />,
       label: 'Tailwind',
       textColor: 'text-black'
     },
     {
       borderColor: 'border-white/20',
       color: 'bg-white/50',
-      icon: <TbBrandThreejs className='h-5 w-5' />,
+      icon: <TbBrandThreejs className='size-5' />,
       label: 'Three.js',
       textColor: 'text-black'
     },
     {
       borderColor: 'border-blue-500/20',
       color: 'bg-blue-500/50',
-      icon: <BiLogoTypescript className='h-5 w-5' />,
+      icon: <BiLogoTypescript className='size-5' />,
       label: 'TypeScript'
     }
   ];
