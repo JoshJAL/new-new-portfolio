@@ -8,7 +8,6 @@ import WebcamBackground from '@/components/ui/WebcamBackground';
 
 import { Bricolage_Grotesque, Lexend } from 'next/font/google';
 import { SITE_CONFIG } from '@/utils/siteConfig';
-import { ViewTransitions } from 'next-view-transitions';
 
 import type { Metadata } from 'next';
 
@@ -31,19 +30,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ViewTransitions>
-      <html lang='en'>
-        <body className={`${lexend.variable} ${bricolage.variable} flex min-h-screen flex-col font-body antialiased`}>
-          <BackgroundProvider>
-            <AmbientBackground />
-            <WebcamBackground />
-            <Header />
-            <main className='mx-auto w-full max-w-7xl p-5 pt-24'>{children}</main>
-            <div className='flex-1' />
-            <Footer />
-          </BackgroundProvider>
-        </body>
-      </html>
-    </ViewTransitions>
+    // data-scroll-behavior lets Next disable smooth scrolling during route transitions
+    <html lang='en' data-scroll-behavior='smooth'>
+      <body className={`${lexend.variable} ${bricolage.variable} flex min-h-screen flex-col font-body antialiased`}>
+        <BackgroundProvider>
+          <AmbientBackground />
+          <WebcamBackground />
+          <Header />
+          <main id='top' className='mx-auto w-full max-w-7xl p-5 pt-24'>
+            {children}
+          </main>
+          <div className='flex-1' />
+          <Footer />
+        </BackgroundProvider>
+      </body>
+    </html>
   );
 }

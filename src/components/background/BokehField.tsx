@@ -23,6 +23,7 @@ interface Disc {
   x: number;
   y: number;
   z: number;
+  depth: number;
   scale: number;
   ampX: number;
   ampY: number;
@@ -75,6 +76,7 @@ function createFieldData(count: number): { colors: THREE.Color[]; discs: Disc[] 
       x: (random() * 2 - 1) * 14,
       y: (random() * 2 - 1) * 8,
       z,
+      depth,
       scale: (2.6 - depth * 1.8) * (0.7 + random() * 0.6),
       ampX: 0.5 + random() * 1.2,
       ampY: 0.4 + random() * 1,
@@ -92,13 +94,23 @@ function createFieldData(count: number): { colors: THREE.Color[]; discs: Disc[] 
   return { colors, discs };
 }
 
-export default function BokehField({ count }: { count: number }) {
+interface BokehFieldProps {
+  count: number;
+  surgeToken: number;
+  tint: string | null;
+}
+
+export default function BokehField({ count, surgeToken, tint }: BokehFieldProps) {
   const meshRef = useRef<THREE.InstancedMesh>(null);
   // Accumulated via useFrame's delta because THREE.Clock is deprecated
   const elapsedRef = useRef(0);
+  const surgeRef = useRef(0);
+  const colorsSettledRef = useRef(true);
   const [dummy] = useState(() => new THREE.Object3D());
   const [texture] = useState(makeDiscTexture);
   const [{ colors, discs }] = useState(() => createFieldData(count));
+  const [currentColors] = useState(() => colors.map((c) => c.clone()));
+  const [targetColors] = useState(() => colors.map((c) => c.clone()));
 
   useEffect(() => {
     const mesh = meshRef.current;
@@ -109,12 +121,36 @@ export default function BokehField({ count }: { count: number }) {
     if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
   }, [colors]);
 
+  useEffect(() => {
+    const tintColor = tint ? new THREE.Color(tint) : null;
+    for (let i = 0; i < colors.length; i++) {
+      targetColors[i].copy(colors[i]);
+      // Shift ~60% of discs; nearer discs (higher depth) take more tint so the wash reads in front
+      if (tintColor && i % 5 < 3) {
+        // Base colors are already depth-dimmed, so lerp toward an equally dimmed tint
+        // to keep brightness flat — additive blending blooms if it rises
+        const dimmedTint = tintColor.clone().multiplyScalar(0.3 + discs[i].depth * 0.55);
+        targetColors[i].lerp(dimmedTint, 0.3 + discs[i].depth * 0.3);
+      }
+    }
+    colorsSettledRef.current = false;
+  }, [tint, colors, discs, targetColors]);
+
+  useEffect(() => {
+    if (surgeToken > 0) surgeRef.current = 1;
+  }, [surgeToken]);
+
   useEffect(() => () => texture.dispose(), [texture]);
 
   useFrame((_, delta) => {
     const mesh = meshRef.current;
     if (!mesh) return;
-    elapsedRef.current += Math.min(delta, 0.1);
+    const clampedDelta = Math.min(delta, 0.1);
+    // Navigation surge: field-wide drift/pulse boost with ~1s exponential decay
+    surgeRef.current *= Math.exp(-clampedDelta * 4);
+    const surge = surgeRef.current < 0.01 ? 0 : surgeRef.current;
+    elapsedRef.current += clampedDelta * (1 + surge * 5);
+    const pulseAmp = 0.08 * (1 + surge * 1.5);
     const t = elapsedRef.current;
     for (let i = 0; i < discs.length; i++) {
       const d = discs[i];
@@ -123,11 +159,26 @@ export default function BokehField({ count }: { count: number }) {
         d.y + Math.cos(t * d.speedY + d.phaseY) * d.ampY,
         d.z
       );
-      dummy.scale.setScalar(d.scale * (1 + Math.sin(t * d.pulseSpeed + d.phaseX) * 0.08));
+      dummy.scale.setScalar(d.scale * (1 + Math.sin(t * d.pulseSpeed + d.phaseX) * pulseAmp));
       dummy.updateMatrix();
       mesh.setMatrixAt(i, dummy.matrix);
     }
     mesh.instanceMatrix.needsUpdate = true;
+
+    if (!colorsSettledRef.current) {
+      const alpha = 1 - Math.exp(-clampedDelta * 2.5);
+      let maxDeltaSq = 0;
+      for (let i = 0; i < currentColors.length; i++) {
+        currentColors[i].lerp(targetColors[i], alpha);
+        const dr = currentColors[i].r - targetColors[i].r;
+        const dg = currentColors[i].g - targetColors[i].g;
+        const db = currentColors[i].b - targetColors[i].b;
+        maxDeltaSq = Math.max(maxDeltaSq, dr * dr + dg * dg + db * db);
+        mesh.setColorAt(i, currentColors[i]);
+      }
+      if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true;
+      if (maxDeltaSq < 1e-6) colorsSettledRef.current = true;
+    }
   });
 
   return (

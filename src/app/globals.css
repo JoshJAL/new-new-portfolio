@@ -27,8 +27,13 @@
   box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.25);
 }
 
-* {
+html {
   scroll-behavior: smooth;
+}
+
+/* Suppress the animated scroll-to-top while a view transition is running */
+html:active-view-transition {
+  scroll-behavior: auto;
 }
 
 body {
@@ -172,4 +177,38 @@ blockquote {
   padding: 0 0 0 20px;
   margin: 0px;
   font-size: 1.333em;
+}
+
+/* Rack-focus page transition: outgoing page defocuses, incoming page sharpens */
+::view-transition-old(.rack-focus-exit) {
+  animation: 200ms cubic-bezier(0.4, 0, 1, 1) both rack-focus-out;
+}
+
+::view-transition-new(.rack-focus-enter) {
+  animation: 320ms cubic-bezier(0, 0, 0.2, 1) 80ms both rack-focus-in;
+}
+
+@keyframes rack-focus-out {
+  to {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(1.015);
+  }
+}
+
+@keyframes rack-focus-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.99);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
 }

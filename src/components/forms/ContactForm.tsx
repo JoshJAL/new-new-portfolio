@@ -7,11 +7,11 @@ import { SITE_CONFIG } from '@/utils/siteConfig';
 import { useAppForm } from './ui';
 import { submitContact } from '@/server/actions/contact';
 import { contactSchema } from '@/utils/contact/contactSchema';
-import { useTransitionRouter } from 'next-view-transitions';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function ContactForm() {
-  const router = useTransitionRouter();
+  const router = useRouter();
   const [submissionError, setSubmissionError] = useState<string | null>(null);
 
   const form = useAppForm({

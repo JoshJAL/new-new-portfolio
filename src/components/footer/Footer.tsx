@@ -1,4 +1,5 @@
-import { Link } from 'next-view-transitions';
+import Link from 'next/link';
+
 import { FaCamera, FaCode, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { IoMdContact } from 'react-icons/io';
 import { TiDocumentText, TiMail } from 'react-icons/ti';

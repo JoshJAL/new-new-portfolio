@@ -2,6 +2,8 @@
 
 import dynamic from 'next/dynamic';
 
+import { getRouteTint } from '@/utils/background/routeTint';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState, useSyncExternalStore } from 'react';
 
 // ssr: false is only legal inside a client component, and three should never run on the server anyway
@@ -36,11 +38,22 @@ function getReducedMotionServerSnapshot(): boolean {
 
 export default function AmbientBackground() {
   const [ready, setReady] = useState(false);
+  const pathname = usePathname();
+  const tint = getRouteTint(pathname);
+  const [surgeToken, setSurgeToken] = useState(0);
+  const [previousPathname, setPreviousPathname] = useState(pathname);
   const reducedMotion = useSyncExternalStore(
     subscribeToReducedMotion,
     getReducedMotionSnapshot,
     getReducedMotionServerSnapshot
   );
+
+  // Adjust-during-render (not an effect) so navigation bumps the surge token
+  // without an extra committed render; initial mount intentionally never surges
+  if (previousPathname !== pathname) {
+    setPreviousPathname(pathname);
+    setSurgeToken(surgeToken + 1);
+  }
 
   useEffect(() => {
     // Defer mounting three until the browser is idle so it never competes with LCP
@@ -77,7 +90,7 @@ export default function AmbientBackground() {
           />
         ))
       ) : ready ? (
-        <BokehCanvas />
+        <BokehCanvas tint={tint} surgeToken={surgeToken} />
       ) : null}
     </div>
   );

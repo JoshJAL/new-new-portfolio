@@ -1,5 +1,6 @@
+import Link from 'next/link';
+
 import { MenuItem } from '@headlessui/react';
-import { Link } from 'next-view-transitions';
 
 interface DropdownMenuItemProps {
   children: React.ReactNode;

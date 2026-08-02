@@ -28,7 +28,6 @@
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
     "next": "^16.2.12",
-    "next-view-transitions": "^0.3.5",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",

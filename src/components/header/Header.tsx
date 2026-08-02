@@ -1,6 +1,5 @@
 import DropdownMenu from './dropdownMenu/DropdownMenu';
-
-import { Link } from 'next-view-transitions';
+import Link from 'next/link';
 
 const NAV_LINKS = [
   { href: '/about', label: 'About' },

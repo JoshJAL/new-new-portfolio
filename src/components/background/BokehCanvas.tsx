@@ -69,7 +69,12 @@ function ParallaxRig({ children }: { children: React.ReactNode }) {
   return <group ref={group}>{children}</group>;
 }
 
-export default function BokehCanvas() {
+interface BokehCanvasProps {
+  surgeToken: number;
+  tint: string | null;
+}
+
+export default function BokehCanvas({ surgeToken, tint }: BokehCanvasProps) {
   const { webcamActive } = useBackground();
   const [tabHidden, setTabHidden] = useState(false);
   const mobileViewport = useSyncExternalStore(
@@ -94,7 +99,12 @@ export default function BokehCanvas() {
       frameloop={paused ? 'never' : 'always'}
     >
       <ParallaxRig>
-        <BokehField key={mobileViewport ? 'mobile' : 'desktop'} count={mobileViewport ? 40 : 64} />
+        <BokehField
+          key={mobileViewport ? 'mobile' : 'desktop'}
+          count={mobileViewport ? 40 : 64}
+          tint={tint}
+          surgeToken={surgeToken}
+        />
       </ParallaxRig>
     </Canvas>
   );
