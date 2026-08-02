@@ -1,4 +1,4 @@
-import TiltCard from '@/components/ui/TiltCard';
+import TiltCard from './TiltCard';
 import Image from 'next/image';
 
 import { Link } from 'next-view-transitions';

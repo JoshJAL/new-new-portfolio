@@ -1,4 +1,4 @@
-import DropdownMenu from '@/components/header/dropdownMenu/DropdownMenu';
+import DropdownMenu from './dropdownMenu/DropdownMenu';
 
 import { Link } from 'next-view-transitions';
 

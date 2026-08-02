@@ -1,6 +1,6 @@
 import { createHmac } from 'node:crypto';
 
-import type { ContactFormValues } from '@/types/contact';
+import type { ContactSubmission } from '@/types/contact';
 
 export const CONTACT_RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;
 export const CONTACT_RATE_LIMIT_RETENTION_MS = 24 * 60 * 60 * 1000;
@@ -85,7 +85,7 @@ export function buildRateLimitBuckets(
 
 export async function saveContactSubmission(
   store: ContactSubmissionStore,
-  submission: ContactFormValues,
+  submission: ContactSubmission,
   clientIp: string | null,
   now: number,
   secret: string
@@ -96,7 +96,7 @@ export async function saveContactSubmission(
     firstName: submission.firstName,
     lastName: submission.lastName,
     message: submission.message,
-    phoneNumber: submission.phoneNumber || null
+    phoneNumber: submission.phoneNumber
   };
 
   try {

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { SITE_CONFIG } from '@/utils/siteConfig';
+import { SITE_CONFIG } from './siteConfig';
 
 import type { MetadataRoute } from 'next';
 

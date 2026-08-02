@@ -1,16 +1,14 @@
 import './globals.css';
 
 import AmbientBackground from '@/components/background/AmbientBackground';
+import BackgroundProvider from '@/components/background/BackgroundContext';
 import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import WebcamBackground from '@/components/ui/WebcamBackground';
 
-import { BackgroundProvider } from '@/components/background/BackgroundContext';
-
-import { ViewTransitions } from 'next-view-transitions';
 import { Bricolage_Grotesque, Lexend } from 'next/font/google';
-
 import { SITE_CONFIG } from '@/utils/siteConfig';
+import { ViewTransitions } from 'next-view-transitions';
 
 import type { Metadata } from 'next';
 

@@ -4,7 +4,6 @@ import * as schema from './schema';
 
 import { createClient } from '@libsql/client';
 import { drizzle } from 'drizzle-orm/libsql';
-
 import { SERVER_ENVIRONMENT } from '@/utils/serverEnvironment';
 
 const client = createClient({

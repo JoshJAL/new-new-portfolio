@@ -1,8 +1,7 @@
-import { describe, expect, it } from 'bun:test';
-
 import { Window } from 'happy-dom';
-
 import { SITE_CONFIG } from '@/utils/siteConfig';
+
+import { describe, expect, it } from 'bun:test';
 
 async function readSource(relativeUrl: string): Promise<string> {
   return Bun.file(new URL(relativeUrl, import.meta.url)).text();
@@ -18,18 +17,19 @@ function asBrowserEvent(value: unknown): Event {
 
 describe('contact and transition regressions', () => {
   it('keeps confirmation, validation, disabled submission, inline errors, and an ID-free redirect', async () => {
-    const [contactForm, submitButton, thankYouPage] = await Promise.all([
+    const [contactForm, contactAction, submitButton, thankYouPage] = await Promise.all([
       readSource('../forms/ContactForm.tsx'),
+      readSource('../../server/actions/contact.ts'),
       readSource('../forms/ui/SubmitButton.tsx'),
       readSource('../../app/thank-you/page.tsx')
     ]);
 
     expect(contactForm.indexOf("confirm('Are you sure you want to send this message?')")).toBeGreaterThan(-1);
-    expect(contactForm.indexOf('submitContact(values)')).toBeGreaterThan(
+    expect(contactForm.indexOf('submitContact(value)')).toBeGreaterThan(
       contactForm.indexOf("confirm('Are you sure you want to send this message?')")
     );
     expect(contactForm).toContain('onChange: contactSchema');
-    expect(contactForm).toContain("aria-live='polite'");
+    expect(contactForm).toContain("role='alert'");
     expect(contactForm).toContain("name='companyWebsite'");
     expect(contactForm).toContain('tabIndex={-1}');
     expect(submitButton).toContain('disabled={isSubmitting || !canSubmit}');
@@ -37,6 +37,10 @@ describe('contact and transition regressions', () => {
     expect(SITE_CONFIG.thankYouPath).not.toContain('?');
     expect(thankYouPage).not.toContain('searchParams');
     expect(thankYouPage).not.toContain('getMessageById');
+    expect(contactAction.indexOf('contactSchema.safeParse(values)')).toBeGreaterThan(-1);
+    expect(contactAction.indexOf("import('@/utils/contact/submitContactMessage')")).toBeGreaterThan(
+      contactAction.indexOf('if (parsed.data.companyWebsite)')
+    );
   });
 
   it('restricts transitions to the visible properties they change', async () => {

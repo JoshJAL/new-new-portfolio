@@ -1,5 +1,4 @@
 import ProjectPage from '@/components/projects/ProjectPage';
-
 import NPMIcon from '@/public/projects/npm-icon.png';
 
 import { BiLogoTypescript } from 'react-icons/bi';

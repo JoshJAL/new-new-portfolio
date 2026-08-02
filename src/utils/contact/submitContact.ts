@@ -2,50 +2,53 @@ import { contactSchema } from './contactSchema';
 import { saveContactSubmission } from './rateLimit';
 
 import type { ContactSubmissionStore } from './rateLimit';
-import type { ContactActionResult, ContactFormValues } from '@/types/contact';
+import type { ContactSubmission, SubmitContactResult } from '@/types/contact';
 
-interface ProcessContactSubmissionOptions {
+export interface ProcessContactSubmissionOptions {
   clientIp: string | null;
   logError: (message: string, error: unknown) => void;
   now: number;
   rateLimitSecret: () => string;
-  sendThankYouEmail: (submission: ContactFormValues) => Promise<void>;
+  sendThankYouEmail: (submission: ContactSubmission) => Promise<void>;
   store: ContactSubmissionStore;
 }
 
-const INVALID_RESULT: ContactActionResult = {
+const INVALID_RESULT: SubmitContactResult = {
+  code: 'invalid',
   message: 'Please check your entries and try again.',
-  status: 'error'
+  ok: false
 };
 
-const SERVER_ERROR_RESULT: ContactActionResult = {
+const SERVER_ERROR_RESULT: SubmitContactResult = {
+  code: 'server_error',
   message: 'Something went wrong sending your message. Please try again.',
-  status: 'error'
+  ok: false
 };
-
-function hasPopulatedHoneypot(input: unknown): boolean {
-  if (!input || typeof input !== 'object' || !('companyWebsite' in input)) return false;
-
-  const companyWebsite = input.companyWebsite;
-  return typeof companyWebsite === 'string' && companyWebsite.trim().length > 0;
-}
 
 export async function processContactSubmission(
   input: unknown,
   options: ProcessContactSubmissionOptions
-): Promise<ContactActionResult> {
-  if (hasPopulatedHoneypot(input)) return { status: 'success' };
-
+): Promise<SubmitContactResult> {
   const parsed = contactSchema.safeParse(input);
 
   if (!parsed.success) return INVALID_RESULT;
+  if (parsed.data.companyWebsite) return { ok: true };
+
+  return processValidatedContactSubmission(parsed.data, options);
+}
+
+export async function processValidatedContactSubmission(
+  submission: ContactSubmission,
+  options: ProcessContactSubmissionOptions
+): Promise<SubmitContactResult> {
+  if (submission.companyWebsite) return { ok: true };
 
   let saveResult: Awaited<ReturnType<typeof saveContactSubmission>>;
 
   try {
     saveResult = await saveContactSubmission(
       options.store,
-      parsed.data,
+      submission,
       options.clientIp,
       options.now,
       options.rateLimitSecret()
@@ -57,16 +60,18 @@ export async function processContactSubmission(
 
   if (!saveResult.accepted) {
     return {
+      code: 'rate_limited',
       message: 'Too many messages have been sent. Please try again later.',
-      status: 'error'
+      ok: false,
+      retryAfterSeconds: saveResult.retryAfterSeconds
     };
   }
 
   try {
-    await options.sendThankYouEmail(parsed.data);
+    await options.sendThankYouEmail(submission);
   } catch (error) {
     options.logError('Error sending contact thank-you email:', error);
   }
 
-  return { status: 'success' };
+  return { ok: true };
 }

@@ -1,8 +1,8 @@
-import BackToTopButton from '@/components/ui/BackToTopButton';
-import BreadCrumb from '@/components/ui/BreadCrumb';
-import GlassPanel from '@/components/ui/GlassPanel';
+import BackToTopButton from './BackToTopButton';
+import BreadCrumb from './BreadCrumb';
+import GlassPanel from './GlassPanel';
 import Image from 'next/image';
-import TiltCard from '@/components/ui/TiltCard';
+import TiltCard from './TiltCard';
 
 import type { StaticImageData } from 'next/image';
 

@@ -1,4 +1,5 @@
-export interface ContactFormValues {
+export interface ContactSubmissionInput {
+  companyWebsite: string;
   email: string;
   firstName: string;
   lastName: string;
@@ -6,4 +7,16 @@ export interface ContactFormValues {
   phoneNumber: string;
 }
 
-export type ContactActionResult = { status: 'success' } | { status: 'error'; message: string };
+export interface ContactSubmission extends Omit<ContactSubmissionInput, 'phoneNumber'> {
+  phoneNumber: string | null;
+}
+
+export type SubmitContactResult =
+  | { ok: true }
+  | { ok: false; code: 'invalid' | 'server_error'; message: string }
+  | {
+      ok: false;
+      code: 'rate_limited';
+      message: string;
+      retryAfterSeconds: number;
+    };

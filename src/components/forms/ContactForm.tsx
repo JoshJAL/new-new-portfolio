@@ -1,21 +1,22 @@
 'use client';
 
-import FormWrapper from '@/components/forms/ui/FormWrapper';
+import FormWrapper from './ui/FormWrapper';
 
-import { useAppForm } from '@/components/forms/ui';
+import { SITE_CONFIG } from '@/utils/siteConfig';
+
+import { useAppForm } from './ui';
 import { submitContact } from '@/server/actions/contact';
 import { contactSchema } from '@/utils/contact/contactSchema';
-import { SITE_CONFIG } from '@/utils/siteConfig';
 import { useTransitionRouter } from 'next-view-transitions';
 import { useState } from 'react';
 
 export default function ContactForm() {
   const router = useTransitionRouter();
-  const [companyWebsite, setCompanyWebsite] = useState('');
   const [submissionError, setSubmissionError] = useState<string | null>(null);
 
   const form = useAppForm({
     defaultValues: {
+      companyWebsite: '',
       email: '',
       firstName: '',
       lastName: '',
@@ -27,10 +28,9 @@ export default function ContactForm() {
 
       setSubmissionError(null);
       try {
-        const values = { ...value, companyWebsite };
-        const result = await submitContact(values);
+        const result = await submitContact(value);
 
-        if (result.status === 'success') {
+        if (result.ok) {
           router.push(SITE_CONFIG.thankYouPath);
         } else {
           setSubmissionError(result.message);
@@ -47,10 +47,10 @@ export default function ContactForm() {
   return (
     <FormWrapper handleSubmit={form.handleSubmit}>
       <form.AppField name='firstName'>
-        {(field) => <field.TextField label='Your First Name' maxLength={100} autoFocus />}
+        {(field) => <field.TextField label='Your First Name' maxLength={80} autoFocus />}
       </form.AppField>
       <form.AppField name='lastName'>
-        {(field) => <field.TextField label='Your Last Name' maxLength={100} />}
+        {(field) => <field.TextField label='Your Last Name' maxLength={80} />}
       </form.AppField>
       <form.AppField name='email'>
         {(field) => <field.TextField label='Your Email' maxLength={254} type='email' />}
@@ -59,7 +59,7 @@ export default function ContactForm() {
         {(field) => (
           <field.TextField
             label='Your Phone Number'
-            maxLength={50}
+            maxLength={32}
             required={false}
             placeholder='(Optional)'
             type='tel'
@@ -69,16 +69,21 @@ export default function ContactForm() {
       <form.AppField name='message'>
         {(field) => <field.TextAreaField label='Your Message' maxLength={5000} />}
       </form.AppField>
-      <input
-        aria-hidden='true'
-        autoComplete='off'
-        className='hidden'
-        name='companyWebsite'
-        onChange={(event) => setCompanyWebsite(event.target.value)}
-        tabIndex={-1}
-        type='text'
-        value={companyWebsite}
-      />
+      <form.AppField name='companyWebsite'>
+        {(field) => (
+          <input
+            aria-hidden='true'
+            autoComplete='off'
+            className='hidden'
+            maxLength={200}
+            name='companyWebsite'
+            onChange={(event) => field.handleChange(event.target.value)}
+            tabIndex={-1}
+            type='text'
+            value={field.state.value}
+          />
+        )}
+      </form.AppField>
       {submissionError ? (
         <p
           aria-live='polite'

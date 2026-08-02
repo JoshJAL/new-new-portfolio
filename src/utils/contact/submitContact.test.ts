@@ -5,12 +5,12 @@ import { CONTACT_RATE_LIMIT_WINDOW_MS, createRateLimitKey } from './rateLimit';
 import { processContactSubmission } from './submitContact';
 
 import type { ContactSubmissionStore, ContactSubmissionTransaction } from './rateLimit';
-import type { ContactFormValues } from '@/types/contact';
+import type { ContactSubmissionInput } from '@/types/contact';
 
 const NOW = Date.UTC(2026, 7, 2, 12, 15);
 const RATE_LIMIT_SECRET = 'test-contact-rate-limit-secret-value';
 
-const VALID_INPUT: ContactFormValues & { companyWebsite: string } = {
+const VALID_INPUT: ContactSubmissionInput = {
   companyWebsite: '',
   email: 'person@example.com',
   firstName: 'First',
@@ -109,25 +109,27 @@ describe('contact validation', () => {
         phoneNumber: '   '
       })
     ).toEqual({
+      companyWebsite: '',
       email: 'person@example.com',
       firstName: 'First',
       lastName: 'Last',
       message: 'Hello there',
-      phoneNumber: ''
+      phoneNumber: null
     });
   });
 
   it('rejects invalid, empty, and oversized values', () => {
-    const invalidInputs: ContactFormValues[] = [
+    const invalidInputs: ContactSubmissionInput[] = [
       { ...VALID_INPUT, email: 'not-an-email' },
       { ...VALID_INPUT, firstName: ' ' },
       { ...VALID_INPUT, lastName: ' ' },
       { ...VALID_INPUT, message: ' ' },
       { ...VALID_INPUT, email: `${'a'.repeat(250)}@example.com` },
-      { ...VALID_INPUT, firstName: 'a'.repeat(101) },
-      { ...VALID_INPUT, lastName: 'a'.repeat(101) },
+      { ...VALID_INPUT, firstName: 'a'.repeat(81) },
+      { ...VALID_INPUT, lastName: 'a'.repeat(81) },
       { ...VALID_INPUT, message: 'a'.repeat(5001) },
-      { ...VALID_INPUT, phoneNumber: '1'.repeat(51) }
+      { ...VALID_INPUT, phoneNumber: '1'.repeat(33) },
+      { ...VALID_INPUT, companyWebsite: 'a'.repeat(201) }
     ];
 
     for (const input of invalidInputs) expect(contactSchema.safeParse(input).success).toBe(false);
@@ -138,8 +140,9 @@ describe('contact validation', () => {
     const result = await harness.submit({ email: 'invalid' });
 
     expect(result).toEqual({
+      code: 'invalid',
       message: 'Please check your entries and try again.',
-      status: 'error'
+      ok: false
     });
     expect(harness.messages).toHaveLength(0);
     expect(harness.emailSubmissions).toHaveLength(0);
@@ -151,7 +154,7 @@ describe('contact submission protections', () => {
     const harness = createHarness();
     const result = await harness.submit({ ...VALID_INPUT, companyWebsite: 'https://spam.example' });
 
-    expect(result).toEqual({ status: 'success' });
+    expect(result).toEqual({ ok: true });
     expect(harness.messages).toHaveLength(0);
     expect(harness.buckets()).toHaveLength(0);
     expect(harness.emailSubmissions).toHaveLength(0);
@@ -161,10 +164,10 @@ describe('contact submission protections', () => {
     const harness = createHarness();
 
     for (let index = 0; index < 3; index += 1) {
-      expect(await harness.submit(VALID_INPUT, null)).toEqual({ status: 'success' });
+      expect(await harness.submit(VALID_INPUT, null)).toEqual({ ok: true });
     }
 
-    expect(await harness.submit(VALID_INPUT, null)).toMatchObject({ status: 'error' });
+    expect(await harness.submit(VALID_INPUT, null)).toMatchObject({ code: 'rate_limited', ok: false });
     expect(harness.messages).toHaveLength(3);
   });
 
@@ -173,11 +176,14 @@ describe('contact submission protections', () => {
 
     for (let index = 0; index < 5; index += 1) {
       const input = { ...VALID_INPUT, email: `person-${index}@example.com` };
-      expect(await harness.submit(input)).toEqual({ status: 'success' });
+      expect(await harness.submit(input)).toEqual({ ok: true });
     }
 
     const limitedEmail = 'person-5@example.com';
-    expect(await harness.submit({ ...VALID_INPUT, email: limitedEmail })).toMatchObject({ status: 'error' });
+    expect(await harness.submit({ ...VALID_INPUT, email: limitedEmail })).toMatchObject({
+      code: 'rate_limited',
+      ok: false
+    });
     expect(harness.messages).toHaveLength(5);
     expect(
       harness.buckets().some((bucket) => bucket.key === createRateLimitKey('email', limitedEmail, RATE_LIMIT_SECRET))
@@ -189,9 +195,9 @@ describe('contact submission protections', () => {
 
     for (let index = 0; index < 3; index += 1) await harness.submit(VALID_INPUT, null);
 
-    expect(await harness.submit(VALID_INPUT, null)).toMatchObject({ status: 'error' });
+    expect(await harness.submit(VALID_INPUT, null)).toMatchObject({ code: 'rate_limited', ok: false });
     expect(await harness.submit(VALID_INPUT, null, NOW + CONTACT_RATE_LIMIT_WINDOW_MS)).toEqual({
-      status: 'success'
+      ok: true
     });
     expect(harness.messages).toHaveLength(4);
   });
@@ -201,7 +207,7 @@ describe('contact submission protections', () => {
 
     for (let index = 0; index < 3; index += 1) await harness.submit(VALID_INPUT, null);
 
-    expect(await harness.submit(VALID_INPUT, null)).toMatchObject({ status: 'error' });
+    expect(await harness.submit(VALID_INPUT, null)).toMatchObject({ code: 'rate_limited', ok: false });
     expect(harness.buckets()).toHaveLength(1);
   });
 
@@ -233,7 +239,7 @@ describe('contact submission protections', () => {
     const harness = createHarness();
     harness.setEmailShouldFail(true);
 
-    expect(await harness.submit(VALID_INPUT)).toEqual({ status: 'success' });
+    expect(await harness.submit(VALID_INPUT)).toEqual({ ok: true });
     expect(harness.messages).toHaveLength(1);
     expect(harness.errors).toHaveLength(1);
     expect(harness.errors[0].message).toBe('Error sending contact thank-you email:');

@@ -2,7 +2,6 @@ import { Link } from 'next-view-transitions';
 import { FaCamera, FaCode, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { IoMdContact } from 'react-icons/io';
 import { TiDocumentText, TiMail } from 'react-icons/ti';
-
 import { SITE_CONFIG } from '@/utils/siteConfig';
 
 export default function Footer() {

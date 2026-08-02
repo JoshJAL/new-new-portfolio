@@ -2,9 +2,10 @@
 
 import BokehField from './BokehField';
 
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { Canvas } from '@react-three/fiber';
 
+import { useFrame } from '@react-three/fiber';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useBackground } from './BackgroundContext';
 
 import type { Group } from 'three';

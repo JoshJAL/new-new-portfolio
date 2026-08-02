@@ -12,7 +12,7 @@ const BackgroundContext = createContext<BackgroundContextValue>({
   setWebcamActive: () => {}
 });
 
-export function BackgroundProvider({ children }: { children: React.ReactNode }) {
+export default function BackgroundProvider({ children }: { children: React.ReactNode }) {
   const [webcamActive, setWebcamActive] = useState(false);
   const value = { webcamActive, setWebcamActive };
 

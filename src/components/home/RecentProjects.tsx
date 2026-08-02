@@ -13,7 +13,7 @@ import { SiClerk, SiResend, SiShopify, SiSqlite, SiStripe } from 'react-icons/si
 import type { Tech } from '@/types/tech';
 
 export default function RecentProjects() {
-  const ez_funcs: Tech[] = [
+  const ezFuncs: Tech[] = [
     {
       borderColor: 'border-blue-500/20',
       color: 'bg-blue-500/50',
@@ -159,7 +159,7 @@ export default function RecentProjects() {
       <GlassPanel tint='cerulean' className='flex flex-col gap-3'>
         <h3>ez-funcs</h3>
         <div className='flex flex-wrap gap-2'>
-          {ez_funcs.map((t) => (
+          {ezFuncs.map((t) => (
             <Technology tech={t} key={t.label} />
           ))}
         </div>

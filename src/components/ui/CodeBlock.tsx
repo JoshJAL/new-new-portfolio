@@ -1,6 +1,6 @@
 'use client';
 
-import GlassButton from '@/components/ui/GlassButton';
+import GlassButton from './GlassButton';
 
 import bash from 'react-syntax-highlighter/dist/esm/languages/prism/bash';
 import json from 'react-syntax-highlighter/dist/esm/languages/prism/json';

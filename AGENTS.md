@@ -190,15 +190,15 @@ within the same feature folder. Exclude generated `next-env.d.ts`.
 
 - Use Tailwind CSS v4 utilities and project theme tokens from
   `src/app/globals.css`.
-- Prefer existing shared components such as `InfoCard`, `ProjectPage`,
-  `GlassButton`, `GlassButtonLink`, and `StyledLink` before creating new
-  primitives.
+- Prefer existing shared components such as `GlassPanel`, `SectionHeading`,
+  `ProjectPage`, `GlassButton`, `GlassButtonLink`, and `StyledLink` before
+  creating new primitives.
 - Keep layout structure simple: `container mx-auto px-4`, responsive grids,
   consistent gaps, and semantic HTML.
 - Use project colors through tokens such as `dark-purple`, `caribbean-current`,
   `dark-cyan`, `champagne`, `desert-sand`, `davys-gray`, `bittersweet`,
-  `naples-yellow`, `cerulean`, and `verdigris`.
-- Prefer `lucide-react` icons for new icon buttons when a suitable icon exists.
+  `naples-yellow`, `cerulean`, `verdigris`, and `project-slate`.
+- Prefer the existing `react-icons` packages for new icons.
 - Keep controls accessible with labels, `aria-*` where needed, and
   keyboard-friendly behavior.
 - Let Prettier sort Tailwind classes.

@@ -13,7 +13,6 @@ const ICON_BUTTON_CLASSES =
 export default function WebcamBackground() {
   const [isWebcamActive, setIsWebcamActive] = useState(false);
   const [facingMode, setFacingMode] = useState('environment');
-  // Pauses the bokeh render loop while the webcam feed is covering it
   const { setWebcamActive } = useBackground();
 
   const videoConstraints = {

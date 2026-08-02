@@ -1,4 +1,4 @@
-import GlassButtonLink from '@/components/ui/GlassButtonLink';
+import GlassButtonLink from './GlassButtonLink';
 
 import { FaChevronRight } from 'react-icons/fa';
 

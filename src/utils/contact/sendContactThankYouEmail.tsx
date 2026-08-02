@@ -3,12 +3,11 @@ import 'server-only';
 import ContactThankYou from '@/components/emails/ContactThankYou';
 
 import { Resend } from 'resend';
-
 import { SERVER_ENVIRONMENT } from '@/utils/serverEnvironment';
 
-import type { ContactFormValues } from '@/types/contact';
+import type { ContactSubmission } from '@/types/contact';
 
-export async function sendContactThankYouEmail(submission: ContactFormValues): Promise<void> {
+export async function sendContactThankYouEmail(submission: ContactSubmission): Promise<void> {
   const resend = new Resend(SERVER_ENVIRONMENT.resendApiKey);
   const { error } = await resend.emails.send({
     from: 'joshua.levine@contact.joshualevine.me',

@@ -1,17 +1,18 @@
 import 'server-only';
 
-import { contactSubmissionStore } from './contactStore';
-import { sendContactThankYouEmail } from './sendContactThankYouEmail';
-import { processContactSubmission } from './submitContact';
 import { SERVER_ENVIRONMENT } from '@/utils/serverEnvironment';
 
-import type { ContactActionResult, ContactFormValues } from '@/types/contact';
+import { contactSubmissionStore } from './contactStore';
+import { sendContactThankYouEmail } from './sendContactThankYouEmail';
+import { processValidatedContactSubmission } from './submitContact';
+
+import type { ContactSubmission, SubmitContactResult } from '@/types/contact';
 
 export async function submitContactMessage(
-  values: ContactFormValues,
+  values: ContactSubmission,
   clientIp: string | null
-): Promise<ContactActionResult> {
-  return processContactSubmission(values, {
+): Promise<SubmitContactResult> {
+  return processValidatedContactSubmission(values, {
     clientIp,
     logError: console.error,
     now: Date.now(),
