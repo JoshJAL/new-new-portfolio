@@ -19,6 +19,6 @@ export default function BackgroundProvider({ children }: { children: React.React
   return <BackgroundContext.Provider value={value}>{children}</BackgroundContext.Provider>;
 }
 
-export function useBackground() {
+export function useBackground(): BackgroundContextValue {
   return useContext(BackgroundContext);
 }

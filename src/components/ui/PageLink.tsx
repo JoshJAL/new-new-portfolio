@@ -34,7 +34,7 @@ export default function PageLink({ black, post }: Props) {
           <h2 className='text-xl font-semibold md:text-2xl'>{post.heading}</h2>
           <p className='text-sm md:text-base'>{post.description}</p>
           <div className='gradient_underline flex w-fit items-center gap-2'>
-            <BiChevronRightCircle /> See More
+            <BiChevronRightCircle aria-hidden='true' /> See More
           </div>
         </div>
       </SiteLink>

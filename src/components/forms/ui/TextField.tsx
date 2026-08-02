@@ -2,57 +2,62 @@ import FieldErrors from './FieldErrors';
 
 import { useFieldContext } from './formContexts';
 
-interface Props {
-  autoFocus?: boolean;
+const INPUT_CLASSES =
+  'pop nice-focus-no-shadow block w-full rounded-xl border-0 bg-white/85 px-3 py-2 text-black ring-1 ring-white/20 liquid-blur transition-shadow duration-300 ease-in-out outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-verdigris/40';
+
+export interface TextFieldProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'name'> {
   label: string;
-  maxLength?: number;
-  min?: string;
   noLabel?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder?: string;
-  required?: boolean;
-  step?: string;
-  type?: 'email' | 'password' | 'number' | 'text' | 'tel' | 'date';
-  value?: string;
 }
 
 export default function TextField({
-  autoFocus,
+  'aria-describedby': ariaDescribedBy,
+  'aria-invalid': ariaInvalid,
+  className,
+  id,
   label,
-  maxLength,
-  min,
   noLabel,
+  onBlur,
   onChange,
-  placeholder,
   required = true,
-  step,
   type = 'text',
-  value
-}: Props) {
+  value,
+  ...inputProps
+}: TextFieldProps) {
   const field = useFieldContext<string>();
+  const inputId = id ?? field.name;
+  const errorId = `${inputId}-errors`;
+  const hasErrors = field.state.meta.isTouched && field.state.meta.errors.length > 0;
+  const describedBy = [ariaDescribedBy, hasErrors ? errorId : undefined].filter(Boolean).join(' ') || undefined;
+  const inputClassName = [INPUT_CLASSES, className].filter(Boolean).join(' ');
 
   return (
     <div>
-      <label htmlFor={field.name} className={`block leading-6 font-medium ${noLabel ? 'sr-only' : ''}`}>
+      <label htmlFor={inputId} className={`block leading-6 font-medium ${noLabel ? 'sr-only' : ''}`}>
         {label}
       </label>
       <div className='mt-2'>
         <input
-          step={step}
-          autoFocus={autoFocus}
-          maxLength={maxLength}
-          min={min}
-          onChange={onChange ? onChange : (e) => field.handleChange(e.target.value)}
-          value={value ? value : field.state.value}
-          required={required}
-          id={field.name}
+          {...inputProps}
+          aria-describedby={describedBy}
+          aria-invalid={ariaInvalid ?? (hasErrors ? true : undefined)}
+          className={inputClassName}
+          id={inputId}
           name={field.name}
+          onBlur={(event) => {
+            field.handleBlur();
+            onBlur?.(event);
+          }}
+          onChange={(event) => {
+            field.handleChange(event.target.value);
+            onChange?.(event);
+          }}
+          required={required}
           type={type}
-          placeholder={placeholder}
-          className='pop nice-focus-no-shadow block w-full rounded-xl border-0 bg-white/85 px-3 py-2 text-black ring-1 ring-white/20 liquid-blur transition-shadow duration-300 ease-in-out outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-verdigris/40'
+          value={value ?? field.state.value}
         />
       </div>
-      <FieldErrors meta={field.state.meta} />
+      <FieldErrors id={errorId} meta={field.state.meta} />
     </div>
   );
 }

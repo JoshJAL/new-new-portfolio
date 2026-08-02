@@ -1,5 +1,4 @@
 import { isInternalRouteHref } from './navigationTransitions';
-
 import { describe, expect, it } from 'bun:test';
 
 describe('isInternalRouteHref', () => {
@@ -41,7 +40,7 @@ describe('SiteLink regressions', () => {
 
     const siteLink = await Bun.file(new URL('../components/ui/SiteLink.tsx', import.meta.url)).text();
     expect(siteLink).toContain("import Link from 'next/link';");
-    expect(siteLink).toContain('return <a {...anchorProps} href={href} />;');
+    expect(siteLink).toContain('return <a {...anchorProps} href={href} rel={rel} target={target} />;');
     expect(siteLink).toContain('prefetch={true}');
     expect(siteLink).toContain('transitionTypes={ROUTE_TRANSITION_TYPES}');
   });
@@ -60,5 +59,20 @@ describe('SiteLink regressions', () => {
     expect(projectCard.match(/<a/g)).toHaveLength(2);
     expect(projectCard).toContain('href={project.codeHref}');
     expect(projectCard).toContain('href={project.projectHref}');
+  });
+});
+
+describe('ViewTransition regressions', () => {
+  it('styles root boundary updates for the canonical rack-focus transition type', async () => {
+    const [transitions, template, globals] = await Promise.all([
+      Bun.file(new URL('./navigationTransitions.ts', import.meta.url)).text(),
+      Bun.file(new URL('../app/template.tsx', import.meta.url)).text(),
+      Bun.file(new URL('../app/globals.css', import.meta.url)).text()
+    ]);
+
+    expect(transitions).toContain("export const RACK_FOCUS_TRANSITION_TYPE = 'rack-focus';");
+    expect(template).toContain("update={{ [RACK_FOCUS_TRANSITION_TYPE]: 'rack-focus-update', default: 'none' }}");
+    expect(globals.match(/::view-transition-old\(\.rack-focus-update\)/g)).toHaveLength(2);
+    expect(globals.match(/::view-transition-new\(\.rack-focus-update\)/g)).toHaveLength(2);
   });
 });

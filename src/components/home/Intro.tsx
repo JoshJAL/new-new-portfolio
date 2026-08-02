@@ -1,8 +1,8 @@
 import GlassButtonLink from '@/components/ui/GlassButtonLink';
 import GlassPanel from '@/components/ui/GlassPanel';
-import Image from 'next/image';
-import Me from '@/public/me.jpeg';
 import TiltCard from '@/components/ui/TiltCard';
+import Me from '@/public/me.jpeg';
+import Image from 'next/image';
 
 const TOOLS = [
   'TypeScript',

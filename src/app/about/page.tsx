@@ -1,6 +1,6 @@
+import PageLinks from '@/components/about/PageLinks';
 import BackToTopButton from '@/components/ui/BackToTopButton';
 import GlassPanel from '@/components/ui/GlassPanel';
-import PageLinks from '@/components/about/PageLinks';
 import SectionHeading from '@/components/ui/SectionHeading';
 import StyledLink from '@/components/ui/StyledLink';
 

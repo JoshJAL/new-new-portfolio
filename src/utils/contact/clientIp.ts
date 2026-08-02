@@ -1,3 +1,5 @@
+import 'server-only';
+
 const CLIENT_IP_HEADERS = ['x-vercel-forwarded-for', 'x-forwarded-for', 'x-real-ip'] as const;
 
 export function getClientIp(requestHeaders: Headers): string | null {

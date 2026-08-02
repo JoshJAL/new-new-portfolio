@@ -11,8 +11,8 @@ import typescript from 'react-syntax-highlighter/dist/esm/languages/prism/typesc
 
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { useState } from 'react';
+import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import type { ReactElement } from 'react';
 
@@ -25,6 +25,7 @@ SyntaxHighlighter.registerLanguage('json', json);
 
 const CopyIcon = () => (
   <svg
+    aria-hidden='true'
     xmlns='http://www.w3.org/2000/svg'
     width='16'
     height='16'
@@ -42,6 +43,7 @@ const CopyIcon = () => (
 
 const CheckIcon = () => (
   <svg
+    aria-hidden='true'
     xmlns='http://www.w3.org/2000/svg'
     width='16'
     height='16'

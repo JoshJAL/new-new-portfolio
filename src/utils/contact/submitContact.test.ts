@@ -1,11 +1,15 @@
-import { describe, expect, it } from 'bun:test';
-
 import { contactSchema } from './contactSchema';
-import { CONTACT_RATE_LIMIT_WINDOW_MS, createRateLimitKey } from './rateLimit';
-import { processContactSubmission } from './submitContact';
+import { describe, expect, it, mock } from 'bun:test';
 
 import type { ContactSubmissionStore, ContactSubmissionTransaction } from './rateLimit';
 import type { ContactSubmissionInput } from '@/types/contact';
+
+mock.module('server-only', () => ({}));
+
+const [{ CONTACT_RATE_LIMIT_WINDOW_MS, createRateLimitKey }, { processContactSubmission }] = await Promise.all([
+  import('./rateLimit'),
+  import('./submitContact')
+]);
 
 const NOW = Date.UTC(2026, 7, 2, 12, 15);
 const RATE_LIMIT_SECRET = 'test-contact-rate-limit-secret-value';

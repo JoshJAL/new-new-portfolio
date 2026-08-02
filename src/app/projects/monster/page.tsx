@@ -1,6 +1,6 @@
 import ProjectPage from '@/components/projects/ProjectPage';
-import Monster from '@/public/projects/monster_logo_white.webp';
 import StyledLink from '@/components/ui/StyledLink';
+import Monster from '@/public/projects/monster_logo_white.webp';
 
 import { BiLogoJavascript, BiLogoTypescript } from 'react-icons/bi';
 import { BsFiletypeCss } from 'react-icons/bs';

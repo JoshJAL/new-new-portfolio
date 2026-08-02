@@ -1,10 +1,11 @@
 import type { AnyFieldMeta } from '@tanstack/react-form';
 
 interface Props {
+  id: string;
   meta: AnyFieldMeta;
 }
 
-export default function FieldErrors({ meta }: Props) {
+export default function FieldErrors({ id, meta }: Props) {
   if (!meta.isTouched) return null;
 
   const messages = Array.from(
@@ -23,9 +24,15 @@ export default function FieldErrors({ meta }: Props) {
     )
   );
 
-  return messages.map((message) => (
-    <p key={message} className='mt-2 text-sm font-medium text-red-600 italic'>
-      {message}
-    </p>
-  ));
+  if (messages.length === 0) return null;
+
+  return (
+    <div id={id} aria-live='polite'>
+      {messages.map((message) => (
+        <p key={message} className='mt-2 text-sm font-medium text-red-600 italic'>
+          {message}
+        </p>
+      ))}
+    </div>
+  );
 }

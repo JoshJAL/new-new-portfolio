@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { createHmac } from 'node:crypto';
 
 import type { ContactSubmission } from '@/types/contact';

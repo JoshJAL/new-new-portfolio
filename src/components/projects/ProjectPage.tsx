@@ -1,9 +1,9 @@
 import BreadCrumb from '@/components/ui/BreadCrumb';
 import GlassButtonLink from '@/components/ui/GlassButtonLink';
 import GlassPanel from '@/components/ui/GlassPanel';
-import Image from 'next/image';
 import Technology from '@/components/ui/Technology';
 import TiltCard from '@/components/ui/TiltCard';
+import Image from 'next/image';
 
 import type { Tech } from '@/types/tech';
 import type { StaticImageData } from 'next/image';
@@ -53,7 +53,7 @@ export default function ProjectPage({
         <div className='relative overflow-hidden rounded-xl media-shadow'>
           <div className='pop absolute inset-0 z-10 bg-black/10'></div>
           <Image
-            className={` ${imageBackgroundColor ? imageBackgroundColor : 'bg-white'} ${imagePadding}`}
+            className={`${imageBackgroundColor ?? 'bg-white'} ${imagePadding ?? ''}`}
             alt={title}
             src={image}
             placeholder='blur'

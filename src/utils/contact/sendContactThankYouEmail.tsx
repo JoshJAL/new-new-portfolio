@@ -2,8 +2,8 @@ import 'server-only';
 
 import ContactThankYou from '@/components/emails/ContactThankYou';
 
-import { Resend } from 'resend';
 import { SERVER_ENVIRONMENT } from '@/utils/serverEnvironment';
+import { Resend } from 'resend';
 
 import type { ContactSubmission } from '@/types/contact';
 

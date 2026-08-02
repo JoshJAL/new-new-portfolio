@@ -1,6 +1,5 @@
-import { describe, expect, test } from 'bun:test';
-
 import { contactSchema } from './contactSchema';
+import { describe, expect, test } from 'bun:test';
 
 import type { ContactSubmissionInput } from '@/types/contact';
 

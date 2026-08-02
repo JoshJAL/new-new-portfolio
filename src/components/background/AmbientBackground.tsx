@@ -73,7 +73,7 @@ export default function AmbientBackground() {
   }, []);
 
   return (
-    <div aria-hidden className='pointer-events-none fixed inset-0 z-[-2] overflow-hidden'>
+    <div aria-hidden className='pointer-events-none fixed inset-0 -z-2 overflow-hidden'>
       {reducedMotion ? (
         STATIC_BLOBS.map((blob, i) => (
           <div

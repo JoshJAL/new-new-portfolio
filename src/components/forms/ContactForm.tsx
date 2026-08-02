@@ -48,18 +48,19 @@ export default function ContactForm() {
   return (
     <FormWrapper handleSubmit={form.handleSubmit}>
       <form.AppField name='firstName'>
-        {(field) => <field.TextField label='Your First Name' maxLength={80} autoFocus />}
+        {(field) => <field.TextField autoComplete='given-name' label='Your First Name' maxLength={80} autoFocus />}
       </form.AppField>
       <form.AppField name='lastName'>
-        {(field) => <field.TextField label='Your Last Name' maxLength={80} />}
+        {(field) => <field.TextField autoComplete='family-name' label='Your Last Name' maxLength={80} />}
       </form.AppField>
       <form.AppField name='email'>
-        {(field) => <field.TextField label='Your Email' maxLength={254} type='email' />}
+        {(field) => <field.TextField autoComplete='email' label='Your Email' maxLength={254} type='email' />}
       </form.AppField>
       <form.AppField name='phoneNumber'>
         {(field) => (
           <field.TextField
             label='Your Phone Number'
+            autoComplete='tel'
             maxLength={32}
             required={false}
             placeholder='(Optional)'

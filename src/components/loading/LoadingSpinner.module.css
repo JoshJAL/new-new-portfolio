@@ -54,3 +54,10 @@
     transform: rotate(-360deg) scale(0.4);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .loader:after,
+  .loader:before {
+    animation: none;
+  }
+}

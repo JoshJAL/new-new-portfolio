@@ -1,5 +1,6 @@
-import { Window } from 'happy-dom';
+import { ROUTE_TRANSITION_TYPES } from '@/utils/navigationTransitions';
 import { SITE_CONFIG } from '@/utils/siteConfig';
+import { Window } from 'happy-dom';
 
 import { describe, expect, it } from 'bun:test';
 
@@ -15,7 +16,66 @@ function asBrowserEvent(value: unknown): Event {
   return value as Event;
 }
 
+function getElementProps(value: unknown): Record<string, unknown> {
+  return (value as { props: Record<string, unknown> }).props;
+}
+
 describe('contact and transition regressions', () => {
+  it('forwards native control props and preserves link security and navigation behavior', async () => {
+    const [{ default: GlassButton }, { default: GlassButtonLink }, { default: SiteLink }] = await Promise.all([
+      import('./GlassButton'),
+      import('./GlassButtonLink'),
+      import('./SiteLink')
+    ]);
+
+    const button = GlassButton({
+      'aria-label': 'Copy code to clipboard',
+      children: 'Copy',
+      className: 'custom-button-class',
+      'data-control': 'copy',
+      form: 'guide-code-form',
+      type: 'submit'
+    } as Parameters<typeof GlassButton>[0] & { 'data-control': string });
+    const buttonProps = getElementProps(button);
+
+    expect(button.type).toBe('button');
+    expect(buttonProps['aria-label']).toBe('Copy code to clipboard');
+    expect(buttonProps['data-control']).toBe('copy');
+    expect(buttonProps.form).toBe('guide-code-form');
+    expect(buttonProps.type).toBe('submit');
+    expect(buttonProps.className).toContain('custom-button-class');
+
+    const buttonLink = GlassButtonLink({
+      'aria-label': 'Open guides',
+      additionalClasses: 'max-w-sm',
+      children: 'Guides',
+      className: 'custom-link-class',
+      'data-control': 'guides',
+      href: '/guides'
+    } as Parameters<typeof GlassButtonLink>[0] & { 'data-control': string });
+    const buttonLinkProps = getElementProps(buttonLink);
+
+    expect(buttonLinkProps['aria-label']).toBe('Open guides');
+    expect(buttonLinkProps['data-control']).toBe('guides');
+    expect(buttonLinkProps.className).toContain('w-full');
+    expect(buttonLinkProps.className).toContain('max-w-sm');
+    expect(buttonLinkProps.className).toContain('custom-link-class');
+
+    const externalProps = getElementProps(
+      SiteLink({ children: 'External', href: 'https://example.com', target: '_blank' })
+    );
+    const explicitRelProps = getElementProps(
+      SiteLink({ children: 'External', href: 'https://example.com', rel: 'external', target: '_blank' })
+    );
+    const internalProps = getElementProps(SiteLink({ children: 'Guides', href: '/guides', scroll: false }));
+
+    expect(externalProps.rel).toBe('noopener noreferrer');
+    expect(explicitRelProps.rel).toBe('external');
+    expect(internalProps.prefetch).toBe(true);
+    expect(internalProps.scroll).toBe(false);
+    expect(internalProps.transitionTypes).toEqual(ROUTE_TRANSITION_TYPES);
+  });
+
   it('keeps confirmation, validation, disabled submission, inline errors, and an ID-free redirect', async () => {
     const [contactForm, contactAction, submitButton, thankYouPage] = await Promise.all([
       readSource('../forms/ContactForm.tsx'),
@@ -78,6 +138,44 @@ describe('contact and transition regressions', () => {
     expect(dropdownItem.match(/<MenuItem>/g)).toHaveLength(1);
     expect(dropdownItem.match(/<SiteLink/g)).toHaveLength(1);
     expect(dropdownItem).toMatch(/<MenuItem>\s*<SiteLink[\s\S]*<\/SiteLink>\s*<\/MenuItem>/);
+  });
+
+  it('keeps breadcrumb, loading, menu, copy-control, and form accessibility hooks', async () => {
+    const [breadcrumb, codeBlock, contactForm, dropdown, loadingSpinner, loadingStyles, textArea, textField] =
+      await Promise.all([
+        readSource('./BreadCrumb.tsx'),
+        readSource('./CodeBlock.tsx'),
+        readSource('../forms/ContactForm.tsx'),
+        readSource('../header/dropdownMenu/DropdownMenu.tsx'),
+        readSource('../loading/LoadingSpinner.tsx'),
+        readSource('../loading/LoadingSpinner.module.css'),
+        readSource('../forms/ui/TextAreaField.tsx'),
+        readSource('../forms/ui/TextField.tsx')
+      ]);
+
+    expect(dropdown).toContain("aria-label='Open navigation menu'");
+    expect(dropdown).toContain('focus-visible:ring-2');
+    expect(codeBlock).toContain("aria-label='Copy code to clipboard'");
+    expect(breadcrumb).toContain("<nav aria-label='Breadcrumb'>");
+    expect(breadcrumb).toContain('<ol');
+    expect(breadcrumb).toContain("aria-current='page'");
+    expect(loadingSpinner).toContain("role='status'");
+    expect(loadingSpinner).toContain("aria-live='polite'");
+    expect(loadingSpinner).toContain("className='sr-only'>Loading...</span>");
+    expect(loadingStyles).toContain('@media (prefers-reduced-motion: reduce)');
+    expect(loadingStyles).toContain('animation: none');
+
+    for (const field of [textField, textArea]) {
+      expect(field).toContain('field.handleBlur();');
+      expect(field).toContain('field.handleChange(event.target.value);');
+      expect(field).toContain('aria-describedby={describedBy}');
+      expect(field).toContain('aria-invalid=');
+      expect(field).toContain('<FieldErrors id={errorId}');
+    }
+
+    for (const token of ['given-name', 'family-name', 'email', 'tel']) {
+      expect(contactForm).toContain(`autoComplete='${token}'`);
+    }
   });
 
   it('wraps each complete guide link in one full-height TiltCard', async () => {

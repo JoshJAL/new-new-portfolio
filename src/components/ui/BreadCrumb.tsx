@@ -12,12 +12,20 @@ interface Props {
 
 export default function BreadCrumb({ current, link }: Props) {
   return (
-    <div className='flex w-full items-center gap-5'>
-      <GlassButtonLink fit href={link.href}>
-        {link.label}
-      </GlassButtonLink>
-      <FaChevronRight className='size-6' />
-      <p>{current}</p>
-    </div>
+    <nav aria-label='Breadcrumb'>
+      <ol className='flex w-full list-none items-center gap-5'>
+        <li>
+          <GlassButtonLink fit href={link.href}>
+            {link.label}
+          </GlassButtonLink>
+        </li>
+        <li aria-hidden='true'>
+          <FaChevronRight aria-hidden='true' className='size-6' />
+        </li>
+        <li>
+          <p aria-current='page'>{current}</p>
+        </li>
+      </ol>
+    </nav>
   );
 }

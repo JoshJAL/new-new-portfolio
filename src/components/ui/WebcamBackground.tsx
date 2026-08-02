@@ -8,7 +8,7 @@ import { useBackground } from '@/components/background/BackgroundContext';
 import { useState } from 'react';
 
 const ICON_BUTTON_CLASSES =
-  'pop glass-edge liquid-blur nice-hover-no-shadow bg-dark-purple/40 hover:bg-cerulean/50 flex size-12 cursor-pointer items-center justify-center rounded-full border border-white/15 text-white transition-[background-color,box-shadow] duration-200';
+  'pop glass-edge nice-hover-no-shadow flex size-12 cursor-pointer items-center justify-center rounded-full border border-white/15 bg-dark-purple/40 text-white liquid-blur transition-[background-color,box-shadow] duration-200 hover:bg-cerulean/50';
 
 export default function WebcamBackground() {
   const [isWebcamActive, setIsWebcamActive] = useState(false);
@@ -41,6 +41,7 @@ export default function WebcamBackground() {
         <>
           <div className='fixed top-0 left-0 -z-1 size-full'>
             <Webcam
+              aria-hidden='true'
               audio={false}
               videoConstraints={videoConstraints}
               screenshotFormat='image/jpeg'
@@ -56,7 +57,7 @@ export default function WebcamBackground() {
               title='Switch camera'
               className={ICON_BUTTON_CLASSES}
             >
-              <IoCameraReverseOutline className='size-6' />
+              <IoCameraReverseOutline aria-hidden='true' className='size-6' />
             </button>
             <button
               type='button'
@@ -65,7 +66,7 @@ export default function WebcamBackground() {
               title='Stop webcam background'
               className={ICON_BUTTON_CLASSES}
             >
-              <IoVideocamOffOutline className='size-6' />
+              <IoVideocamOffOutline aria-hidden='true' className='size-6' />
             </button>
           </div>
         </>
@@ -78,7 +79,7 @@ export default function WebcamBackground() {
             title='Start webcam background'
             className={ICON_BUTTON_CLASSES}
           >
-            <IoVideocamOutline className='size-6' />
+            <IoVideocamOutline aria-hidden='true' className='size-6' />
           </button>
         </div>
       )}

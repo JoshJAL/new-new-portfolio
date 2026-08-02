@@ -1,7 +1,7 @@
 import GlassButtonLink from '@/components/ui/GlassButtonLink';
 import GlassPanel from '@/components/ui/GlassPanel';
-import Image from 'next/image';
 import TiltCard from '@/components/ui/TiltCard';
+import Image from 'next/image';
 
 import type { Project } from '@/types/project';
 
@@ -16,7 +16,7 @@ export default function ProjectCard({ project }: Props) {
         <div className='relative w-full overflow-hidden rounded-xl media-shadow'>
           <div className='pop absolute inset-0 z-10 bg-black/10'></div>
           <Image
-            className={`h-auto w-full ${project.backgroundColor ? project.backgroundColor : 'bg-white'}`}
+            className={`h-auto w-full ${project.backgroundColor ?? 'bg-white'}`}
             alt={project.title}
             src={project.image}
             placeholder='blur'

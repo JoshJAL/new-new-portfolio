@@ -1,8 +1,8 @@
 import BackToTopButton from './BackToTopButton';
 import BreadCrumb from './BreadCrumb';
 import GlassPanel from './GlassPanel';
-import Image from 'next/image';
 import TiltCard from './TiltCard';
+import Image from 'next/image';
 
 import type { StaticImageData } from 'next/image';
 

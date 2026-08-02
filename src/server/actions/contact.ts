@@ -1,8 +1,8 @@
 'use server';
 
-import { headers } from 'next/headers';
 import { getClientIp } from '@/utils/contact/clientIp';
 import { contactSchema } from '@/utils/contact/contactSchema';
+import { headers } from 'next/headers';
 
 import type { ContactSubmissionInput, SubmitContactResult } from '@/types/contact';
 

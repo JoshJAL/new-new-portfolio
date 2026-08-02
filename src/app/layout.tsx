@@ -6,8 +6,8 @@ import Footer from '@/components/footer/Footer';
 import Header from '@/components/header/Header';
 import WebcamBackground from '@/components/ui/WebcamBackground';
 
-import { Bricolage_Grotesque, Lexend } from 'next/font/google';
 import { SITE_CONFIG } from '@/utils/siteConfig';
+import { Bricolage_Grotesque, Lexend } from 'next/font/google';
 
 import type { Metadata } from 'next';
 

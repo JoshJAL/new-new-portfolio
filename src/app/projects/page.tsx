@@ -1,6 +1,7 @@
 import ProjectCard from '@/components/projects/ProjectCard';
 import Me from '@/public/me.jpeg';
 import ThreeD from '@/public/projects/3D-portfolio.png';
+import AgentMakerIcon from '@/public/projects/agent-maker.jpeg';
 import AnissasSoaps from '@/public/projects/anissas-soaps.webp';
 import BigNick from '@/public/projects/big-nick.webp';
 import CoastalCrumb from '@/public/projects/coastal-crumb.jpg';
@@ -9,11 +10,10 @@ import Joshua from '@/public/projects/happyHeadshot.jpg';
 import Michael from '@/public/projects/Michael-Levine.jpg';
 import Monster from '@/public/projects/monster_logo_white.webp';
 import Msk from '@/public/projects/msk.png';
-import AgentMakerIcon from '@/public/projects/agent-maker.jpeg';
-import TaskPilotLogo from '@/public/projects/taskpilot.jpeg';
 import Omar from '@/public/projects/o-almanzar.webp';
 import Scribble from '@/public/projects/scribble.jpg';
 import Snake from '@/public/projects/snake.jpg';
+import TaskPilotLogo from '@/public/projects/taskpilot.jpeg';
 import ThingsIUse from '@/public/projects/things-i-use.jpg';
 
 import type { Project } from '@/types/project';

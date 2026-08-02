@@ -9,11 +9,12 @@ export default function DropdownMenu() {
     <Menu as='div' className='relative inline-block text-left'>
       <div>
         <MenuButton
+          aria-label='Open navigation menu'
           className={
-            'nice-hover-no-shadow pop inline-flex cursor-pointer justify-center rounded-xl border border-bittersweet/30 bg-bittersweet/50 p-2 text-sm font-medium text-white liquid-blur transition-[background-color,border-color,color,box-shadow] hover:border-naples-yellow/30 hover:bg-naples-yellow/50 hover:text-black focus:outline-hidden'
+            'pop nice-hover-no-shadow inline-flex cursor-pointer justify-center rounded-xl border border-bittersweet/30 bg-bittersweet/50 p-2 text-sm font-medium text-white liquid-blur transition-[background-color,border-color,color,box-shadow] hover:border-naples-yellow/30 hover:bg-naples-yellow/50 hover:text-black focus:outline-hidden focus-visible:ring-2 focus-visible:ring-naples-yellow focus-visible:ring-offset-2 focus-visible:ring-offset-dark-purple'
           }
         >
-          <IoMenu className='size-6' />
+          <IoMenu aria-hidden='true' className='size-6' />
         </MenuButton>
       </div>
       <MenuItems
@@ -29,20 +30,20 @@ export default function DropdownMenu() {
           <DropdownMenuItem href='/contact'>Contact Me</DropdownMenuItem>
           <DropdownMenuItem target='_blank' href='https://github.com/JoshJAL'>
             <div className='flex w-full items-center gap-1'>
-              <FaGithub className='size-4' />
+              <FaGithub aria-hidden='true' className='size-4' />
               <p>Github</p>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem href='/guides'>Guides</DropdownMenuItem>
           <DropdownMenuItem target='_blank' href='https://www.instagram.com/mygovtnamej/'>
             <div className='flex w-full items-center gap-1'>
-              <FaInstagram className='size-4' />
+              <FaInstagram aria-hidden='true' className='size-4' />
               <p>Instagram</p>
             </div>
           </DropdownMenuItem>
           <DropdownMenuItem href='https://www.linkedin.com/in/josh-lev/' target='_blank'>
             <div className='flex w-full items-center gap-1'>
-              <FaLinkedin className='size-4' />
+              <FaLinkedin aria-hidden='true' className='size-4' />
               <p>LinkedIn</p>
             </div>
           </DropdownMenuItem>

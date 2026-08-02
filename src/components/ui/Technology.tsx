@@ -9,9 +9,11 @@ export default function Technology({ tech }: Props) {
 
   return (
     <p
-      className={`flex items-center gap-2 rounded-full ${color} px-2.5 py-1 text-sm ${textColor ?? 'text-white'} border ${borderColor} liquid-blur`}
+      className={`flex items-center gap-2 rounded-full border ${borderColor} ${color} px-2.5 py-1 text-sm ${textColor ?? 'text-white'} liquid-blur`}
     >
-      {icon}
+      <span aria-hidden='true' className='inline-flex'>
+        {icon}
+      </span>
       {label}
     </p>
   );

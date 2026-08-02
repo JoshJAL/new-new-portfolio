@@ -1,3 +1,5 @@
+import 'server-only';
+
 import { contactSchema } from './contactSchema';
 import { saveContactSubmission } from './rateLimit';
 

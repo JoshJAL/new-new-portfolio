@@ -1,9 +1,9 @@
 import SiteLink from '@/components/ui/SiteLink';
 
+import { SITE_CONFIG } from '@/utils/siteConfig';
 import { FaCamera, FaCode, FaGithub, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { IoMdContact } from 'react-icons/io';
 import { TiDocumentText, TiMail } from 'react-icons/ti';
-import { SITE_CONFIG } from '@/utils/siteConfig';
 
 export default function Footer() {
   const links = [
@@ -64,7 +64,10 @@ export default function Footer() {
         {links.map((link) => (
           <FooterLink key={link.href} href={link.href} target={link.target}>
             <div className='flex items-center gap-2'>
-              {link.icon} <p>{link.label}</p>
+              <span aria-hidden='true' className='inline-flex'>
+                {link.icon}
+              </span>
+              <p>{link.label}</p>
             </div>
           </FooterLink>
         ))}
