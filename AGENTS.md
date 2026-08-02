@@ -219,6 +219,7 @@ within the same feature folder. Exclude generated `next-env.d.ts`.
 - For code changes, run `bun run lint`.
 - Run `bun run build` when changing routing, server actions, API handlers, auth,
   caching, or TypeScript contracts.
+- After React changes, run `npx react-doctor@latest --verbose --scope changed`.
 - Run `bun run check` before handing off a complete implementation sweep.
 - For docs-only `AGENTS.md` changes, no automated test is required; review the
   rendered Markdown and `git diff`.
