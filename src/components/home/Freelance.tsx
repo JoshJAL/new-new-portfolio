@@ -11,7 +11,7 @@ interface FreelanceJob {
 const JOBS: FreelanceJob[] = [
   {
     client: 'Coastal Crumb LLC',
-    dates: '03/2025 - Present',
+    dates: '03/2025 - 12/2025',
     role: 'Full Stack Web Developer',
     bullets: [
       "Fully built out client's front-end application.",

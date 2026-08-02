@@ -80,11 +80,10 @@ export default function Page() {
           here I just cannot provide links to the tools themselves or to the source code.
         </p>
         <p>
-          Internally I built and worked on over 40 different projects and counting. These projects are varied from
-          automations, CRM integrations, customer contacts, inventory management systems, order tracking systems,
-          ticketing systems, accounting softwares, iOS apps, simple scripting, and of course all of the consumer facing
-          products as well. I am very proud of all that I have accomplished at Monster as well as all the work that I
-          have done for Monster&apos;s sister company BDDiesel.
+          Internally I built and worked on over 40 different projects. These projects varied from automations, CRM
+          integrations, customer contacts, inventory management systems, order tracking systems, ticketing systems,
+          accounting software, iOS apps, simple scripting, and consumer-facing products. I am very proud of all that I
+          accomplished at Monster as well as the work I did for Monster&apos;s sister company BDDiesel.
         </p>
         <p>
           One of the major projects that I worked on and is linked below is the migration from Shift 4 Shop to Shopify.
@@ -92,10 +91,9 @@ export default function Page() {
           for the user, and rolled out order tracking systems in the backend with nearly no hiccups or downtime.
         </p>
         <p>
-          While here I also created an npm package to reduce boiler plate across all of our projects. It functions with
-          React and React server components. It contains a plethora of styled components (both server and client
-          components) as well as a handful of utility functions that are used across all the projects. The package can
-          be viewed{' '}
+          While there I also created an npm package to reduce boiler plate across the projects. It functions with React
+          and React server components. It contains a plethora of styled components (both server and client components)
+          as well as a handful of utility functions that are used across all the projects. The package can be viewed{' '}
           <StyledLink href='https://www.npmjs.com/package/burnout-components' target='_blank'>
             here
           </StyledLink>

@@ -8,7 +8,6 @@ import RecentProjects from '@/components/home/RecentProjects';
 export default function Home() {
   return (
     <article className='flex w-full flex-col gap-12'>
-      <div id='top' className='hidden' />
       <Intro />
       <RecentProjects />
       <Experience />

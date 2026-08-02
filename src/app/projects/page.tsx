@@ -50,7 +50,7 @@ export default function Page() {
     {
       backgroundColor: 'bg-black p-3',
       description:
-        'As the lead developer for Monster Transmission & Performance I built out all internal tooling and aided in the development and design of the public facing website.',
+        'While serving as lead developer at Monster Transmission & Performance, I built its internal tooling and helped develop and design its public-facing website.',
       href: '/projects/monster',
       image: Monster,
       projectHref: 'https://www.monstertransmission.com',
@@ -113,13 +113,11 @@ export default function Page() {
       title: '3D Portfolio'
     },
     {
-      codeHref: 'https://github.com/JoshJAL/resume-cover-letter-generator/tree/main',
       description:
-        'A very basic resume and cover letter generator that I built while applying for jobs. A couple of friends and I were applying at around the same time and we got really tired of either making a new resume or cover letter for each job, so I built something to speed up the process a little bit.',
+        'An authenticated Next.js and TypeScript application with user profiles and job-application tracking, SQLite and Turso persistence, and Clerk authentication.',
       href: '/projects/resume-cover-letter-generator',
       image: Scribble,
-      projectHref: 'https://resume-cover-letter-generator.vercel.app/',
-      title: 'Resume and Cover Letter Generator'
+      title: 'AI CV/Resume Generator'
     },
     {
       description:

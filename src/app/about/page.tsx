@@ -7,7 +7,6 @@ import StyledLink from '@/components/ui/StyledLink';
 export default function Page() {
   return (
     <article className='flex w-full flex-col gap-12'>
-      <div id='top' className='hidden' />
       <section className='flex w-full flex-col gap-6'>
         <SectionHeading as='h1' eyebrow='Get to know me'>
           About Me
@@ -133,14 +132,17 @@ export default function Page() {
             time, further fleshing out my skills.
           </p>
           <p>
-            Currently, I am working at Monster Transmission &amp; Performance as the lead developer. I got here and
-            climbed very quickly and am immensely proud of myself for the work that I have done here. I have been able
-            to push out consistent, quality work quickly since my very first day. Imposter syndrome has officially
-            become a thing of the past. Working here I have built the stack myself from the ground up, done work for our
-            sister companies and single handedly aligned our tech stacks both internally and externally while setting up
-            a clear outline for future companies who might join our portfolio. It has been a wonderful clashing of
-            worlds since I have a passion for cars and a passion for tech and here I have been able to mesh those two
-            while building for several companies that build custom car parts, engines, and transmissions.
+            From June 2023 through July 2025, I worked at Monster Transmission &amp; Performance as the lead developer.
+            I built its stack from the ground up, created internal tooling and consumer-facing products, and worked on
+            projects for sister company BDDiesel. I also aligned shared systems across the company portfolio and created
+            a clear technical foundation for future companies joining it. The role was a wonderful collision of my love
+            for cars and technology, and it let me build for companies focused on custom car parts, engines, and
+            transmissions.
+          </p>
+          <p>
+            Since December 2025, I have worked at Sofwerx as a Full Stack Developer. I build internal programs and
+            customer-facing websites, develop databases supporting internal and external solutions, and maintain a stack
+            that includes Next.js, TypeScript, Tailwind CSS, and AWS services.
           </p>
         </GlassPanel>
       </section>

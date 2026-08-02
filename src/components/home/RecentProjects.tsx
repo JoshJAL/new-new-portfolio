@@ -186,16 +186,16 @@ export default function RecentProjects() {
           ))}
         </div>
         <p>
-          I am the lead developer for Monster Transmission &amp; Performance. I have built all of our internal tooling
-          and helped develop our front-end using Shopify from the ground up. I also aid our sister companies with their
-          development needs.
+          While serving as lead developer at Monster Transmission &amp; Performance, I built its internal tooling,
+          helped develop its consumer-facing Shopify website from the ground up, and supported sister companies with
+          their development needs.
         </p>
         <ul className='list-inside list-disc'>
           <li>Full Stack e-commerce platform for transmissions, engines, and torque converters.</li>
           <li>Organized and optimized over 6,000 products. Narrowed down to top selling 200.</li>
           <li>
-            Year, make, and model look up to help customers find their applicable transmissions and engines spanning
-            over 6,000 different vehicle makes.
+            Year, make, and model lookup to help customers find applicable transmissions and engines across more than
+            6,000 vehicles.
           </li>
           <li>Built tech stack from the ground up.</li>
           <li>
@@ -245,13 +245,12 @@ export default function RecentProjects() {
           ))}
         </div>
         <p>
-          This one is no longer available on the app store, but it was a really cool iOS app that would allow you to be
-          able to check the transmission and engine of over 6,000 vehicles, you could save previous searches and it
-          would suggest you products that were related to your current search.
+          This iOS application identified engines and transmissions across more than 6,000 vehicles using year, make,
+          and model searches. Users could also save previous searches and receive relevant product suggestions.
         </p>
         <ul className='list-inside list-disc'>
           <li>
-            Year, make, and model search that would return current engine and transmission of over 6,000 vehicles.
+            Year, make, and model search that returned engine and transmission details for more than 6,000 vehicles.
           </li>
           <li>Suggested products of multiple shops.</li>
           <li>Allowed users to save any number of searches.</li>

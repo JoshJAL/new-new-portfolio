@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react';
 interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
+  innerClassName?: string;
   tiltMax?: number;
   scale?: number;
   perspective?: number;
@@ -14,6 +15,7 @@ interface TiltCardProps {
 export default function TiltCard({
   children,
   className = '',
+  innerClassName = '',
   tiltMax = 10,
   scale = 1.03,
   perspective = 1000,
@@ -108,7 +110,7 @@ export default function TiltCard({
     >
       <div
         ref={innerRef}
-        className='relative'
+        className={`relative ${innerClassName}`}
         onTransitionEnd={handleTransitionEnd}
         style={{
           transformStyle: 'preserve-3d'

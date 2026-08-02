@@ -56,7 +56,43 @@ describe('contact and transition regressions', () => {
     expect(textAreaField).toContain('transition-shadow');
     expect(dropdown).toContain('transition-[background-color,border-color,color,box-shadow]');
     expect(dropdownItem).toContain('transition-colors');
-    expect(pageLink).toContain('transition-[transform,box-shadow]');
+    expect(pageLink).toContain('transition-shadow');
+    expect(pageLink).not.toContain('transition-[transform,box-shadow]');
+  });
+
+  it('wraps each complete guide link in one full-height TiltCard', async () => {
+    const pageLink = await readSource('./PageLink.tsx');
+    const tiltCardStart = pageLink.indexOf('<TiltCard');
+    const linkStart = pageLink.indexOf('<Link');
+    const linkEnd = pageLink.indexOf('</Link>');
+    const tiltCardEnd = pageLink.indexOf('</TiltCard>');
+
+    expect(pageLink.match(/<TiltCard/g)).toHaveLength(1);
+    expect(tiltCardStart).toBeLessThan(linkStart);
+    expect(linkEnd).toBeLessThan(tiltCardEnd);
+    expect(pageLink).toContain("<TiltCard className='w-full' innerClassName='h-full'>");
+    expect(pageLink).toContain('grid size-full');
+    expect(pageLink).not.toContain('tiltMax={8}');
+    expect(pageLink).not.toContain('scale={1}');
+    expect(pageLink).not.toContain('hover:scale-102');
+  });
+
+  it('keeps one visible shared back-to-top target and a native anchor', async () => {
+    const [layout, backToTopButton, homePage, aboutPage] = await Promise.all([
+      readSource('../../app/layout.tsx'),
+      readSource('./BackToTopButton.tsx'),
+      readSource('../../app/page.tsx'),
+      readSource('../../app/about/page.tsx')
+    ]);
+    const topIdPattern = /\bid=(['"])top\1/g;
+    const layoutTopTarget = layout.match(/<[^>]*\bid=(['"])top\1[^>]*>/)?.[0] ?? '';
+
+    expect(layout.match(topIdPattern) ?? []).toHaveLength(1);
+    expect(layoutTopTarget).toContain('<main');
+    expect(layoutTopTarget).not.toContain('hidden');
+    expect(backToTopButton).toContain("href='#top'");
+    expect(homePage).not.toMatch(topIdPattern);
+    expect(aboutPage).not.toMatch(topIdPattern);
   });
 });
 
@@ -105,11 +141,17 @@ describe('TiltCard', () => {
     const root = createRoot(asBrowserElement<HTMLDivElement>(container));
 
     await act(async () => {
-      root.render(createElement(TiltCard, null, createElement('span', null, 'Card')));
+      root.render(
+        <TiltCard innerClassName='h-full test-inner'>
+          <span>Card</span>
+        </TiltCard>
+      );
     });
 
     const outer = asBrowserElement<HTMLDivElement>(container.firstElementChild);
     const inner = asBrowserElement<HTMLDivElement>(outer.firstElementChild);
+    expect(inner.classList.contains('h-full')).toBe(true);
+    expect(inner.classList.contains('test-inner')).toBe(true);
     Object.defineProperty(outer, 'getBoundingClientRect', {
       value: () => ({ bottom: 100, height: 100, left: 0, right: 100, top: 0, width: 100, x: 0, y: 0 })
     });
