@@ -2,6 +2,7 @@
 
 import FormWrapper from './ui/FormWrapper';
 
+import { ROUTE_TRANSITION_TYPES } from '@/utils/navigationTransitions';
 import { SITE_CONFIG } from '@/utils/siteConfig';
 
 import { useAppForm } from './ui';
@@ -31,7 +32,7 @@ export default function ContactForm() {
         const result = await submitContact(value);
 
         if (result.ok) {
-          router.push(SITE_CONFIG.thankYouPath);
+          router.push(SITE_CONFIG.thankYouPath, { transitionTypes: ROUTE_TRANSITION_TYPES });
         } else {
           setSubmissionError(result.message);
         }

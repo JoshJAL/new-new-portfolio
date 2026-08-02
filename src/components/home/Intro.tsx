@@ -49,10 +49,10 @@ export default function Intro() {
           </ul>
         </GlassPanel>
         <div className='flex flex-wrap gap-3'>
-          <GlassButtonLink fit prefetch href='/projects'>
+          <GlassButtonLink fit href='/projects'>
             See my work
           </GlassButtonLink>
-          <GlassButtonLink fit colorSwap2 prefetch href='/contact'>
+          <GlassButtonLink fit colorSwap2 href='/contact'>
             Get in touch
           </GlassButtonLink>
         </div>

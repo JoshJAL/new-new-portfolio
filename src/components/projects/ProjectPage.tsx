@@ -68,12 +68,12 @@ export default function ProjectPage({
         {(codeHref || href) && (
           <div className='flex flex-wrap gap-3'>
             {codeHref && (
-              <GlassButtonLink fit target='_blank' prefetch={false} colorSwap3 href={codeHref}>
+              <GlassButtonLink fit target='_blank' colorSwap3 href={codeHref}>
                 View source code
               </GlassButtonLink>
             )}
             {href && (
-              <GlassButtonLink fit target='_blank' prefetch={false} href={href}>
+              <GlassButtonLink fit target='_blank' href={href}>
                 Visit project
               </GlassButtonLink>
             )}

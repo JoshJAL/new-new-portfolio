@@ -14,10 +14,7 @@ export default function Page() {
       <GlassPanel tint='caribbean' className='flex flex-col gap-4'>
         <p>
           Feel free to reach out using the form below or email me directly at{' '}
-          <StyledLink href={`mailto:${SITE_CONFIG.email}`} prefetch={false}>
-            {SITE_CONFIG.email}
-          </StyledLink>
-          .
+          <StyledLink href={`mailto:${SITE_CONFIG.email}`}>{SITE_CONFIG.email}</StyledLink>.
         </p>
         <ContactForm />
       </GlassPanel>

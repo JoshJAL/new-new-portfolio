@@ -32,6 +32,9 @@ describe('contact and transition regressions', () => {
     expect(contactForm).toContain("role='alert'");
     expect(contactForm).toContain("name='companyWebsite'");
     expect(contactForm).toContain('tabIndex={-1}');
+    expect(contactForm).toContain(
+      'router.push(SITE_CONFIG.thankYouPath, { transitionTypes: ROUTE_TRANSITION_TYPES });'
+    );
     expect(submitButton).toContain('disabled={isSubmitting || !canSubmit}');
     expect(SITE_CONFIG.thankYouPath).toBe('/thank-you');
     expect(SITE_CONFIG.thankYouPath).not.toContain('?');
@@ -60,11 +63,28 @@ describe('contact and transition regressions', () => {
     expect(pageLink).not.toContain('transition-[transform,box-shadow]');
   });
 
+  it('keeps the mobile menu portalled, anchored, blurred, and directly navigable', async () => {
+    const [dropdown, dropdownItem] = await Promise.all([
+      readSource('../header/dropdownMenu/DropdownMenu.tsx'),
+      readSource('../header/dropdownMenu/DropdownMenuItem.tsx')
+    ]);
+    const menuItemsOpeningTag = dropdown.match(/<MenuItems[\s\S]*?>/)?.[0] ?? '';
+
+    expect(menuItemsOpeningTag).toContain("anchor={{ to: 'bottom end', gap: 8, padding: 8 }}");
+    expect(menuItemsOpeningTag).toMatch(/\bportal\b/);
+    expect(menuItemsOpeningTag).toContain('liquid-blur');
+    expect(menuItemsOpeningTag).not.toMatch(/\b(?:absolute|right-0|mt-2)\b/);
+    expect(dropdownItem).not.toContain("<MenuItem as='div'>");
+    expect(dropdownItem.match(/<MenuItem>/g)).toHaveLength(1);
+    expect(dropdownItem.match(/<SiteLink/g)).toHaveLength(1);
+    expect(dropdownItem).toMatch(/<MenuItem>\s*<SiteLink[\s\S]*<\/SiteLink>\s*<\/MenuItem>/);
+  });
+
   it('wraps each complete guide link in one full-height TiltCard', async () => {
     const pageLink = await readSource('./PageLink.tsx');
     const tiltCardStart = pageLink.indexOf('<TiltCard');
-    const linkStart = pageLink.indexOf('<Link');
-    const linkEnd = pageLink.indexOf('</Link>');
+    const linkStart = pageLink.indexOf('<SiteLink');
+    const linkEnd = pageLink.indexOf('</SiteLink>');
     const tiltCardEnd = pageLink.indexOf('</TiltCard>');
 
     expect(pageLink.match(/<TiltCard/g)).toHaveLength(1);

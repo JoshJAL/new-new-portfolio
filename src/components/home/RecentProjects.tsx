@@ -151,7 +151,7 @@ export default function RecentProjects() {
         I&apos;ve been doing this a number of years now, so as you can imagine I have tons of projects that I have
         worked on, but I will keep this to the most recent and notable few. If you care to look at more of my projects
         and in more detail feel free to visit my{' '}
-        <StyledLink colorSwap prefetch href='/projects'>
+        <StyledLink colorSwap href='/projects'>
           Projects
         </StyledLink>{' '}
         page!
@@ -173,7 +173,7 @@ export default function RecentProjects() {
           <li>Well documented with examples and explanations of code.</li>
         </ul>
         <div className='flex flex-wrap gap-3'>
-          <GlassButtonLink fit prefetch={false} href='https://www.npmjs.com/package/ez-funcs' target='_blank'>
+          <GlassButtonLink fit href='https://www.npmjs.com/package/ez-funcs' target='_blank'>
             View on npm
           </GlassButtonLink>
         </div>
@@ -204,7 +204,7 @@ export default function RecentProjects() {
           </li>
         </ul>
         <div className='flex flex-wrap gap-3'>
-          <GlassButtonLink fit prefetch={false} href='https://monstertransmission.com/' target='_blank'>
+          <GlassButtonLink fit href='https://monstertransmission.com/' target='_blank'>
             Visit monstertransmission.com
           </GlassButtonLink>
         </div>
@@ -232,7 +232,7 @@ export default function RecentProjects() {
           <li>Allow users to sign in to manage their own subscription status.</li>
         </ul>
         <div className='flex flex-wrap gap-3'>
-          <GlassButtonLink fit prefetch={false} href='https://coastalcrumbllc.com/' target='_blank'>
+          <GlassButtonLink fit href='https://coastalcrumbllc.com/' target='_blank'>
             Visit coastalcrumbllc.com
           </GlassButtonLink>
         </div>

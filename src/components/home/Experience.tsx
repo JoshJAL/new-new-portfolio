@@ -10,11 +10,11 @@ export default function Experience() {
         I have built web and software professionally since 2022. Before that, I was in law school, interned for family
         law attorney Joryn Jenkins, and held a number of odd jobs like most people do. I will list my relevant developer
         experience here, but if you would like to know about any of the others, please visit my{' '}
-        <StyledLink colorSwap prefetch href='/about'>
+        <StyledLink colorSwap href='/about'>
           About Me
         </StyledLink>{' '}
         page or feel free to reach out via my{' '}
-        <StyledLink colorSwap prefetch href='/contact'>
+        <StyledLink colorSwap href='/contact'>
           Contact Me
         </StyledLink>{' '}
         page!

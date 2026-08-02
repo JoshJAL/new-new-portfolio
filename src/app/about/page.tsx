@@ -83,11 +83,11 @@ export default function Page() {
             Currently I am doing some light photography and having a blast with it. I don&apos;t think that I am any
             good, but it is something that gets me out of the house and forces me to touch grass and for that I am
             eternally grateful. If you want to see some of the pictures that I&apos;ve been taking visit my &quot;
-            <StyledLink href={'https://photography.joshualevine.me'} target='_blank' prefetch={false}>
+            <StyledLink href={'https://photography.joshualevine.me'} target='_blank'>
               Photography
             </StyledLink>
             &quot; page or follow me on{' '}
-            <StyledLink href={'https://www.instagram.com/mygovtnamej/'} target='_blank' prefetch={false}>
+            <StyledLink href={'https://www.instagram.com/mygovtnamej/'} target='_blank'>
               Instagram
             </StyledLink>
             !

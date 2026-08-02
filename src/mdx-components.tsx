@@ -1,6 +1,8 @@
 import CodeBlock from '@/components/ui/CodeBlock';
 import StyledLink from '@/components/ui/StyledLink';
 
+import { isInternalRouteHref } from '@/utils/navigationTransitions';
+
 import type { MDXComponents } from 'mdx/types';
 import type { ComponentPropsWithoutRef } from 'react';
 
@@ -9,12 +11,8 @@ type AnchorProps = ComponentPropsWithoutRef<'a'>;
 const components: MDXComponents = {
   a: ({ href, children, ...props }: AnchorProps) => {
     const className = 'text-moonstone hover:text-coquelicot hover:underline underline-offset-4';
-    if (href?.startsWith('/')) {
-      return (
-        <StyledLink prefetch href={href}>
-          {children}
-        </StyledLink>
-      );
+    if (href && isInternalRouteHref(href)) {
+      return <StyledLink href={href}>{children}</StyledLink>;
     }
     if (href?.startsWith('#')) {
       return (

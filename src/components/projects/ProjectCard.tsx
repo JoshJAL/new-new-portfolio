@@ -29,7 +29,7 @@ export default function ProjectCard({ project }: Props) {
         <p className='text-sm text-gray-100'>{project.description}</p>
         <div className='flex-1' />
         <div className='flex flex-wrap items-center gap-3'>
-          <GlassButtonLink fit prefetch href={project.href}>
+          <GlassButtonLink fit href={project.href}>
             Learn More
           </GlassButtonLink>
           {project.codeHref && (

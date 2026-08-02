@@ -10,19 +10,19 @@ import { useBackground } from './BackgroundContext';
 
 import type { Group } from 'three';
 
-const MOBILE_QUERY = '(max-width: 767px)';
+const LIGHTWEIGHT_RENDERING_QUERY = '(max-width: 767px), (pointer: coarse)';
 
-function subscribeToMobileViewport(onStoreChange: () => void): () => void {
-  const mediaQuery = window.matchMedia(MOBILE_QUERY);
+function subscribeToLightweightRendering(onStoreChange: () => void): () => void {
+  const mediaQuery = window.matchMedia(LIGHTWEIGHT_RENDERING_QUERY);
   mediaQuery.addEventListener('change', onStoreChange);
   return () => mediaQuery.removeEventListener('change', onStoreChange);
 }
 
-function getMobileViewportSnapshot(): boolean {
-  return window.matchMedia(MOBILE_QUERY).matches;
+function getLightweightRenderingSnapshot(): boolean {
+  return window.matchMedia(LIGHTWEIGHT_RENDERING_QUERY).matches;
 }
 
-function getMobileViewportServerSnapshot(): boolean {
+function getLightweightRenderingServerSnapshot(): boolean {
   return false;
 }
 
@@ -77,10 +77,10 @@ interface BokehCanvasProps {
 export default function BokehCanvas({ surgeToken, tint }: BokehCanvasProps) {
   const { webcamActive } = useBackground();
   const [tabHidden, setTabHidden] = useState(false);
-  const mobileViewport = useSyncExternalStore(
-    subscribeToMobileViewport,
-    getMobileViewportSnapshot,
-    getMobileViewportServerSnapshot
+  const lightweightRendering = useSyncExternalStore(
+    subscribeToLightweightRendering,
+    getLightweightRenderingSnapshot,
+    getLightweightRenderingServerSnapshot
   );
 
   useEffect(() => {
@@ -100,10 +100,10 @@ export default function BokehCanvas({ surgeToken, tint }: BokehCanvasProps) {
     >
       <ParallaxRig>
         <BokehField
-          key={mobileViewport ? 'mobile' : 'desktop'}
-          count={mobileViewport ? 40 : 64}
+          key={lightweightRendering ? 'lightweight' : 'full'}
+          count={lightweightRendering ? 40 : 64}
           tint={tint}
-          surgeToken={surgeToken}
+          surgeToken={lightweightRendering ? 0 : surgeToken}
         />
       </ParallaxRig>
     </Canvas>

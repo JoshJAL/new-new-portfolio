@@ -13,7 +13,7 @@ interface Props {
 export default function BreadCrumb({ current, link }: Props) {
   return (
     <div className='flex w-full items-center gap-5'>
-      <GlassButtonLink fit href={link.href} prefetch>
+      <GlassButtonLink fit href={link.href}>
         {link.label}
       </GlassButtonLink>
       <FaChevronRight className='size-6' />
