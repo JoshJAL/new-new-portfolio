@@ -132,6 +132,7 @@ describe('contact and transition regressions', () => {
 
     expect(menuItemsOpeningTag).toContain("anchor={{ to: 'bottom end', gap: 8, padding: 8 }}");
     expect(menuItemsOpeningTag).toMatch(/\bportal\b/);
+    expect(menuItemsOpeningTag).toContain('z-60');
     expect(menuItemsOpeningTag).toContain('liquid-blur');
     expect(menuItemsOpeningTag).not.toMatch(/\b(?:absolute|right-0|mt-2)\b/);
     expect(dropdownItem).not.toContain("<MenuItem as='div'>");

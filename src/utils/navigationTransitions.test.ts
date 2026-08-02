@@ -74,5 +74,6 @@ describe('ViewTransition regressions', () => {
     expect(template).toContain("update={{ [RACK_FOCUS_TRANSITION_TYPE]: 'rack-focus-update', default: 'none' }}");
     expect(globals.match(/::view-transition-old\(\.rack-focus-update\)/g)).toHaveLength(2);
     expect(globals.match(/::view-transition-new\(\.rack-focus-update\)/g)).toHaveLength(2);
+    expect(globals.match(/animation: 220ms cubic-bezier\(0\.4, 0, 0\.2, 1\) both mobile-fade-/g)).toHaveLength(2);
   });
 });

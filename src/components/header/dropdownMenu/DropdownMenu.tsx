@@ -22,7 +22,7 @@ export default function DropdownMenu() {
         as='div'
         portal
         transition
-        className='subtle-pop z-10 w-56 origin-top-right divide-y divide-naples-yellow overflow-hidden rounded-2xl bg-cerulean/80 ring ring-cerulean/20 liquid-blur transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in'
+        className='subtle-pop z-60 w-56 origin-top-right divide-y divide-naples-yellow overflow-hidden rounded-2xl bg-cerulean/80 ring ring-cerulean/20 liquid-blur transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in'
       >
         <div className='py-1'>
           <DropdownMenuItem href='/'>Home</DropdownMenuItem>
