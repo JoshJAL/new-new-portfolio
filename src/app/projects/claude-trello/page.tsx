@@ -48,7 +48,7 @@ export default function Page() {
   return (
     <ProjectPage
       codeHref='https://github.com/JoshJAL/claude-trello'
-      href='https://claude-trello-two.vercel.app'
+      href='https://ct.joshualevine.me/'
       title='TaskPilot'
       image={TaskPilotLogo}
       imageBackgroundColor='bg-project-slate'

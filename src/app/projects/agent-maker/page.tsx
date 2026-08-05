@@ -17,8 +17,7 @@ export default function Page() {
 
   return (
     <ProjectPage
-      codeHref='https://github.com/JoshJAL/agent-maker'
-      href='https://www.npmjs.com/package/@joshjal/agent-maker'
+      href='https://agent.task-pilot.dev/'
       title='Agent Maker'
       image={AgentMakerIcon}
       imageBackgroundColor='bg-project-slate'

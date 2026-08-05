@@ -11,7 +11,7 @@ interface Props {
 
 export default function ProjectCard({ project }: Props) {
   return (
-    <TiltCard className='w-full'>
+    <TiltCard className='w-full' innerClassName='h-full'>
       <GlassPanel tint='cerulean' className='flex size-full flex-col gap-3 p-3 sm:p-4'>
         <div className='relative w-full overflow-hidden rounded-xl media-shadow'>
           <div className='pop absolute inset-0 z-10 bg-black/10'></div>
@@ -29,9 +29,11 @@ export default function ProjectCard({ project }: Props) {
         <p className='text-sm text-gray-100'>{project.description}</p>
         <div className='flex-1' />
         <div className='flex flex-wrap items-center gap-3'>
-          <GlassButtonLink fit href={project.href}>
-            Learn More
-          </GlassButtonLink>
+          {project.href && (
+            <GlassButtonLink fit href={project.href}>
+              Learn More
+            </GlassButtonLink>
+          )}
           {project.codeHref && (
             <a
               target='_blank'

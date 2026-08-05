@@ -20,7 +20,6 @@ export default function Page() {
       tech={tech}
       image={NPMIcon}
       href='https://www.npmjs.com/package/@joshjal/agent-maker'
-      codeHref='https://github.com/JoshJAL/agent-maker/tree/main/cli'
       title='@joshjal/agent-maker'
       breadcrumbLabel='Packages'
       breadcrumbLink='/packages'

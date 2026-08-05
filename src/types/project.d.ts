@@ -4,8 +4,13 @@ export type Project = {
   backgroundColor?: string;
   codeHref?: string;
   description: string;
-  href: string;
+  href?: string;
   image: StaticImageData;
   projectHref?: string;
   title: string;
+};
+
+export type PortfolioProject = Project & {
+  id: string;
+  isFeatured: boolean;
 };

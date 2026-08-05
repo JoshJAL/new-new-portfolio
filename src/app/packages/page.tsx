@@ -24,7 +24,6 @@ export default function Page() {
       title: '@joshjal/taskpilot'
     },
     {
-      codeHref: 'https://github.com/JoshJAL/agent-maker/tree/main/cli',
       description:
         'Generate CLAUDE.md, AGENTS.md, and GEMINI.md files for your project through an interactive CLI wizard — with AI-powered suggestions and optional framework scaffolding.',
       href: '/packages/agent-maker',
@@ -38,9 +37,8 @@ export default function Page() {
     <article className='flex w-full flex-col gap-5'>
       <h1>Packages</h1>
       <p>
-        Open source npm packages I&apos;ve published. These are tools and utilities I built to solve problems I kept
-        running into across projects, so I packaged them up for anyone to use. Each one is available on npm and fully
-        open source on GitHub.
+        npm packages I&apos;ve published to solve recurring problems across projects. Each package is available on npm,
+        with source linked where it is publicly available.
       </p>
       <div className='grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3'>
         {packages.map((project) => (

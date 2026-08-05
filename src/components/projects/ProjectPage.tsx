@@ -15,6 +15,7 @@ interface Props {
   image: StaticImageData;
   imageBackgroundColor?: string;
   imagePadding?: string;
+  imageWide?: boolean;
   tech: Tech[];
   title: string;
   breadcrumbLabel?: string;
@@ -28,6 +29,7 @@ export default function ProjectPage({
   image,
   imageBackgroundColor,
   imagePadding,
+  imageWide,
   tech,
   title,
   breadcrumbLabel = 'Projects',
@@ -43,22 +45,22 @@ export default function ProjectPage({
       <BreadCrumb current={title} link={link} />
       <div className='flex flex-col gap-3'>
         <h1>{title}</h1>
-        <div className='flex w-full flex-wrap gap-2'>
-          {tech.map((t) => (
-            <Technology tech={t} key={t.label} />
-          ))}
-        </div>
+        {tech.length > 0 && (
+          <div className='flex w-full flex-wrap gap-2'>
+            {tech.map((t) => (
+              <Technology tech={t} key={t.label} />
+            ))}
+          </div>
+        )}
       </div>
-      <TiltCard className='mx-auto w-fit' tiltMax={12} glareOpacity={0.25}>
+      <TiltCard className={`mx-auto w-full ${imageWide ? 'max-w-2xl' : 'max-w-md'}`} tiltMax={12} glareOpacity={0.25}>
         <div className='relative overflow-hidden rounded-xl media-shadow'>
           <div className='pop absolute inset-0 z-10 bg-black/10'></div>
           <Image
-            className={`${imageBackgroundColor ?? 'bg-white'} ${imagePadding ?? ''}`}
+            className={`h-auto w-full ${imageBackgroundColor ?? 'bg-white'} ${imagePadding ?? ''}`}
             alt={title}
             src={image}
             placeholder='blur'
-            height={450}
-            width={450}
             quality={60}
           />
         </div>

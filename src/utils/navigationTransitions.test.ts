@@ -56,6 +56,8 @@ describe('SiteLink regressions', () => {
     expect(pageLinks).toContain("href: '#education'");
     expect(backToTopButton).toContain('<a');
     expect(backToTopButton).toContain("href='#top'");
+    expect(projectCard).toContain('{project.href && (');
+    expect(projectCard).toContain('href={project.href}');
     expect(projectCard.match(/<a/g)).toHaveLength(2);
     expect(projectCard).toContain('href={project.codeHref}');
     expect(projectCard).toContain('href={project.projectHref}');
